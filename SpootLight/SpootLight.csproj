@@ -1,0 +1,471 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B99E81F3-40B7-4204-81F8-E9669E577E58}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SpootLight</RootNamespace>
+    <AssemblyName>SpootLight</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="eCryptography, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Eramake.eCryptography.1.1.6\lib\net45\eCryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FastColoredTextBox, Version=2.9.1.0, Culture=neutral, PublicKeyToken=06d1f484ebcd09a9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\FastColoredTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.1.1.2\lib\net45\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.5.1.1345, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.2.5.1\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="unvell.ReoGrid, Version=0.8.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\unvell.ReoGridWPF.dll.2.1.0.0\lib\20\unvell.ReoGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="unvell.ReoGridEditor, Version=0.8.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\unvell.ReoGridEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="unvell.ReoScript, Version=1.4.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\unvell.ReoScript.dll</HintPath>
+    </Reference>
+    <Reference Include="unvell.ReoScript.EditorLib, Version=1.4.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\unvell.ReoScript.EditorLib.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="analyse.cs">
+      <DependentUpon>SpootLightDbUserEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AuthentificationController.cs" />
+    <Compile Include="Controllers\FormController.cs" />
+    <Compile Include="Controllers\JobTalendController.cs" />
+    <Compile Include="Controllers\Paging.cs" />
+    <Compile Include="Controllers\UserData.cs" />
+    <Compile Include="DM_AMOUNT_TYPE.cs">
+      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DM_CAT_EXPOSITION.cs">
+      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DM_ENTITY.cs">
+      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DM_PONDERATION.cs">
+      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DM_TYPE_EXPOSITION.cs">
+      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DT_CONTRACT.cs">
+      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DT_CUSTOMER.cs">
+      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DT_GUARANTEE.cs">
+      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="entities.cs">
+      <DependentUpon>SpootLightDbUserEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FT_COREP_CA.cs">
+      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FT_COREP_CR.cs">
+      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AnalyseModel.cs" />
+    <Compile Include="Models\Globals.cs" />
+    <Compile Include="Models\PR_ACCOUNT_MODEL.cs" />
+    <Compile Include="Models\PR_BASEL_CATEGORY_MODEL.cs" />
+    <Compile Include="Models\PR_BASEL_PORTFOLIO_MODEL.cs" />
+    <Compile Include="Models\PR_CURRENCY_MODEL.cs" />
+    <Compile Include="Models\PR_ECONOMIC_SECTOR_MODEL.cs" />
+    <Compile Include="Models\PR_GUARANTEE_TYPE_MODEL.cs" />
+    <Compile Include="PR_ACCOUNT.cs">
+      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PR_BASEL_CATEGORY.cs">
+      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PR_BASEL_PORTFOLIO.cs">
+      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PR_CURRENCY.cs">
+      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PR_ECONOMIC_SECTOR.cs">
+      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PR_GUARANTEE_TYPE.cs">
+      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpootLightDbUserEntity.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpootLightDbUserEntity.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpootLightDbUserEntity.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpootLightDbUserEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpootLightDbUserEntity.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpootLightDbUserEntity.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="SpotLightDataEntity.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpotLightDataEntity.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpotLightDataEntity.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpotLightDataEntity.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpotLightDataEntity.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="type.cs">
+      <DependentUpon>SpootLightDbUserEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserSpot.cs">
+      <DependentUpon>SpootLightDbUserEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Analyse\NewAnalyse.xaml.cs">
+      <DependentUpon>NewAnalyse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Analyse\OpenAnalyse.xaml.cs">
+      <DependentUpon>OpenAnalyse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Crud_UserControl.xaml.cs">
+      <DependentUpon>Crud_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ExcelAnalyse\ExcelBrowse.xaml.cs">
+      <DependentUpon>ExcelBrowse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ExcelAnalyse\ExcelShow.xaml.cs">
+      <DependentUpon>ExcelShow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PR\Form_PR_ACCOUNT.xaml.cs">
+      <DependentUpon>Form_PR_ACCOUNT.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PR\Form_PR_BASEL_CATTEGORY.xaml.cs">
+      <DependentUpon>Form_PR_BASEL_CATTEGORY.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PR\Form_PR_BASEL_PORTFOLIO.xaml.cs">
+      <DependentUpon>Form_PR_BASEL_PORTFOLIO.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PR\Form_PR_CURRENCY.xaml.cs">
+      <DependentUpon>Form_PR_CURRENCY.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PR\Form_PR_ECONOMIC_SECTOR.xaml.cs">
+      <DependentUpon>Form_PR_ECONOMIC_SECTOR.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PR\Form_PR_GUARANTEE_TYPE.xaml.cs">
+      <DependentUpon>Form_PR_GUARANTEE_TYPE.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PR\PR_ACCOUNT_UserControl.xaml.cs">
+      <DependentUpon>PR_ACCOUNT_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PR\PR_BASEL_CATEGORY_UserControl.xaml.cs">
+      <DependentUpon>PR_BASEL_CATEGORY_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PR\PR_BASEL_PORTFOLIO_UserControl.xaml.cs">
+      <DependentUpon>PR_BASEL_PORTFOLIO_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PR\PR_CURRENCY_UserConntrol.xaml.cs">
+      <DependentUpon>PR_CURRENCY_UserConntrol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PR\PR_ECONOMIC_SECTOR_UserControl.xaml.cs">
+      <DependentUpon>PR_ECONOMIC_SECTOR_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PR\PR_GUARANTEE_TYPE_UserControl.xaml.cs">
+      <DependentUpon>PR_GUARANTEE_TYPE_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PR\View_PR_ACCOUNT.xaml.cs">
+      <DependentUpon>View_PR_ACCOUNT.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Talend\JobTalendUserControl.xaml.cs">
+      <DependentUpon>JobTalendUserControl.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\Analyse\NewAnalyse.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Analyse\OpenAnalyse.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Crud_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ExcelAnalyse\ExcelBrowse.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ExcelAnalyse\ExcelShow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PR\Form_PR_ACCOUNT.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PR\Form_PR_BASEL_CATTEGORY.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PR\Form_PR_BASEL_PORTFOLIO.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PR\Form_PR_CURRENCY.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PR\Form_PR_ECONOMIC_SECTOR.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PR\Form_PR_GUARANTEE_TYPE.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PR\PR_ACCOUNT_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PR\PR_BASEL_CATEGORY_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PR\PR_BASEL_PORTFOLIO_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PR\PR_CURRENCY_UserConntrol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PR\PR_ECONOMIC_SECTOR_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PR\PR_GUARANTEE_TYPE_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Talend\JobTalend.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Talend\JobTalend.xaml.cs">
+      <DependentUpon>JobTalend.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Popup\OublieMotPasse.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PR\View_PR_ACCOUNT.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Talend\JobTalendUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Popup\OublieMotPasse.xaml.cs">
+      <DependentUpon>OublieMotPasse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="SpootLightDbUserEntity.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SpootLightDbUserEntity.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="SpootLightDbUserEntity.edmx.diagram">
+      <DependentUpon>SpootLightDbUserEntity.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="SpotLightDataEntity.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SpotLightDataEntity.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="SpotLightDataEntity.edmx.diagram">
+      <DependentUpon>SpotLightDataEntity.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\logo.png" />
+    <Resource Include="Img\diskdrive.png" />
+    <Resource Include="Img\excel.png" />
+    <Resource Include="Img\folder.png" />
+    <Resource Include="logo.ico" />
+    <Resource Include="Img\focus3.png" />
+    <Resource Include="Img\data.png" />
+    <Resource Include="Img\analyse.png" />
+    <Resource Include="Img\repport.png" />
+    <Resource Include="Img\corepdata.png" />
+    <Resource Include="Img\logoSmall.png" />
+    <Resource Include="Img\Separator.jpg" />
+    <Resource Include="Img\connected.png" />
+    <Content Include="SpootLightDbUserEntity.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SpootLightDbUserEntity.edmx</DependentUpon>
+      <LastGenOutput>SpootLightDbUserEntity.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SpootLightDbUserEntity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SpootLightDbUserEntity.edmx</DependentUpon>
+      <LastGenOutput>SpootLightDbUserEntity.cs</LastGenOutput>
+    </Content>
+    <Content Include="SpotLightDataEntity.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SpotLightDataEntity.edmx</DependentUpon>
+      <LastGenOutput>SpotLightDataEntity.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SpotLightDataEntity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SpotLightDataEntity.edmx</DependentUpon>
+      <LastGenOutput>SpotLightDataEntity.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

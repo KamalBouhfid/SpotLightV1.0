@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="SpootLight.Views.PR.PR_ACCOUNT_UserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SpootLight.Views.PR"
+             mc:Ignorable="d" 
+             d:DesignHeight="425" d:DesignWidth="1120">
+    
+    <Grid>
+        <StackPanel x:Name="stack" Orientation="Horizontal" Height="425" Width="1120" HorizontalAlignment="Left">
+            <StackPanel Orientation="Vertical" Width="1120">
+                <StackPanel Orientation="Vertical" Height="425" Width="1120" Margin="0,0,0,0">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <StackPanel Orientation='Horizontal' Margin='6' HorizontalAlignment='Center'>
+                            <Button x:Name='Backwards' Padding='4' Content='&lt; Précédent' Margin='6' Click='Backwards_Click'></Button>
+                            <Button x:Name='First' Padding='4' Content='&lt;&lt; Sauter au début' Margin='6' Click='First_Click'></Button>
+                            <Grid Margin='6' VerticalAlignment='Center' HorizontalAlignment='Center'>
+                                <Label x:Name='PageInfo' Foreground='black' />
+                            </Grid>
+                            <Grid VerticalAlignment='Center' Margin='6' HorizontalAlignment='Center'>
+                                <ComboBox x:Name='NumberOfRecords' SelectedIndex='0' SelectionChanged='NumberOfRecords_SelectionChanged' />
+                            </Grid>
+                            <Button x:Name='Last' Padding='4' Content='&gt;&gt; Sauter au dernier' Margin='6' Click='Last_Click'></Button>
+                            <Button x:Name='Forward' Padding='4' Content='&gt; Suivant' Margin='6' Click='Forward_Click'></Button>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+                        <TextBox x:Name="AccountSearch" Style="{StaticResource placeHolder}" Tag="Compte  . . ." MaxLength="10" HorizontalAlignment="Left" Height="27" Margin="19,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="AccountSearch_TextChanged"/>
+                        <TextBox x:Name="DescriptionSearch" Style="{StaticResource placeHolder}" Tag="Description  . . ." MaxLength="10" HorizontalAlignment="Left" Height="27" Margin="10,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="DescriptionSearch_TextChanged"/>
+                        <TextBox x:Name="BaselSegmentSearch" Style="{StaticResource placeHolder}" Tag="Basel Segment . . ." MaxLength="10" HorizontalAlignment="Left" Height="27" Margin="10,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="BaselSegmentSearch_TextChanged"/>
+                        <TextBox x:Name="CreditFactorSearch" Style="{StaticResource placeHolder}" Tag="Crédit  . . ." MaxLength="10" HorizontalAlignment="Left" Height="27" Margin="10,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="CreditFactorSearch_TextChanged"/>
+                        <TextBox x:Name="BalanceSearch" Style="{StaticResource placeHolder}" Tag="Balance  . . ." MaxLength="10" HorizontalAlignment="Left" Height="27" Margin="10,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="BalanceSearch_TextChanged"/>
+                        <TextBox x:Name="SensCodeSearch" Style="{StaticResource placeHolder}" Tag="Sens Code  . . ." MaxLength="10" HorizontalAlignment="Left" Height="27" Margin="10,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="SensCodeSearch_TextChanged"/>
+                    </StackPanel>
+                    <DataGrid  AutoGenerateColumns="False" CanUserAddRows="false" x:Name="G_ACCOUNT" Height="auto" MaxHeight="300" Width="1080" ScrollViewer.CanContentScroll="True" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Visibility="Hidden" Header="Bank Code " Binding="{Binding Bank_Code}" Width="*"/>
+                            <DataGridTextColumn Visibility="Hidden" Header="Process Date" Binding="{Binding Process_Date}" Width="*"/>
+                            <DataGridTextColumn Header="Compte" Binding="{Binding Account}" Width="70" />
+                            <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*" />
+                            <DataGridCheckBoxColumn Header="Basel In" Binding="{Binding Basel_In}" Width="60" />
+                            <DataGridTextColumn Header="Basel Segment" Binding="{Binding Basel_Segment}" Width="*" />
+                            <DataGridTextColumn Header="Crédit Conversion" Binding="{Binding Credit_Conversion_Factor}" Width="*" />
+                            <DataGridTextColumn Header="Balance Of Sheet" Binding="{Binding Balance_Off_Sheet}" Width="*" />
+                            <DataGridTextColumn Header="Sens Code" Binding="{Binding Sens_Code}" Width="*" />
+                            <DataGridCheckBoxColumn Header="Is Commitment" Binding="{Binding Is_Commitment}" Width="99" />
+                            <DataGridCheckBoxColumn Header="Is Provision" Binding="{Binding Is_Provision}" Width="70" />
+                            <DataGridCheckBoxColumn Header="Is Doubtful" Binding="{Binding Is_Doubtful}" Width="75" />
+                            <DataGridCheckBoxColumn Header="Is Accrued Interest" Binding="{Binding Is_Accrued_Interest}" Width="*" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Border CornerRadius="1" BorderBrush="Gray" BorderThickness="1" Background="Transparent" Height="25" Width="60" VerticalAlignment="Center" Margin="10,10,0,0" HorizontalAlignment='Left'>
+                        <Menu x:Name="MenuActions"  HorizontalAlignment='Left' Margin="0,0,0,0" Background="#F0F0F0">
+                            <MenuItem Header="Actions" Width="60" Height="20">
+                                <MenuItem Header="Nouveau" x:Name="Nouveau" Click="Nouveau_Click"/>
+                                <MenuItem Header="Modifier" x:Name="Modifier" Click="Modifier_Click" />
+                                <MenuItem Header="Supprimer" x:Name="Supprimer" Click="Supprimer_Click"/>
+                            </MenuItem>
+                        </Menu>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+        
+</UserControl>
+

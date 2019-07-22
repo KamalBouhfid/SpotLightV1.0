@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="nachiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="analyse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="entity_id" Type="varchar" MaxLength="200" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="date_analyse" Type="date" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+          <Property Name="version" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="entities">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="type">
+          <Key>
+            <PropertyRef Name="num" />
+          </Key>
+          <Property Name="num" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserSpot">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="_login" Type="varchar" MaxLength="220" />
+          <Property Name="pass" Type="varchar" MaxLength="220" />
+          <Property Name="email" Type="varchar" MaxLength="220" />
+        </EntityType>
+        <Association Name="FK__analyse__entity___31EC6D26">
+          <End Role="entities" Type="Self.entities" Multiplicity="0..1" />
+          <End Role="analyse" Type="Self.analyse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="entities">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="analyse">
+              <PropertyRef Name="entity_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__analyse__user_id__32E0915F">
+          <End Role="UserSpot" Type="Self.UserSpot" Multiplicity="0..1" />
+          <End Role="analyse" Type="Self.analyse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserSpot">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="analyse">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="nachiModelStoreContainer">
+          <EntitySet Name="analyse" EntityType="Self.analyse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="entities" EntityType="Self.entities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type" EntityType="Self.type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserSpot" EntityType="Self.UserSpot" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__analyse__entity___31EC6D26" Association="Self.FK__analyse__entity___31EC6D26">
+            <End Role="entities" EntitySet="entities" />
+            <End Role="analyse" EntitySet="analyse" />
+          </AssociationSet>
+          <AssociationSet Name="FK__analyse__user_id__32E0915F" Association="Self.FK__analyse__user_id__32E0915F">
+            <End Role="UserSpot" EntitySet="UserSpot" />
+            <End Role="analyse" EntitySet="analyse" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="nachiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="analyse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="entity_id" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="date_analyse" Type="DateTime" Precision="0" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="version" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="entities" Relationship="Self.FK__analyse__entity___31EC6D26" FromRole="analyse" ToRole="entities" />
+          <NavigationProperty Name="UserSpot" Relationship="Self.FK__analyse__user_id__32E0915F" FromRole="analyse" ToRole="UserSpot" />
+        </EntityType>
+        <EntityType Name="entities">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="analyse" Relationship="Self.FK__analyse__entity___31EC6D26" FromRole="entities" ToRole="analyse" />
+        </EntityType>
+        <EntityType Name="UserSpot">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="C_login" Type="String" MaxLength="220" FixedLength="false" Unicode="false" />
+          <Property Name="pass" Type="String" MaxLength="220" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="220" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="analyse" Relationship="Self.FK__analyse__user_id__32E0915F" FromRole="UserSpot" ToRole="analyse" />
+        </EntityType>
+        <Association Name="FK__analyse__entity___31EC6D26">
+          <End Role="entities" Type="Self.entities" Multiplicity="0..1" />
+          <End Role="analyse" Type="Self.analyse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="entities">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="analyse">
+              <PropertyRef Name="entity_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__analyse__user_id__32E0915F">
+          <End Role="UserSpot" Type="Self.UserSpot" Multiplicity="0..1" />
+          <End Role="analyse" Type="Self.analyse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserSpot">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="analyse">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SpotLightDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="analyse" EntityType="Self.analyse" />
+          <EntitySet Name="entities" EntityType="Self.entities" />
+          <EntitySet Name="UserSpot" EntityType="Self.UserSpot" />
+          <AssociationSet Name="FK__analyse__entity___31EC6D26" Association="Self.FK__analyse__entity___31EC6D26">
+            <End Role="entities" EntitySet="entities" />
+            <End Role="analyse" EntitySet="analyse" />
+          </AssociationSet>
+          <AssociationSet Name="FK__analyse__user_id__32E0915F" Association="Self.FK__analyse__user_id__32E0915F">
+            <End Role="UserSpot" EntitySet="UserSpot" />
+            <End Role="analyse" EntitySet="analyse" />
+          </AssociationSet>
+          <EntitySet Name="type" EntityType="nachiModel.type" />
+        </EntityContainer>
+        <EntityType Name="type">
+          <Key>
+            <PropertyRef Name="num" />
+          </Key>
+          <Property Name="num" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="nachiModelStoreContainer" CdmEntityContainer="SpotLightDBEntities1">
+          <EntitySetMapping Name="analyse">
+            <EntityTypeMapping TypeName="nachiModel.analyse">
+              <MappingFragment StoreEntitySet="analyse">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="entity_id" ColumnName="entity_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="date_analyse" ColumnName="date_analyse" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="version" ColumnName="version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="entities">
+            <EntityTypeMapping TypeName="nachiModel.entities">
+              <MappingFragment StoreEntitySet="entities">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSpot">
+            <EntityTypeMapping TypeName="nachiModel.UserSpot">
+              <MappingFragment StoreEntitySet="UserSpot">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="C_login" ColumnName="_login" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type">
+            <EntityTypeMapping TypeName="nachiModel.type">
+              <MappingFragment StoreEntitySet="type">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="num" ColumnName="num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

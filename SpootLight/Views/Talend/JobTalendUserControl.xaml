@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="SpootLight.Views.Talend.JobTalendUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SpootLight.Views.Talend"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="1320">
+    <Grid>
+        <StackPanel Orientation="Vertical" Height="480" Width="1320" Background="#F0F0F0" >
+            <GroupBox HorizontalAlignment="Left" Header="Liste Job Talends" FontFamily="Microsoft Sans Serif" FontSize="12" FontWeight="Normal" Width="1293" Height="460" BorderBrush="Black" Margin="10,2,0,0" >
+                <StackPanel Orientation="Horizontal" Height="435" Width="1280" HorizontalAlignment="Left" Margin="0,0,0,0">
+                    <StackPanel Orientation="Horizontal" Height="430" Width="200" HorizontalAlignment="Left" Margin="10,0,0,10" Background="Transparent">
+                        <Border CornerRadius="1" BorderBrush="Gray" BorderThickness="1" Background="Transparent" Height="425" Width="200">
+                            <TreeView Name="trvMenu" Background="Transparent">
+                                <TreeView.ItemTemplate>
+                                    <HierarchicalDataTemplate DataType="{x:Type MenuItem}" ItemsSource="{Binding Items}" >
+                                        <TextBlock  FontSize="14" Text="{Binding Title}" MouseDown="TextBlock_MouseDown" />
+                                    </HierarchicalDataTemplate>
+                                </TreeView.ItemTemplate>
+                            </TreeView>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel x:Name="stack" Visibility="Visible" Orientation="Horizontal" Height="430" Width="1028" HorizontalAlignment="Left" Margin="36,0,0,10" >
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Nom de Job      :" HorizontalAlignment="Center" Margin="60,5,0,0" VerticalAlignment="Top" />
+                                <Label x:Name="NomJobResult" Content="Job xxx" HorizontalAlignment="Center" Margin="60,5,0,0" VerticalAlignment="Top" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Chemin de Job :" HorizontalAlignment="Center" Margin="60,5,0,0" VerticalAlignment="Top" />
+                                <Label x:Name="CheminJobResult" Content="Chemin xyy" HorizontalAlignment="Center" Margin="60,5,0,0" VerticalAlignment="Top" />
+                            </StackPanel>
+                          <!--  <StackPanel Orientation="Horizontal">
+                                <Label Content="Sous Jobs           :" HorizontalAlignment="Center" Margin="60,5,0,0" VerticalAlignment="Top" />
+                                <ListBox x:Name="ResultSousJob" Margin="60,5,0,0" Width="290" Height="99"/>
+                            </StackPanel> -->
+                            <StackPanel Orientation="Vertical" Height="370" Width="1028">
+                                <Label Content="Résultat :" HorizontalAlignment="Left" Margin="60,5,0,0" VerticalAlignment="Top" />
+                                <RichTextBox x:Name="ResultJob" Margin="225,0,0,0" Width="600" Height="140" HorizontalAlignment="Left" IsReadOnly="True" VerticalScrollBarVisibility="Auto" />
+                                <Label Content="Erreurs :" HorizontalAlignment="Left" Margin="60,5,0,0" VerticalAlignment="Top" />
+                                <RichTextBox x:Name="ResultJobErrors" Margin="225,0,0,0" Width="600" Height="125" HorizontalAlignment="Left" IsReadOnly="True" Foreground="Red" VerticalScrollBarVisibility="Auto"/>
+                                <Button x:Name="LancerJobBtn" Content="Lancer Job" HorizontalAlignment="Center" Margin="0,15,50,0" VerticalAlignment="Center" Width="106" Height="30" Click="LancerJobBtn_Click"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox >
+        </StackPanel>
+    </Grid>
+</UserControl>
