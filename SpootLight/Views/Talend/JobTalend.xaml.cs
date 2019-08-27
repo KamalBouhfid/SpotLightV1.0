@@ -43,8 +43,8 @@ namespace SpootLight.Controllers
 
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            JobTalendController.Jobs_choix(stack, sender,  ResultJob,  ResultJobErrors,
-             NomJobResult,  CheminJobResult,  LancerJobBtn);
+            JobTalendController.Jobs_choix(stack, sender, ResultJob, ResultJobErrors,
+             NomJobResult, CheminJobResult, LancerJobBtn);
 
         }
 

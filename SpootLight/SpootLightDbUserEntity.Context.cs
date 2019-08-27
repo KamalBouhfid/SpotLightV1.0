@@ -29,5 +29,6 @@ namespace SpootLight
         public virtual DbSet<entities> entities { get; set; }
         public virtual DbSet<UserSpot> UserSpot { get; set; }
         public virtual DbSet<type> type { get; set; }
+        public virtual DbSet<GroupsUserSpot> GroupsUserSpot { get; set; }
     }
 }

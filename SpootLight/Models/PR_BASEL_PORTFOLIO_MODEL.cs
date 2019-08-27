@@ -54,44 +54,104 @@ namespace SpootLight.Models
         {
 
             var UpdatedorInserted =
-                crudctx.PR_BASEL_PORTFOLIO.Where(c => c.Bank_Code.Equals(acc.Bank_Code) && c.Process_Date.Equals(acc.Process_Date) && c.Sub_Portfolio.Equals(acc.Sub_Portfolio)).FirstOrDefault();
+                crudctx.PR_BASEL_PORTFOLIO.Where(c => c.Bank_Code.Equals(acc.Bank_Code) && c.Process_Date.Equals(acc.Process_Date) && c.Sub_Portfolio.Equals(acc.Sub_Portfolio) && c.Version.Equals(acc.Version)).FirstOrDefault();
 
-            if (crudctx.PR_BASEL_PORTFOLIO.Any(c => c.Bank_Code.Equals(acc.Bank_Code) && c.Process_Date.Equals(acc.Process_Date) && c.Sub_Portfolio.Equals(acc.Sub_Portfolio)))
+            if (crudctx.PR_BASEL_PORTFOLIO.Any(c => c.Bank_Code.Equals(acc.Bank_Code) && c.Process_Date.Equals(acc.Process_Date) && c.Sub_Portfolio.Equals(acc.Sub_Portfolio) && c.Version.Equals(acc.Version)))
             {
 
                 UpdatedorInserted.Sub_Portfolio = acc.Sub_Portfolio;
                 UpdatedorInserted.Process_Date = acc.Process_Date;
                 UpdatedorInserted.Bank_Code = acc.Bank_Code;
+                UpdatedorInserted.Version = acc.Version;
 
                 UpdatedorInserted.Portfolio = acc.Portfolio;
                 UpdatedorInserted.Portfolio_Description = acc.Portfolio_Description;
 
                 UpdatedorInserted.Sub_Portfolio_Description = acc.Sub_Portfolio_Description;
                 UpdatedorInserted.Weighting = acc.Weighting;
+                UpdatedorInserted.WeightingCode = acc.WeightingCode;
+                UpdatedorInserted.Default_Category = acc.Default_Category;
 
-                MessageBox.Show("Bien Modifiée !");
+                MessageBox.Show("Modifiée");
             }
 
             else
             {
                 crudctx.PR_BASEL_PORTFOLIO.Add(acc);
-                MessageBox.Show("Bien Ajoutée !");
+                MessageBox.Show("Ajoutée");
             }
 
             crudctx.SaveChanges();
         }
 
+        public void deleteTest(DataGrid g)
+        {
+            try
+            {
+                DataRowView row = g.SelectedItem as DataRowView;
+                if (row != null)
+                {
+                    MessageBoxResult d = MessageBox.Show("Voulez-vous vraiment supprimer la(les) ligne(s) sélectionnée(s) ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                    if (d == MessageBoxResult.Yes)
+                    {
+                        string PK_CodeBank = row.Row.ItemArray[0].ToString();
+                        string PK_ProcessDate = row.Row.ItemArray[1].ToString();
+                        string PK_SubPortfolio = row.Row.ItemArray[5].ToString();
+                        string PK_Version = row.Row.ItemArray[2].ToString();
+                        var deletePortfolio = crudctx.PR_BASEL_PORTFOLIO.Where(m => m.Bank_Code.Equals(PK_CodeBank) && m.Process_Date.Equals(PK_ProcessDate) && m.Sub_Portfolio.Equals(PK_SubPortfolio) && m.Version.Equals(PK_Version)).Single();
+                        crudctx.PR_BASEL_PORTFOLIO.Remove(deletePortfolio);
+                        crudctx.SaveChanges();
+                        MessageBox.Show("Supprimée");
+                        g.ItemsSource = crudctx.PR_BASEL_PORTFOLIO.ToList();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Sélectionnez une ligne ");
+                }
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("Sélectionnez une ligne ");
+            }
+        }
         public void delete(DataGrid g)
         {
-            DataRowView row = g.SelectedItem as DataRowView;
-            string PK_CodeBank = row.Row.ItemArray[0].ToString();
-            string PK_ProcessDate = row.Row.ItemArray[1].ToString();
-            string PK_SubPortfolio = row.Row.ItemArray[4].ToString();
-            var deletePortfolio = crudctx.PR_BASEL_PORTFOLIO.Where(m => m.Bank_Code.Equals(PK_CodeBank) && m.Process_Date.Equals(PK_ProcessDate) && m.Sub_Portfolio.Equals(PK_SubPortfolio)).Single();
-            crudctx.PR_BASEL_PORTFOLIO.Remove(deletePortfolio);
-            crudctx.SaveChanges();
-            MessageBox.Show("Bien Supprimée !");
-            g.ItemsSource = crudctx.PR_BASEL_PORTFOLIO.ToList();
+            try
+            {
+                DataRowView row = g.SelectedItem as DataRowView;
+                if (row != null)
+                {
+                    MessageBoxResult d = MessageBox.Show("Voulez-vous vraiment supprimer la(les) ligne(s) sélectionnée(s) ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                    if (d == MessageBoxResult.Yes)
+                    {
+                        foreach (DataRowView selectedrows in g.SelectedItems)
+                        {
+                            string PK_CodeBank = selectedrows[0].ToString();
+                            string PK_ProcessDate = selectedrows[1].ToString();
+                            string PK_Version = selectedrows[2].ToString();
+                            string PK_SubPortfolio = selectedrows[5].ToString();
+                            var deletePortfolio = crudctx.PR_BASEL_PORTFOLIO.Where(m => m.Bank_Code.Equals(PK_CodeBank) && m.Process_Date.Equals(PK_ProcessDate) && m.Version.Equals(PK_Version) && m.Sub_Portfolio.Equals(PK_SubPortfolio)).Single();
+                            crudctx.PR_BASEL_PORTFOLIO.Remove(deletePortfolio);
+                            crudctx.SaveChanges();
+                        }
+                        MessageBox.Show("Supprimée");
+                        g.ItemsSource = crudctx.PR_BASEL_PORTFOLIO.ToList();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Sélectionnez une ligne");
+                }
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("Sélectionnez une ligne");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur : \n \n " + ex.Message + " \n \n " + ex.StackTrace);
+            }
         }
     }
 }

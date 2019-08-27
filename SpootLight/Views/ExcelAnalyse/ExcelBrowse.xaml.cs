@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpootLight.Controllers;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace SpootLight.Views.ExcelAnalyse
     public partial class ExcelBrowse : Window
     {
         private object dummyNode = null;
-        public object path = "C:\\Users\\Dell E6540\\Documents\\";
+        public object path = "C:\\java\\COREP\\2018-12-31\\CR\\";
         public ExcelBrowse()
         {
             InitializeComponent();
@@ -94,9 +95,6 @@ namespace SpootLight.Views.ExcelAnalyse
 
         private void foldersItem_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            
-
-
         }
         private void ExcelBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -108,17 +106,10 @@ namespace SpootLight.Views.ExcelAnalyse
         {
             PopUpExcel.Visibility = Visibility.Hidden;
             ExcelShow t = new ExcelShow();
-            t.Show();
 
             MessageBox.Show(SelectedImagePath);
             t.SelectedImagePath = SelectedImagePath;
-            t.coco.Load(SelectedImagePath);
-
-            t.Closed += delegate
-            {
-                t.coco.Save("C:\\test.xls", unvell.ReoGrid.IO.FileFormat.Excel2007);
-
-            };
+            t.Sheet.Load(SelectedImagePath);
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
@@ -151,10 +142,12 @@ namespace SpootLight.Views.ExcelAnalyse
                 temp2 = @"\";
             }
             //show user selected path
-            if (SelectedImagePath.EndsWith(".xls") || SelectedImagePath.EndsWith(".xlsx"))
+            if (SelectedImagePath.EndsWith(".xlsx"))
             {
                 PopUpExcel.Visibility = Visibility.Visible;
             }
+            else
+                MessageBox.Show("Format ou fichier non supportée ! \nVeuillez sélectionner des fichier Excel (.xlsx)", "Fichier Non Supportée !" , MessageBoxButton.OK,MessageBoxImage.Stop);
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

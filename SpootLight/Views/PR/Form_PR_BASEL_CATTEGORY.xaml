@@ -6,10 +6,11 @@
         xmlns:local="clr-namespace:SpootLight.Views.PR"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Form_PR_BASEL_CATTEGORY" Background="#6BADF6" Height="390" Width="440" MinHeight="380" MinWidth="420" WindowStyle="None" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen">
+        Title="Form_PR_BASEL_CATTEGORY" Background="#fafafa" Height="420" Width="440" MinHeight="380" MinWidth="420" 
+        WindowStyle="None" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen" MaxHeight="430" MaxWidth="460">
     <Border BorderThickness="5" CornerRadius="10">
         <Grid Background="#F0F0F0">
-            <Grid.RowDefinitions>
+            <Grid.RowDefinitions>   
                 <RowDefinition MinHeight="35" MaxHeight="35" Height="35*" />
                 <RowDefinition MinHeight="40" Height="40*" />
                 <RowDefinition MinHeight="40" Height="40*" />
@@ -19,27 +20,26 @@
                 <RowDefinition MinHeight="40" Height="40*" />
                 <RowDefinition MinHeight="40" Height="40" />
                 <RowDefinition MinHeight="40" Height="40" />
+                <RowDefinition MinHeight="40" Height="40" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition MinWidth="100" Width="180" />
                 <ColumnDefinition MinWidth="200" Width="200*" />
             </Grid.ColumnDefinitions>
 
-            <DockPanel Background="#6BADF6" MouseLeftButtonDown="DockPanel_MouseLeftButtonDown" Grid.ColumnSpan="2" Margin="0,0,-0.4,42.6" Grid.RowSpan="2" MaxHeight="25" VerticalAlignment="Top">
-                <Image Width="25" Height="25" Source="../../Img/focus3.png" Margin="0,0,0,0" HorizontalAlignment="Left" />
-                <Label Content="Formulaire de Catégorie"></Label>
+            <DockPanel Background="#fafafa" MouseLeftButtonDown="DockPanel_MouseLeftButtonDown" Grid.ColumnSpan="2" Margin="0,0,-0.4,42.6" Grid.RowSpan="2" MaxHeight="25" VerticalAlignment="Top">
+                <Image Width="45" Height="45" Source="../../Img/logosmall.png" Margin="0,0,0,0" HorizontalAlignment="Left" />
+                <Label Content="Catégorie"></Label>
                 <DockPanel HorizontalAlignment="Right" >
-                    <Button x:Name="ButtonMinimize" Width="30" Height="20" Padding="0" Background="Transparent" HorizontalAlignment="Right">
+                    <Button x:Name="ButtonMinimize" Width="30" Height="20" Padding="0" Background="Transparent" HorizontalAlignment="Right" Click="ButtonMinimize_Click">
                         <materialDesign:PackIcon Kind="WindowMinimize"/>
-                    </Button>
-                    <Button x:Name="ButtonMaximize" Width="30" Height="20" Padding="0" Background="Transparent" HorizontalAlignment="Right" Click="ButtonMaximize_Click">
-                        <materialDesign:PackIcon Kind="WindowMaximize"/>
                     </Button>
                     <Button x:Name="ButtonClose" Width="30" Height="20" Padding="0" Background="#C75050" HorizontalAlignment="Right" Click="ButtonClose_Click">
                         <materialDesign:PackIcon Kind="Close"/>
                     </Button>
                 </DockPanel>
             </DockPanel>
+            <Label TabIndex="1" Grid.Row="1" Grid.Column="0" Margin="0,-40,5,5" Content="(*) Champ Obligatoire" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
             <Label TabIndex="1" Grid.Row="1" Grid.Column="0" Margin="5,5" Content="Code Banque :" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <TextBox x:Name="BankCode" IsReadOnly="True" MaxLength="10" TabIndex="2" Grid.Row="1" Grid.Column="1" Margin="5,5" Height="23" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
@@ -47,23 +47,26 @@
             <Label TabIndex="3" Grid.Row="2" Grid.Column="0" Margin="5,5" Content="Date Process :" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <TextBox x:Name="ProcessDate" IsReadOnly="True" MaxLength="10" TabIndex="4" Grid.Row="2" Grid.Column="1" Margin="5,5" Height="23" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
 
-            <Label TabIndex="5" Grid.Row="3" Grid.Column="0" Margin="5,5" Content="Catégorie :" HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <TextBox x:Name="CategorieTxt" MaxLength="10" TabIndex="6" Grid.Row="3" Grid.Column="1" Margin="5,5" Height="23" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            <Label TabIndex="3" Grid.Row="3" Grid.Column="0" Margin="5,5" Content="Version :" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBox x:Name="Version" IsReadOnly="True" MaxLength="10" TabIndex="4" Grid.Row="3" Grid.Column="1" Margin="5,5" Height="23" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
 
-            <Label TabIndex="7" Grid.Row="4" Grid.Column="0" Margin="5,5" Content="Catégorie Description :" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <TextBox x:Name="CategorieDescriptionTxt" MaxLength="50" TabIndex="8" Grid.Row="4" Grid.Column="1" Margin="5,5" Height="30" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            <Label TabIndex="5" Grid.Row="4" Grid.Column="0" Margin="5,5" Content="Catégorie *:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <TextBox x:Name="CategorieTxt" MaxLength="10" TabIndex="6" Grid.Row="4" Grid.Column="1" Margin="5,5" Height="23" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
 
-            <Label TabIndex="9" Grid.Row="5" Grid.Column="0" Margin="5,5" Content="Sous Catégorie :" HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <TextBox x:Name="SubCategorieTxt" MaxLength="10" TabIndex="10" Grid.Row="5" Grid.Column="1" Margin="5,5" Height="23" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            <Label TabIndex="7" Grid.Row="5" Grid.Column="0" Margin="5,5" Content="Catégorie Description *:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBox x:Name="CategorieDescriptionTxt" MaxLength="50" TabIndex="8" Grid.Row="5" Grid.Column="1" Margin="5,5" Height="23" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
 
-            <Label TabIndex="11" Grid.Row="6" Grid.Column="0" Margin="5,5" Content="Sous Catégorie Description :" HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <TextBox x:Name="SubCategorieDescriptionTxt" MaxLength="50" TabIndex="12" Grid.Row="6" Grid.Column="1" Margin="5,5" Height="30" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            <Label TabIndex="9" Grid.Row="6" Grid.Column="0" Margin="5,5" Content="Sous Catégorie *:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <TextBox x:Name="SubCategorieTxt" MaxLength="10" TabIndex="10" Grid.Row="6" Grid.Column="1" Margin="5,5" Height="23" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
 
-            <Label TabIndex="13" Grid.Row="7" Grid.Column="0" Margin="5,5" Content="Sous Portfolio :" HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <TextBox x:Name="SubPortfolioTxt" MaxLength="10" TabIndex="14" Grid.Row="7" Grid.Column="1" Margin="5,5" Height="23" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            <Label TabIndex="11" Grid.Row="7" Grid.Column="0" Margin="5,5" Content="Sous Catégorie Description *:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <TextBox x:Name="SubCategorieDescriptionTxt" MaxLength="50" TabIndex="12" Grid.Row="7" Grid.Column="1" Margin="5,5" Height="23" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
 
-            <Button x:Name="Enregistrer" TabIndex="15" Grid.Row="8" Grid.Column="1" Margin="5,0,0,5" Grid.ColumnSpan="2" Content="Enregistrer" HorizontalAlignment="Left" VerticalAlignment="Center" Width="80" Click="Enregistrer_Click"/>
-            <Button x:Name="Cancel" TabIndex="16" Grid.Row="8" Grid.Column="1" Margin="0,0,15,5" Grid.ColumnSpan="2" Content="Cancel" HorizontalAlignment="Right" VerticalAlignment="Center" Width="80" Click="Cancel_Click"/>
+            <Label TabIndex="13" Grid.Row="8" Grid.Column="0" Margin="5,5" Content="Sous Portfolio *:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <TextBox x:Name="SubPortfolioTxt" MaxLength="10" TabIndex="14" Grid.Row="8" Grid.Column="1" Margin="5,5" Height="23" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+            <Button x:Name="Enregistrer" TabIndex="15" Grid.Row="9" Grid.Column="1" Margin="5,0,0,5" Grid.ColumnSpan="2" Content="Enregistrer" HorizontalAlignment="Left" VerticalAlignment="Center" Width="80" Click="Enregistrer_Click"/>
+            <Button x:Name="Cancel" TabIndex="16" Grid.Row="9" Grid.Column="1" Margin="0,0,15,5" Grid.ColumnSpan="2" Content="Annuler" HorizontalAlignment="Right" VerticalAlignment="Center" Width="80" Click="Cancel_Click"/>
 
         </Grid>
     </Border>

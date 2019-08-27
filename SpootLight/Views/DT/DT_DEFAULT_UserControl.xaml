@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="SpootLight.Views.DT.DT_DEFAULT_UserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:local="clr-namespace:SpootLight.Views.DT"
+             mc:Ignorable="d" 
+             d:DesignHeight="425" d:DesignWidth="1000" SizeChanged="UserControl_SizeChanged">
+    <Grid>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button x:Name="RunJob" TabIndex="26" Grid.Row="12" Grid.Column="1" Margin="5,0,20,5" VerticalAlignment="Center" HorizontalAlignment="Center" Width="80" Click="RunJob_Click">
+                        <Image Width="55" Height="55" Source="../../Img/icone.png" Margin="0,0,0,0" HorizontalAlignment="Center" />
+                    </Button>
+                </StackPanel>
+                <GroupBox x:Name="GroupBoxJob" Header="Description" VerticalAlignment="Top" FontFamily="Microsoft Sans Serif" FontSize="12" FontWeight="Normal" Width="auto" Height="60" BorderBrush="Black" Margin="0,0,0,0" >
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
+                        <Label x:Name="DescriptionJob" TabIndex="7" Grid.Column="0" Margin="5,5" Content="(Vide)" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+            <telerik:RadTabControl Grid.Row="1" VerticalAlignment="Top"
+				DisplayMemberPath="Content" DropDownDisplayMode="Visible" ScrollMode="Viewport" BorderThickness="0" Background="Transparent">
+                <telerik:RadTabItem x:Name="LoadedLines" DropDownContent="Lignes Chargées" Header="Lignes Chargées" telerik:StyleManager.Theme="Office2016" Width="100" Height="40">
+                    <telerik:RadTabItem.Content>
+        <StackPanel x:Name="stack" Orientation="Horizontal" Height="auto" Width="auto" HorizontalAlignment="Left">
+            <StackPanel Orientation="Vertical" Width="auto">
+                <StackPanel Orientation="Vertical" Height="auto" Width="auto" Margin="0,0,0,0">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <StackPanel Orientation='Horizontal' Margin='6' HorizontalAlignment='Center'>
+                            <Button x:Name='Backwards' Padding='4' Content='&lt; Précédent' Margin='6' Click='Backwards_Click'></Button>
+                            <Button x:Name='First' Padding='4' Content='&lt;&lt; Sauter au début' Margin='6' Click='First_Click'></Button>
+                            <Grid Margin='6' VerticalAlignment='Center' HorizontalAlignment='Center'>
+                                <Label x:Name='PageInfo' Foreground='black' />
+                            </Grid>
+                            <Grid VerticalAlignment='Center' Margin='6' HorizontalAlignment='Center'>
+                                <ComboBox x:Name='NumberOfRecords' SelectedIndex='0' SelectionChanged='NumberOfRecords_SelectionChanged' />
+                            </Grid>
+                            <Button x:Name='Last' Padding='4' Content='&gt;&gt; Sauter au dernier' Margin='6' Click='Last_Click'></Button>
+                            <Button x:Name='Forward' Padding='4' Content='&gt; Suivant' Margin='6' Click='Forward_Click'></Button>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0,0,0,10">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+                            <TextBox x:Name="CustomerCodeSearch" Style="{StaticResource placeHolder}" Tag="Code Client " MaxLength="10" HorizontalAlignment="Left" Height="24" Margin="19,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="CustomerCodeSearch_TextChanged"/>
+                            <TextBox x:Name="RatingSearch" Style="{StaticResource placeHolder}" Tag="Note " MaxLength="10" HorizontalAlignment="Left" Height="27" Margin="10,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="RatingSearch_TextChanged"/>
+                            <TextBox x:Name="DefaultAmountInLocalCurrencytSearch" Style="{StaticResource placeHolder}" Tag="Mantant de l'engagement en défaut en devise locale " MaxLength="10" HorizontalAlignment="Left" Height="27" Margin="10,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="DefaultAmountInLocalCurrencytSearch_TextChanged"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <DataGrid  AutoGenerateColumns="False" IsReadOnly="true" CanUserAddRows="false" x:Name="G_DEFAULT" Height="auto" Width="auto" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Visibility="Hidden" Header="Bank Code " Binding="{Binding Bank_Code}" Width="*"/>
+                            <DataGridTextColumn Visibility="Hidden" Header="Process Date" Binding="{Binding Process_Date}" Width="*"/>
+                            <DataGridTextColumn Visibility="Hidden" Header="Version" Binding="{Binding Version}" Width="*"/>
+                            <DataGridTextColumn Header="Code client" Binding="{Binding Customer_Code}" Width="75" />
+                            <DataGridTextColumn Header="Note" Binding="{Binding Rating}" Width="*" />
+                            <DataGridTextColumn Header="Mantant de l'engagement en défaut en devise locale" Binding="{Binding Default_Amount_in_local_currency}" Width="*" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel Orientation="Horizontal" x:Name="ActionsPan">
+                        <Border CornerRadius="1" BorderBrush="Gray" BorderThickness="1" Background="Transparent" Height="25" Width="60" VerticalAlignment="Center" Margin="10,10,0,0" HorizontalAlignment='Left'>
+                            <Menu x:Name="MenuActions"  HorizontalAlignment='Left' Margin="0,0,0,0" Background="#F0F0F0">
+                                <MenuItem Header="Actions" Width="58" Height="24">
+                                    <MenuItem Header="Ajouter" x:Name="Nouveau" Click="Nouveau_Click"/>
+                                    <MenuItem Header="Modifier" x:Name="Modifier" Click="Modifier_Click" />
+                                    <MenuItem Header="Supprimer" x:Name="Supprimer" Click="Supprimer_Click"/>
+                                </MenuItem>
+                            </Menu>
+                        </Border>
+                        <Label x:Name="ActionsAlerteLabel" Visibility="Hidden" Content="vous etes pas un admin !" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="Red"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        </telerik:RadTabItem.Content>
+             </telerik:RadTabItem>
+                <telerik:RadTabItem x:Name="CancledLines" DropDownContent="Lignes Rejetées" Header="Lignes Rejetées" telerik:StyleManager.Theme="Office2016" Width="100" Height="40">
+                </telerik:RadTabItem>
+
+            </telerik:RadTabControl>
+        </StackPanel>                
+    </Grid>
+</UserControl>

@@ -66,6 +66,7 @@ namespace SpootLight.Models
                 UpdatedorInserted.Sub_Category = acc.Sub_Category;
                 UpdatedorInserted.Process_Date = acc.Process_Date;
                 UpdatedorInserted.Bank_Code = acc.Bank_Code;
+                UpdatedorInserted.Version = acc.Version;
 
                 UpdatedorInserted.Category = acc.Category;
                 UpdatedorInserted.Category_Description = acc.Category_Description;
@@ -73,28 +74,85 @@ namespace SpootLight.Models
                 UpdatedorInserted.Sub_Category_Description = acc.Sub_Category_Description;
                 UpdatedorInserted.Sub_Portfolio = acc.Sub_Portfolio;
 
-                MessageBox.Show("Bien Modifiée !");
+                MessageBox.Show("Modifiée");
             }
 
             else
             {
                 crudctx.PR_BASEL_CATEGORY.Add(acc);
-                MessageBox.Show("Bien Ajoutée !");
+                MessageBox.Show("Ajoutée");
             }
 
             crudctx.SaveChanges();
         }
+        public void deleteTest(DataGrid g)
+        {
+            try
+            {
+            DataRowView row = g.SelectedItem as DataRowView;
+                if (row != null)
+                {
+                    MessageBoxResult d = MessageBox.Show("Voulez-vous vraiment supprimer la(les) ligne(s) sélectionnée(s) ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                    if (d == MessageBoxResult.Yes)
+                    {
+                        string PK_CodeBank = row.Row.ItemArray[0].ToString();
+                        string PK_ProcessDate = row.Row.ItemArray[1].ToString();
+                        string PK_SubCategory = row.Row.ItemArray[5].ToString();
+                        string PK_Version = row.Row.ItemArray[2].ToString();
+                        var deleteCategory = crudctx.PR_BASEL_CATEGORY.Where(m => m.Bank_Code.Equals(PK_CodeBank) && m.Process_Date.Equals(PK_ProcessDate) && m.Sub_Category.Equals(PK_SubCategory) && m.Version.Equals(PK_Version)).Single();
+                        crudctx.PR_BASEL_CATEGORY.Remove(deleteCategory);
+                        crudctx.SaveChanges();
+                        MessageBox.Show("Supprimée");
+                        g.ItemsSource = crudctx.PR_BASEL_CATEGORY.ToList();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Sélectionnez une ligne ");
+                }
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("Sélectionnez une ligne ");
+            }
+        }
         public void delete(DataGrid g)
         {
-            DataRowView row = g.SelectedItem as DataRowView;
-            string PK_CodeBank = row.Row.ItemArray[0].ToString();
-            string PK_ProcessDate = row.Row.ItemArray[1].ToString();
-            string PK_SubCategory = row.Row.ItemArray[4].ToString();
-            var deleteCategory = crudctx.PR_BASEL_CATEGORY.Where(m => m.Bank_Code.Equals(PK_CodeBank) && m.Process_Date.Equals(PK_ProcessDate) && m.Sub_Category.Equals(PK_SubCategory)).Single();
-            crudctx.PR_BASEL_CATEGORY.Remove(deleteCategory);
-            crudctx.SaveChanges();
-            MessageBox.Show("Bien Supprimée !");
-            g.ItemsSource = crudctx.PR_BASEL_CATEGORY.ToList();
+            try
+            {
+                DataRowView row = g.SelectedItem as DataRowView;
+                if (row != null)
+                {
+                    MessageBoxResult d = MessageBox.Show("Voulez-vous vraiment supprimer la(les) ligne(s) sélectionnée(s) ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                    if (d == MessageBoxResult.Yes)
+                    {
+                        foreach (DataRowView selectedrows in g.SelectedItems)
+                        {
+                            string PK_CodeBank = selectedrows[0].ToString();
+                            string PK_ProcessDate = selectedrows[1].ToString();
+                            string PK_Version = selectedrows[2].ToString();
+                            string PK_SubCategory = selectedrows[5].ToString();
+                            var deletePortfolio = crudctx.PR_BASEL_CATEGORY.Where(m => m.Bank_Code.Equals(PK_CodeBank) && m.Process_Date.Equals(PK_ProcessDate) && m.Version.Equals(PK_Version) && m.Sub_Category.Equals(PK_SubCategory)).Single();
+                            crudctx.PR_BASEL_CATEGORY.Remove(deletePortfolio);
+                            crudctx.SaveChanges();
+                        }
+                        MessageBox.Show("Supprimée");
+                        g.ItemsSource = crudctx.PR_BASEL_CATEGORY.ToList();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Sélectionnez une ligne");
+                }
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("Sélectionnez une ligne");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur : \n \n " + ex.Message + " \n \n " + ex.StackTrace);
+            }
         }
     }
 }

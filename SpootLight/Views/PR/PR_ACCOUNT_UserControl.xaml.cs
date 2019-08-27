@@ -1,5 +1,6 @@
 ﻿using SpootLight.Controllers;
 using SpootLight.Models;
+using SpootLight.Popup;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -33,8 +34,9 @@ namespace SpootLight.Views.PR
         // IList<StudentModel.Student> myList = StudentList.GetData();
         static string BankCode = Globals.getAnalyse()[1];
         static string dateArrete = Globals.getAnalyse()[3];
+        static string version = Globals.getAnalyse()[5];
         private static List<PR_ACCOUNT> accounts;
-        //private static List<PR_ACCOUNT> filtered_accounts;
+        public static string groupe = ""; 
         private static List<PR_ACCOUNT> myList = new List<PR_ACCOUNT>();
         public PR_ACCOUNT_UserControl()
         {
@@ -42,18 +44,18 @@ namespace SpootLight.Views.PR
             PagedTable.type = typeof(PR_ACCOUNT);
             BankCode = Globals.getAnalyse()[1];
             dateArrete = Globals.getAnalyse()[3];
+            version = Globals.getAnalyse()[5];
             initial();
+            Globals.checkAdmin(groupe, ActionsPan);
         }
         public void initial()
         {
             AccountsLists = new PR_ACCOUNT_MODEL();
-            myList = AccountsLists.Accounts.Where(c => c.Bank_Code.Equals(BankCode) && c.Process_Date.Equals(dateArrete)).ToList<PR_ACCOUNT>();
-            Console.WriteLine("1 er :" + BankCode + " - 2 eme :" + dateArrete + " done !");
+            myList = AccountsLists.Accounts.Where(c => c.Bank_Code.Equals(BankCode) && c.Process_Date.Equals(dateArrete) && c.Version.Equals(version)).ToList<PR_ACCOUNT>();
             //myList = accounts;
-
+            groupe = Globals.getUser()[4];
             pagy();
             //Fill the dataGrid with the DataTable created previously
-
         }
         private void Backwards_Click(object sender, RoutedEventArgs e)
         {
@@ -111,6 +113,7 @@ namespace SpootLight.Views.PR
             t.Show();
             t.BankCode.Text = row.Row.ItemArray[0].ToString();
             t.ProcessDate.Text = row.Row.ItemArray[1].ToString();
+            t.Version.Text = version;
             t.account.Text = row.Row.ItemArray[2].ToString();
 
             t.Description.Text = row.Row.ItemArray[3].ToString();
@@ -140,6 +143,21 @@ namespace SpootLight.Views.PR
                 t.Is_Accrued_Interest.IsChecked = false;
             else t.Is_Accrued_Interest.IsChecked = true;
 
+            t.Sign.Text = row.Row.ItemArray[13].ToString();
+            t.Exposition_Type.Text = row.Row.ItemArray[14].ToString();
+
+            if (row.Row.ItemArray[15] == null || row.Row.ItemArray[15].ToString() == "" || row.Row.ItemArray[15].ToString().StartsWith("F"))
+                t.Is_security.IsChecked = false;
+            else t.Is_security.IsChecked = true;
+
+
+            if (row.Row.ItemArray[16] == null || row.Row.ItemArray[16].ToString() == "" || row.Row.ItemArray[16].ToString().StartsWith("F"))
+                t.Cmdr_In.IsChecked = false;
+            else t.Cmdr_In.IsChecked = true;
+
+            t.Cmdr_Conversion_Factor.Text = row.Row.ItemArray[17].ToString();
+            t.Cmdr_Sens_Code.Text = row.Row.ItemArray[18].ToString();
+            t.Cmdr_Weighting.Text = row.Row.ItemArray[19].ToString();
             t.Closed += delegate
             {
                 initial();
@@ -147,12 +165,12 @@ namespace SpootLight.Views.PR
                 }
                 else
                 {
-                    MessageBox.Show("Merci de Sélectionner une ligne !");
+                    MessageBox.Show("Veuillez Sélectionner une ligne !");
                 }
             }
             catch (NullReferenceException)
             {
-                MessageBox.Show("Merci de Sélectionner une ligne !");
+                MessageBox.Show("Veuillez Sélectionner une ligne !");
             }
         }
 
@@ -182,7 +200,7 @@ namespace SpootLight.Views.PR
                 NumberOfRecords.Items.Add(RecordGroup); //Fill the ComboBox with the Array
             }
 
-            NumberOfRecords.SelectedItem = 10; //Initialize the ComboBox
+            NumberOfRecords.SelectedItem = 100; //Initialize the ComboBox
 
             numberOfRecPerPage = Convert.ToInt32(NumberOfRecords.SelectedItem); //Convert the Combox Output to type int
 
@@ -268,6 +286,19 @@ namespace SpootLight.Views.PR
             {
                 initial();
             }
+        }
+
+        private void Importer_Click(object sender, RoutedEventArgs e)
+        {
+            //Globals.data2Exel(G_ACCOUNT);
+            ImportChoser chooser = new ImportChoser();
+            chooser.JobNameCrush= Jobs.ChapitresComptableCrush.Value;
+            chooser.JobName = Jobs.ChapitresComptable.Value;
+            chooser.Show();
+            chooser.Closed += delegate
+            {
+                initial();
+            };
         }
     }
 }

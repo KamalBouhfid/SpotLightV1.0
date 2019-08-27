@@ -24,7 +24,6 @@
                 <StackPanel Orientation="Horizontal" Height="35" Width="440" HorizontalAlignment="Left" Margin="0,5,0,20">
                     <Label Content="Parcourir Excel ... " HorizontalAlignment="Center" Margin="20,10,0,0" VerticalAlignment="Top" FontFamily="Microsoft Sans Serif" FontSize="13" FontWeight="Bold"/>
                 </StackPanel>
-
                 <StackPanel Orientation="Vertical" Height="200" Width="376" Margin="0,0,0,0" HorizontalAlignment="Center" >
                     <TreeView x:Name="foldersItem" SelectedItemChanged="foldersItem_SelectedItemChanged" Height="200" Width="Auto" Background="#FFFFFFFF" BorderBrush="#FFFFFFFF" Foreground="#FFFFFFFF">
                         <TreeView.Resources>
@@ -33,14 +32,6 @@
                                     <Setter.Value>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
-                                                <!--    <Image Name="../../Img/excel.png"  Width="20" Height="20" Stretch="Fill" 
-                                       Source="{Binding 
-                                       RelativeSource={RelativeSource 
-                                       Mode=FindAncestor, 
-                                       AncestorType={x:Type TreeViewItem}}, 
-                                       Path=Header, 
-                                       Converter={x:Static local:HeaderToImageConverter.Instance}}"       
-                                       />-->
                                                 <TextBlock Text="{Binding}" Margin="5,0" />
                                             </StackPanel>
                                         </DataTemplate>
@@ -53,7 +44,7 @@
                 <Separator Background="DarkGray" Width="389" Margin="0,5,0,0"/>
                 <StackPanel Orientation="Horizontal" Height="55" Width="280" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,18,0">
                     <Button x:Name="Consulter" Content="Consulter" HorizontalAlignment="Right" Margin="46,15,0,0" VerticalAlignment="Top" Width="106" Height="28" Click="Consulter_Click"/>
-                    <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Right" Margin="14,15,0,0" VerticalAlignment="Top" Width="106" Height="28" Click="Cancel_Click"/>
+                    <Button x:Name="Cancel" Content="Annuler" HorizontalAlignment="Right" Margin="14,15,0,0" VerticalAlignment="Top" Width="106" Height="28" Click="Cancel_Click"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel x:Name="PopUpExcel" Visibility="Hidden" Orientation="Horizontal" Width="350" Height="150" Background="LightBlue">

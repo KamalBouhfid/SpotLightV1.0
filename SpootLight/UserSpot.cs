@@ -21,11 +21,14 @@ namespace SpootLight
         }
     
         public int id { get; set; }
-        public string C_login { get; set; }
         public string pass { get; set; }
         public string email { get; set; }
+        public string firstname { get; set; }
+        public string lastname { get; set; }
+        public Nullable<int> groupe { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<analyse> analyse { get; set; }
+        public virtual GroupsUserSpot GroupsUserSpot { get; set; }
     }
 }

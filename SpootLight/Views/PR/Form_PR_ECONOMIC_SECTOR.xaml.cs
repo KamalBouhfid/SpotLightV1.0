@@ -1,4 +1,5 @@
-﻿using SpootLight.Models;
+﻿using SpootLight.Controllers;
+using SpootLight.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,25 +21,48 @@ namespace SpootLight.Views.PR
     /// </summary>
     public partial class Form_PR_ECONOMIC_SECTOR : Window
     {
+        FormController formcontroller = new FormController();
+
         public Form_PR_ECONOMIC_SECTOR()
         {
             InitializeComponent();
             BankCode.Text = Globals.getAnalyse()[1];
             ProcessDate.Text = Globals.getAnalyse()[3];
+            Version.Text = Globals.getAnalyse()[5];
         }
         private void Enregistrer_Click(object sender, RoutedEventArgs e)
         {
-            PR_ECONOMIC_SECTOR_MODEL ctx = new PR_ECONOMIC_SECTOR_MODEL();
-            PR_ECONOMIC_SECTOR bac = new PR_ECONOMIC_SECTOR();
+            try
+            {
+                if (formcontroller.CheckNotNull(EconomicSectorTxt) && formcontroller.CheckNotNull(DescriptionTxt) &&
+                formcontroller.CheckNotNull(SubCategoryTxt) && formcontroller.CheckNoString(Cmdr_Weighting))
+                {
+                    PR_ECONOMIC_SECTOR_MODEL ctx = new PR_ECONOMIC_SECTOR_MODEL();
+                    PR_ECONOMIC_SECTOR bac = new PR_ECONOMIC_SECTOR();
 
-            bac.Bank_Code = Globals.getAnalyse()[1];
-            bac.Process_Date = Globals.getAnalyse()[3];
-            bac.Economic_Sector = EconomicSectorTxt.Text;
+                    bac.Bank_Code = Globals.getAnalyse()[1];
+                    bac.Process_Date = Globals.getAnalyse()[3];
+                    bac.Version = Globals.getAnalyse()[5];
+                    bac.Economic_Sector = EconomicSectorTxt.Text;
 
-            bac.Description = DescriptionTxt.Text;
-            bac.Sub_Category = SubCategoryTxt.Text;
+                    bac.Description = DescriptionTxt.Text;
+                    bac.Sub_Category = SubCategoryTxt.Text;
 
-            ctx.InsertOrUpdate(bac);
+                    string CMDRW = Cmdr_Weighting.Text;
+                    Nullable<float> f;
+                    if (CMDRW == null || CMDRW.Equals("")) f = null;
+                    else f = (float)Convert.ToDecimal(Cmdr_Weighting.Text.Replace(".", ","));
+                    bac.Cmdr_Weighting = f;
+
+                    ctx.InsertOrUpdate(bac);
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur : \n \n " + ex.Message + " \n \n " + ex.StackTrace);
+            }
+            
         }
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
@@ -61,6 +85,11 @@ namespace SpootLight.Views.PR
                 this.WindowState = WindowState.Maximized;
             else
                 this.WindowState = WindowState.Normal;
+        }
+
+        private void ButtonMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
         }
     }
 }

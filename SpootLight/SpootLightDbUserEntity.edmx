@@ -15,6 +15,7 @@
           <Property Name="date_analyse" Type="date" />
           <Property Name="Description" Type="varchar" MaxLength="200" />
           <Property Name="version" Type="varchar" MaxLength="30" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="entities">
           <Key>
@@ -22,6 +23,13 @@
           </Key>
           <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="GroupsUserSpot">
+          <Key>
+            <PropertyRef Name="groupe_id" />
+          </Key>
+          <Property Name="groupe_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="type">
           <Key>
@@ -35,9 +43,11 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="_login" Type="varchar" MaxLength="220" />
           <Property Name="pass" Type="varchar" MaxLength="220" />
           <Property Name="email" Type="varchar" MaxLength="220" />
+          <Property Name="firstname" Type="varchar" MaxLength="220" />
+          <Property Name="lastname" Type="varchar" MaxLength="220" />
+          <Property Name="groupe" Type="int" />
         </EntityType>
         <Association Name="FK__analyse__entity___31EC6D26">
           <End Role="entities" Type="Self.entities" Multiplicity="0..1" />
@@ -63,9 +73,22 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__UserSpot__groupe__49C3F6B7">
+          <End Role="GroupsUserSpot" Type="Self.GroupsUserSpot" Multiplicity="0..1" />
+          <End Role="UserSpot" Type="Self.UserSpot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupsUserSpot">
+              <PropertyRef Name="groupe_id" />
+            </Principal>
+            <Dependent Role="UserSpot">
+              <PropertyRef Name="groupe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="nachiModelStoreContainer">
           <EntitySet Name="analyse" EntityType="Self.analyse" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="entities" EntityType="Self.entities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupsUserSpot" EntityType="Self.GroupsUserSpot" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="type" EntityType="Self.type" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserSpot" EntityType="Self.UserSpot" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__analyse__entity___31EC6D26" Association="Self.FK__analyse__entity___31EC6D26">
@@ -75,6 +98,10 @@
           <AssociationSet Name="FK__analyse__user_id__32E0915F" Association="Self.FK__analyse__user_id__32E0915F">
             <End Role="UserSpot" EntitySet="UserSpot" />
             <End Role="analyse" EntitySet="analyse" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserSpot__groupe__49C3F6B7" Association="Self.FK__UserSpot__groupe__49C3F6B7">
+            <End Role="GroupsUserSpot" EntitySet="GroupsUserSpot" />
+            <End Role="UserSpot" EntitySet="UserSpot" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -93,6 +120,7 @@
           <Property Name="version" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="entities" Relationship="Self.FK__analyse__entity___31EC6D26" FromRole="analyse" ToRole="entities" />
           <NavigationProperty Name="UserSpot" Relationship="Self.FK__analyse__user_id__32E0915F" FromRole="analyse" ToRole="UserSpot" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="entities">
           <Key>
@@ -107,10 +135,13 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="C_login" Type="String" MaxLength="220" FixedLength="false" Unicode="false" />
           <Property Name="pass" Type="String" MaxLength="220" FixedLength="false" Unicode="false" />
           <Property Name="email" Type="String" MaxLength="220" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="analyse" Relationship="Self.FK__analyse__user_id__32E0915F" FromRole="UserSpot" ToRole="analyse" />
+          <Property Name="firstname" Type="String" MaxLength="220" FixedLength="false" Unicode="false" />
+          <Property Name="lastname" Type="String" MaxLength="220" FixedLength="false" Unicode="false" />
+          <Property Name="groupe" Type="Int32" />
+          <NavigationProperty Name="GroupsUserSpot" Relationship="nachiModel.FK__UserSpot__groupe__49C3F6B7" FromRole="UserSpot" ToRole="GroupsUserSpot" />
         </EntityType>
         <Association Name="FK__analyse__entity___31EC6D26">
           <End Role="entities" Type="Self.entities" Multiplicity="0..1" />
@@ -149,6 +180,11 @@
             <End Role="analyse" EntitySet="analyse" />
           </AssociationSet>
           <EntitySet Name="type" EntityType="nachiModel.type" />
+          <EntitySet Name="GroupsUserSpot" EntityType="nachiModel.GroupsUserSpot" />
+          <AssociationSet Name="FK__UserSpot__groupe__49C3F6B7" Association="nachiModel.FK__UserSpot__groupe__49C3F6B7">
+            <End Role="GroupsUserSpot" EntitySet="GroupsUserSpot" />
+            <End Role="UserSpot" EntitySet="UserSpot" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="type">
           <Key>
@@ -157,6 +193,26 @@
           <Property Name="num" Type="Int32" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="GroupsUserSpot">
+          <Key>
+            <PropertyRef Name="groupe_id" />
+          </Key>
+          <Property Name="groupe_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserSpot" Relationship="nachiModel.FK__UserSpot__groupe__49C3F6B7" FromRole="GroupsUserSpot" ToRole="UserSpot" />
+        </EntityType>
+        <Association Name="FK__UserSpot__groupe__49C3F6B7">
+          <End Type="nachiModel.GroupsUserSpot" Role="GroupsUserSpot" Multiplicity="0..1" />
+          <End Type="nachiModel.UserSpot" Role="UserSpot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupsUserSpot">
+              <PropertyRef Name="groupe_id" />
+            </Principal>
+            <Dependent Role="UserSpot">
+              <PropertyRef Name="groupe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -166,6 +222,7 @@
           <EntitySetMapping Name="analyse">
             <EntityTypeMapping TypeName="nachiModel.analyse">
               <MappingFragment StoreEntitySet="analyse">
+                <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="entity_id" ColumnName="entity_id" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
@@ -186,8 +243,10 @@
           <EntitySetMapping Name="UserSpot">
             <EntityTypeMapping TypeName="nachiModel.UserSpot">
               <MappingFragment StoreEntitySet="UserSpot">
+                <ScalarProperty Name="groupe" ColumnName="groupe" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="C_login" ColumnName="_login" />
                 <ScalarProperty Name="pass" ColumnName="pass" />
                 <ScalarProperty Name="email" ColumnName="email" />
               </MappingFragment>
@@ -198,6 +257,14 @@
               <MappingFragment StoreEntitySet="type">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="num" ColumnName="num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupsUserSpot">
+            <EntityTypeMapping TypeName="nachiModel.GroupsUserSpot">
+              <MappingFragment StoreEntitySet="GroupsUserSpot">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="groupe_id" ColumnName="groupe_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

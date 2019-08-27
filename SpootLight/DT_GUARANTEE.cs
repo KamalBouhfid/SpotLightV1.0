@@ -16,13 +16,21 @@ namespace SpootLight
     {
         public string Bank_Code { get; set; }
         public string Process_Date { get; set; }
+        public string Version { get; set; }
         public string Internal_Guarantee_Number { get; set; }
         public string Internal_Contract_Number { get; set; }
         public string Guarantee_type { get; set; }
+        public string Guarantee_Customer { get; set; }
+        public string Guarantee_currency { get; set; }
         public string GL_internal_Number { get; set; }
         public Nullable<float> Guarantee_assigned_amount { get; set; }
         public Nullable<float> Guarantee_amount { get; set; }
         public Nullable<System.DateTime> Value_Date { get; set; }
         public Nullable<System.DateTime> End_Date { get; set; }
+        public string Attribute_1 { get; set; }
+        public string Attribute_2 { get; set; }
+        public string Attribute_3 { get; set; }
+        public string Attribute_4 { get; set; }
+        public string Attribute_5 { get; set; }
     }
 }

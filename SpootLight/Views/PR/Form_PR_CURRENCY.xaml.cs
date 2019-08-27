@@ -1,4 +1,5 @@
-﻿using SpootLight.Models;
+﻿using SpootLight.Controllers;
+using SpootLight.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,11 +21,13 @@ namespace SpootLight.Views.PR
     /// </summary>
     public partial class Form_PR_CURRENCY : Window
     {
+        FormController formcontroller = new FormController();
         public Form_PR_CURRENCY()
         {
             InitializeComponent();
             BankCode.Text = Globals.getAnalyse()[1];
             ProcessDate.Text = Globals.getAnalyse()[3];
+            Version.Text = Globals.getAnalyse()[5];
         }
         private void ButtonMaximize_Click(object sender, RoutedEventArgs e)
         {
@@ -45,26 +48,45 @@ namespace SpootLight.Views.PR
         }
         private void Enregistrer_Click(object sender, RoutedEventArgs e)
         {
-            PR_CURRENCY_MODEL ctx = new PR_CURRENCY_MODEL();
-            PR_CURRENCY bac = new PR_CURRENCY();
+            try
+            {
+                if (formcontroller.CheckNotNull(ExchangeRateTxt) && formcontroller.CheckNotNull(CurrencyTxt) &&
+                formcontroller.CheckNoString(ExchangeRateTxt))
+                {
+                    PR_CURRENCY_MODEL ctx = new PR_CURRENCY_MODEL();
+                    PR_CURRENCY bac = new PR_CURRENCY();
 
 
-            bac.Bank_Code = Globals.getAnalyse()[1];
-            bac.Process_Date = Globals.getAnalyse()[3];
-            bac.Currency = CurrencyTxt.Text;
+                    bac.Bank_Code = Globals.getAnalyse()[1];
+                    bac.Process_Date = Globals.getAnalyse()[3];
+                    bac.Version = Globals.getAnalyse()[5];
+                    bac.Currency = CurrencyTxt.Text;
 
-            string ExchangeRate = ExchangeRateTxt.Text;
-            Nullable<float> f;
-            if (ExchangeRate == null || ExchangeRate.Equals("")) f = null;
-            else f = (float)Convert.ToDecimal(ExchangeRateTxt.Text.Replace(".", ","));
-            bac.Exchange_Rate = f;
+                    string ExchangeRate = ExchangeRateTxt.Text;
+                    Nullable<float> f;
+                    if (ExchangeRate == null || ExchangeRate.Equals("")) f = null;
+                    else f = (float)Convert.ToDecimal(ExchangeRateTxt.Text.Replace(".", ","));
+                    bac.Exchange_Rate = f;
 
 
-            ctx.InsertOrUpdate(bac);
+                    ctx.InsertOrUpdate(bac);
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur : \n \n " + ex.Message + " \n \n " + ex.StackTrace);
+            }
+            
         }
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void ButtonMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
         }
     }
 }

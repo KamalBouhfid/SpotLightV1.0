@@ -5,11 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SpootLight.Views.PR"
              mc:Ignorable="d" 
-             d:DesignHeight="425" d:DesignWidth="1120">
+             d:DesignHeight="425" d:DesignWidth="1000">
     <Grid>
-        <StackPanel x:Name="stack" Orientation="Horizontal" Height="425" Width="1120" HorizontalAlignment="Left">
-            <StackPanel Orientation="Vertical" Width="1120">
-                <StackPanel Orientation="Vertical" Height="425" Width="1120" Margin="0,0,0,0">
+        <StackPanel x:Name="stack" Orientation="Horizontal" Height="auto" Width="auto" HorizontalAlignment="Left">
+            <StackPanel Orientation="Vertical" Width="auto">
+                <StackPanel Orientation="Vertical" Height="auto" Width="auto" Margin="0,0,0,0">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <StackPanel Orientation='Horizontal' Margin='6' HorizontalAlignment='Center'>
                             <Button x:Name='Backwards' Padding='4' Content='&lt; Précédent' Margin='6' Click='Backwards_Click'></Button>
@@ -25,31 +25,39 @@
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
-                        <TextBox x:Name="GuaranteeAccountSearch" Style="{StaticResource placeHolder}" Tag="Compte de Garantie . . ." MaxLength="10" HorizontalAlignment="Left" Height="27" Margin="19,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="GuaranteeAccountSearch_TextChanged"/>
-                        <TextBox x:Name="GuaranteeTypeDescriptionSearch" Style="{StaticResource placeHolder}" Tag="Type de Garantie Description  . . ." MaxLength="10" HorizontalAlignment="Left" Height="27" Margin="10,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="GuaranteeTypeDescriptionSearch_TextChanged"/>
-                        <TextBox x:Name="GuaranteeClassSearch" Style="{StaticResource placeHolder}" Tag="Classe de Garantie . . ." MaxLength="10" HorizontalAlignment="Left" Height="27" Margin="10,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="GuaranteeClassSearch_TextChanged"/>
-                        <TextBox x:Name="GuaranteeWeightingSearch" Style="{StaticResource placeHolder}" Tag="Pondération de Garantie  . . ." MaxLength="10" HorizontalAlignment="Left" Height="27" Margin="10,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="GuaranteeWeightingSearch_TextChanged"/>
+                        <TextBox x:Name="GuaranteeAccountSearch" Style="{StaticResource placeHolder}" Tag="Compte de Garantie " MaxLength="10" HorizontalAlignment="Left" Height="20" Margin="19,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="GuaranteeAccountSearch_TextChanged"/>
+                        <TextBox x:Name="GuaranteeTypeDescriptionSearch" Style="{StaticResource placeHolder}" Tag="Type de Garantie Description  " MaxLength="10" HorizontalAlignment="Left" Height="20" Margin="10,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="GuaranteeTypeDescriptionSearch_TextChanged"/>
+                        <TextBox x:Name="GuaranteeClassSearch" Style="{StaticResource placeHolder}" Tag="Classe de Garantie " MaxLength="10" HorizontalAlignment="Left" Height="20" Margin="10,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="GuaranteeClassSearch_TextChanged"/>
+                        <TextBox x:Name="GuaranteeWeightingSearch" Style="{StaticResource placeHolder}" Tag="Pondération de Garantie  " MaxLength="10" HorizontalAlignment="Left" Height="20" Margin="10,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="GuaranteeWeightingSearch_TextChanged"/>
                     </StackPanel>
-                    <DataGrid  AutoGenerateColumns="False" CanUserAddRows="false" x:Name="G_GUARANTEE_TYPE" Height="auto" MaxHeight="300" Width="1080" ScrollViewer.CanContentScroll="True" >
+                    <DataGrid  AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="false" x:Name="G_GUARANTEE_TYPE" Height="auto" Width="auto" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Visible">
                         <DataGrid.Columns>
                             <DataGridTextColumn Visibility="Hidden" Header="Bank Code " Binding="{Binding Bank_Code}" Width="*"/>
                             <DataGridTextColumn Visibility="Hidden" Header="Process Date" Binding="{Binding Process_Date}" Width="*"/>
+                            <DataGridTextColumn Visibility="Hidden" Header="Version" Binding="{Binding Version}" Width="*"/>
                             <DataGridTextColumn Header="Compte de Garantie" Binding="{Binding Guarantee_Account}" Width="*" />
                             <DataGridTextColumn Header="Type de Garantie Description" Binding="{Binding Guarantee_Type_Description}" Width="*" />
                             <DataGridTextColumn Header="Classe de Garantie" Binding="{Binding Guarantee_Class}" Width="*" />
                             <DataGridTextColumn Header="Pondération de Garantie" Binding="{Binding Guarantee_Weighting}" Width="*" />
+                            <DataGridCheckBoxColumn Header="In COREP" Binding="{Binding In_COREP}" Width="*" />
+                            <DataGridCheckBoxColumn Header="In CMDR" Binding="{Binding In_CMDR}" Width="*" />
+                            <DataGridTextColumn Header="Pondération de Garantie CMDR" Binding="{Binding Guarantee_Weighting_Cmdr}" Width="*" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Border CornerRadius="1" BorderBrush="Gray" BorderThickness="1" Background="Transparent" Height="25" Width="60" VerticalAlignment="Center" Margin="10,10,0,0" HorizontalAlignment='Left'>
+                    <StackPanel Orientation="Horizontal" x:Name="ActionsPan">
+                        <Border CornerRadius="1" BorderBrush="Gray" BorderThickness="1" Background="Transparent" Height="25" Width="60" VerticalAlignment="Center" Margin="10,10,0,0" HorizontalAlignment='Left'>
                         <Menu x:Name="MenuActions"  HorizontalAlignment='Left' Margin="0,0,0,0" Background="#F0F0F0">
-                            <MenuItem Header="Actions" Width="60" Height="20">
-                                <MenuItem Header="Nouveau" x:Name="Nouveau" Click="Nouveau_Click"/>
+                            <MenuItem Header="Actions" Width="58" Height="24">
+                                    <MenuItem Header="Ajouter" x:Name="Nouveau" Click="Nouveau_Click"/>
                                 <MenuItem Header="Modifier" x:Name="Modifier" Click="Modifier_Click" />
                                 <MenuItem Header="Supprimer" x:Name="Supprimer" Click="Supprimer_Click"/>
+                                    <MenuItem Header="Importer" x:Name="Importer" Click="Importer_Click" IsEnabled="False"/>
                             </MenuItem>
                         </Menu>
                     </Border>
+                    <Label x:Name="ActionsAlerteLabel" Visibility="Hidden" Content="vous etes pas un admin !" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="Red"/>
                 </StackPanel>
+            </StackPanel>
             </StackPanel>
         </StackPanel>
     </Grid>

@@ -13,6 +13,7 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -25,12 +26,11 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -49,7 +49,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>logo.ico</ApplicationIcon>
+    <ApplicationIcon>iconeSpotlogo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
@@ -75,9 +75,39 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=2.5.1.1345, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.2.5.1\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Grid.WPF, Version=17.2450.0.36, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Grid.WPF.17.2.0.36\lib\net45\Syncfusion.Grid.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.GridCommon.WPF, Version=17.2450.0.36, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.GridCommon.Wpf.17.2.0.36\lib\net45\Syncfusion.GridCommon.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Licensing, Version=17.2450.0.36, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Licensing.17.2.0.36\lib\net45\Syncfusion.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Linq.Base, Version=17.2450.0.36, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Linq.Base.17.2.0.36\lib\net45\Syncfusion.Linq.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.WPF, Version=17.2450.0.36, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Shared.WPF.17.2.0.36\lib\net45\Syncfusion.Shared.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms" />
@@ -90,6 +120,28 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="Telerik.Pivot.Core, Version=2019.2.618.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Pivot.DataProviders.Adomd, Version=2019.2.618.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Pivot.DataProviders.Queryable, Version=2019.2.618.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Pivot.DataProviders.Xmla, Version=2019.2.618.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls, Version=2019.2.618.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.Docking, Version=2019.2.618.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="telerik.windows.controls.gridview, Version=2019.2.618.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.Input, Version=2019.2.618.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.Navigation, Version=2019.2.618.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.Pivot, Version=2019.2.618.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.PivotFieldList, Version=2019.2.618.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.RibbonView, Version=2019.2.618.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.Spreadsheet, Version=2019.2.618.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.SpreadsheetUI, Version=2019.2.618.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Data, Version=2019.2.618.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Documents.Core, Version=2019.2.612.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet, Version=2019.2.612.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml, Version=2019.2.612.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet.FormatProviders.Pdf, Version=2019.2.612.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Zip, Version=2019.2.612.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
     <Reference Include="unvell.ReoGrid, Version=0.8.5.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\unvell.ReoGridWPF.dll.2.1.0.0\lib\20\unvell.ReoGrid.dll</HintPath>
@@ -109,6 +161,7 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -118,45 +171,78 @@
     <Compile Include="analyse.cs">
       <DependentUpon>SpootLightDbUserEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="CashierStationMainWindowModel.cs" />
     <Compile Include="Controllers\AuthentificationController.cs" />
+    <Compile Include="Controllers\ExcelController.cs" />
     <Compile Include="Controllers\FormController.cs" />
+    <Compile Include="Controllers\Jobs.cs" />
     <Compile Include="Controllers\JobTalendController.cs" />
     <Compile Include="Controllers\Paging.cs" />
+    <Compile Include="Controllers\Properties.cs" />
     <Compile Include="Controllers\UserData.cs" />
     <Compile Include="DM_AMOUNT_TYPE.cs">
-      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+      <DependentUpon>SpotLightDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DM_CAT_EXPOSITION.cs">
-      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+      <DependentUpon>SpotLightDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DM_ENTITY.cs">
-      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+      <DependentUpon>SpotLightDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DM_PONDERATION.cs">
-      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+      <DependentUpon>SpotLightDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DM_TYPE_EXPOSITION.cs">
-      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+      <DependentUpon>SpotLightDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DT_AUX_ACCOUNT.cs">
+      <DependentUpon>SpotLightDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DT_CONTRACT.cs">
-      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+      <DependentUpon>SpotLightDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DT_CUSTOMER.cs">
-      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+      <DependentUpon>SpotLightDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DT_DEFAULT.cs">
+      <DependentUpon>SpotLightDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DT_GUARANTEE.cs">
-      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+      <DependentUpon>SpotLightDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DT_PROVISION.cs">
+      <DependentUpon>SpotLightDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="entities.cs">
       <DependentUpon>SpootLightDbUserEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="FT_ARC.cs">
+      <DependentUpon>SpotLightDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FT_ASSET.cs">
+      <DependentUpon>SpotLightDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="FT_COREP_CA.cs">
-      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+      <DependentUpon>SpotLightDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="FT_COREP_CR.cs">
-      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+      <DependentUpon>SpotLightDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FT_CUSOMER_CMDR.cs">
+      <DependentUpon>SpotLightDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FT_CUSOMER_COMMITMENT.cs">
+      <DependentUpon>SpotLightDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GroupsUserSpot.cs">
+      <DependentUpon>SpootLightDbUserEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AnalyseModel.cs" />
+    <Compile Include="Models\DT_AUX_ACCOUNT_MODEL.cs" />
+    <Compile Include="Models\DT_CUSTOMER_MODEL.cs" />
+    <Compile Include="Models\DT_DEFAULT_MODEL.cs" />
+    <Compile Include="Models\DT_GARANTE_MODEL.cs" />
+    <Compile Include="Models\DT_PROVISION_MODEL.cs" />
     <Compile Include="Models\Globals.cs" />
     <Compile Include="Models\PR_ACCOUNT_MODEL.cs" />
     <Compile Include="Models\PR_BASEL_CATEGORY_MODEL.cs" />
@@ -164,23 +250,62 @@
     <Compile Include="Models\PR_CURRENCY_MODEL.cs" />
     <Compile Include="Models\PR_ECONOMIC_SECTOR_MODEL.cs" />
     <Compile Include="Models\PR_GUARANTEE_TYPE_MODEL.cs" />
+    <Compile Include="Models\PR_INTERNAL_SEGMENT_MODEL.cs" />
+    <Compile Include="Models\PR_SECURITY_TYPE_MODEL.cs" />
+    <Compile Include="Models\USER_MODEL.cs" />
+    <Compile Include="Popup\ImportChoser.xaml.cs">
+      <DependentUpon>ImportChoser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PR_ACCOUNT.cs">
-      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+      <DependentUpon>SpotLightDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PR_ACTIVITY_AREA.cs">
+      <DependentUpon>SpotLightDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PR_BASEL_CATEGORY.cs">
-      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+      <DependentUpon>SpotLightDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PR_BASEL_PORTFOLIO.cs">
-      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+      <DependentUpon>SpotLightDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PR_CURRENCY.cs">
-      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+      <DependentUpon>SpotLightDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PR_ECONOMIC_SECTOR.cs">
-      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+      <DependentUpon>SpotLightDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PR_GUARANTEE_TYPE.cs">
-      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+      <DependentUpon>SpotLightDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PR_INTERNAL_SEGMENT.cs">
+      <DependentUpon>SpotLightDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PR_SECURITY_TYPE.cs">
+      <DependentUpon>SpotLightDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repporting\FT_ARC_User.xaml.cs">
+      <DependentUpon>FT_ARC_User.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Repporting\FT_ASSET_User.xaml.cs">
+      <DependentUpon>FT_ASSET_User.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Repporting\FT_COREP_CA_User.xaml.cs">
+      <DependentUpon>FT_COREP_CA_User.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Repporting\FT_CUSOMER_CMDR.xaml.cs">
+      <DependentUpon>FT_CUSOMER_CMDR.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Repporting\FT_CUSOMER_COMMITMENT_User.xaml.cs">
+      <DependentUpon>FT_CUSOMER_COMMITMENT_User.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Repporting\ReportTest.xaml.cs">
+      <DependentUpon>ReportTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Repporting\ReportUserControl.xaml.cs">
+      <DependentUpon>ReportUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Repporting\TestFTtables.xaml.cs">
+      <DependentUpon>TestFTtables.xaml</DependentUpon>
     </Compile>
     <Compile Include="SpootLightDbUserEntity.Context.cs">
       <AutoGen>True</AutoGen>
@@ -197,26 +322,43 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SpootLightDbUserEntity.edmx</DependentUpon>
     </Compile>
-    <Compile Include="SpotLightDataEntity.Context.cs">
+    <Compile Include="SpotLightDATADataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SpotLightDataEntity.Context.tt</DependentUpon>
+      <DependentUpon>SpotLightDATADataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="SpotLightDataEntity.cs">
+    <Compile Include="SpotLightDataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SpotLightDataEntity.tt</DependentUpon>
+      <DependentUpon>SpotLightDataModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="SpotLightDataEntity.Designer.cs">
+    <Compile Include="SpotLightDataModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SpotLightDataEntity.edmx</DependentUpon>
+      <DependentUpon>SpotLightDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpotLightDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpotLightDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="TestDock.xaml.cs">
+      <DependentUpon>TestDock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="testpivot.xaml.cs">
+      <DependentUpon>testpivot.xaml</DependentUpon>
     </Compile>
     <Compile Include="type.cs">
       <DependentUpon>SpootLightDbUserEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="UserSpot.cs">
       <DependentUpon>SpootLightDbUserEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminManagement\AdminPage.xaml.cs">
+      <DependentUpon>AdminPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminManagement\Form_User.xaml.cs">
+      <DependentUpon>Form_User.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Analyse\NewAnalyse.xaml.cs">
       <DependentUpon>NewAnalyse.xaml</DependentUpon>
@@ -226,6 +368,54 @@
     </Compile>
     <Compile Include="Views\Crud_UserControl.xaml.cs">
       <DependentUpon>Crud_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Declarations\COREP\CMDR\UserControl335.xaml.cs">
+      <DependentUpon>UserControl335.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Declarations\COREP\CMDR\UserControl337.xaml.cs">
+      <DependentUpon>UserControl337.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Declarations\COREP\CMDR\UserControl339.xaml.cs">
+      <DependentUpon>UserControl339.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Declarations\COREP\CR\CRM\CRM_UserControl.xaml.cs">
+      <DependentUpon>CRM_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Declarations\COREP\CR\SA\SA_UserControl.xaml.cs">
+      <DependentUpon>SA_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Declarations\SA_UserControl.xaml.cs">
+      <DependentUpon>SA_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DT\DT_AUX_ACCOUNT_UserControl.xaml.cs">
+      <DependentUpon>DT_AUX_ACCOUNT_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DT\DT_CUSTOMER_UserControl.xaml.cs">
+      <DependentUpon>DT_CUSTOMER_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DT\DT_DEFAULT_UserControl.xaml.cs">
+      <DependentUpon>DT_DEFAULT_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DT\DT_GUARANTIE_UserControl.xaml.cs">
+      <DependentUpon>DT_GUARANTIE_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DT\DT_PROVISION_UserControl.xaml.cs">
+      <DependentUpon>DT_PROVISION_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DT\Form_DT_AUX_ACCOUNT.xaml.cs">
+      <DependentUpon>Form_DT_AUX_ACCOUNT.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DT\Form_DT_CUSTOMER.xaml.cs">
+      <DependentUpon>Form_DT_CUSTOMER.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DT\Form_DT_DEFAULT.xaml.cs">
+      <DependentUpon>Form_DT_DEFAULT.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DT\Form_DT_GARANTE.xaml.cs">
+      <DependentUpon>Form_DT_GARANTE.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DT\Form_DT_PROVISION.xaml.cs">
+      <DependentUpon>Form_DT_PROVISION.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ExcelAnalyse\ExcelBrowse.xaml.cs">
       <DependentUpon>ExcelBrowse.xaml</DependentUpon>
@@ -251,6 +441,12 @@
     <Compile Include="Views\PR\Form_PR_GUARANTEE_TYPE.xaml.cs">
       <DependentUpon>Form_PR_GUARANTEE_TYPE.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PR\Form_PR_INTERNAL_SEGMENT.xaml.cs">
+      <DependentUpon>Form_PR_INTERNAL_SEGMENT.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PR\Form_PR_SECURITY_TYPE.xaml.cs">
+      <DependentUpon>Form_PR_SECURITY_TYPE.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PR\PR_ACCOUNT_UserControl.xaml.cs">
       <DependentUpon>PR_ACCOUNT_UserControl.xaml</DependentUpon>
     </Compile>
@@ -269,12 +465,73 @@
     <Compile Include="Views\PR\PR_GUARANTEE_TYPE_UserControl.xaml.cs">
       <DependentUpon>PR_GUARANTEE_TYPE_UserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PR\PR_INTERNAL_SEGMENT_UserControl.xaml.cs">
+      <DependentUpon>PR_INTERNAL_SEGMENT_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PR\PR_SECURITY_TYPE_UserControl.xaml.cs">
+      <DependentUpon>PR_SECURITY_TYPE_UserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PR\View_PR_ACCOUNT.xaml.cs">
       <DependentUpon>View_PR_ACCOUNT.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Talend\JobTalend.xaml.cs">
+      <DependentUpon>JobTalend.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Talend\JobTalendUserControl.xaml.cs">
       <DependentUpon>JobTalendUserControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="Popup\ImportChoser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Repporting\FT_ARC_User.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Repporting\FT_ASSET_User.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Repporting\FT_COREP_CA_User.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Repporting\FT_CUSOMER_CMDR.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Repporting\FT_CUSOMER_COMMITMENT_User.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Repporting\ReportTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Repporting\ReportUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Repporting\TestFTtables.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TestDock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="testpivot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminManagement\AdminPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminManagement\Form_User.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Analyse\NewAnalyse.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -284,6 +541,70 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Crud_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Declarations\COREP\CMDR\UserControl335.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Declarations\COREP\CMDR\UserControl337.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Declarations\COREP\CMDR\UserControl339.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Declarations\COREP\CR\CRM\CRM_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Declarations\COREP\CR\SA\SA_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Declarations\SA_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DT\DT_AUX_ACCOUNT_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DT\DT_CUSTOMER_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DT\DT_DEFAULT_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DT\DT_GUARANTIE_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DT\DT_PROVISION_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DT\Form_DT_AUX_ACCOUNT.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DT\Form_DT_CUSTOMER.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DT\Form_DT_DEFAULT.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DT\Form_DT_GARANTE.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DT\Form_DT_PROVISION.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -319,6 +640,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\PR\Form_PR_INTERNAL_SEGMENT.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PR\Form_PR_SECURITY_TYPE.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\PR\PR_ACCOUNT_UserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -343,7 +672,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Talend\JobTalend.xaml">
+    <Page Include="Views\PR\PR_INTERNAL_SEGMENT_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PR\PR_SECURITY_TYPE_UserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -355,9 +688,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\Talend\JobTalend.xaml.cs">
-      <DependentUpon>JobTalend.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -367,6 +697,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PR\View_PR_ACCOUNT.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Talend\JobTalend.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -392,11 +726,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Properties\Licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Repporting\Report.rdlc" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\SpootLight.Properties.Resources.datasource" />
+    <None Include="Properties\DataSources\SpootLight.Properties.Settings.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -408,18 +746,43 @@
     <None Include="SpootLightDbUserEntity.edmx.diagram">
       <DependentUpon>SpootLightDbUserEntity.edmx</DependentUpon>
     </None>
-    <EntityDeploy Include="SpotLightDataEntity.edmx">
+    <None Include="SpotLightDATADataSet.xsc">
+      <DependentUpon>SpotLightDATADataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SpotLightDATADataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SpotLightDATADataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SpotLightDATADataSet.xss">
+      <DependentUpon>SpotLightDATADataSet.xsd</DependentUpon>
+    </None>
+    <EntityDeploy Include="SpotLightDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SpotLightDataEntity.Designer.cs</LastGenOutput>
+      <LastGenOutput>SpotLightDataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="SpotLightDataEntity.edmx.diagram">
-      <DependentUpon>SpotLightDataEntity.edmx</DependentUpon>
+    <None Include="SpotLightDataModel.edmx.diagram">
+      <DependentUpon>SpotLightDataModel.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="logoSmall.ico" />
+    <Resource Include="iconlogo2.ico" />
+    <Resource Include="iconeSpotlogo.ico" />
+    <Content Include="SpotLightDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SpotLightDataModel.edmx</DependentUpon>
+      <LastGenOutput>SpotLightDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SpotLightDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SpotLightDataModel.edmx</DependentUpon>
+      <LastGenOutput>SpotLightDataModel.cs</LastGenOutput>
+    </Content>
+    <Resource Include="Img\icone.png" />
     <Resource Include="Img\logo.png" />
     <Resource Include="Img\diskdrive.png" />
     <Resource Include="Img\excel.png" />
@@ -433,6 +796,21 @@
     <Resource Include="Img\logoSmall.png" />
     <Resource Include="Img\Separator.jpg" />
     <Resource Include="Img\connected.png" />
+    <Resource Include="Img\admin.png" />
+    <Resource Include="Img\Administrateur.png" />
+    <Resource Include="Img\Corep.png" />
+    <Resource Include="Img\Job.png" />
+    <Resource Include="Img\settings.png" />
+    <Resource Include="Img\playJob.png" />
+    <Resource Include="Img\jobIcon.png" />
+    <Resource Include="Img\exexcution.png" />
+    <Resource Include="Img\jobico.png" />
+    <Resource Include="Img\IC_admin.png" />
+    <Resource Include="Img\IC_corep.png" />
+    <Resource Include="Img\IC_donne.png" />
+    <Resource Include="Img\IC_param.png" />
+    <Resource Include="Img\IC_reporting.png" />
+    <Resource Include="Img\IC_traitement.png" />
     <Content Include="SpootLightDbUserEntity.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SpootLightDbUserEntity.edmx</DependentUpon>
@@ -442,16 +820,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SpootLightDbUserEntity.edmx</DependentUpon>
       <LastGenOutput>SpootLightDbUserEntity.cs</LastGenOutput>
-    </Content>
-    <Content Include="SpotLightDataEntity.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SpotLightDataEntity.edmx</DependentUpon>
-      <LastGenOutput>SpotLightDataEntity.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="SpotLightDataEntity.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SpotLightDataEntity.edmx</DependentUpon>
-      <LastGenOutput>SpotLightDataEntity.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -467,5 +835,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

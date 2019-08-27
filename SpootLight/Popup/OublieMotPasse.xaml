@@ -6,20 +6,21 @@
         xmlns:local="clr-namespace:SpootLight.Popup"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="OublieMotPasse" Height="180" Width="390" Background="#6BADF6" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
+        Title="OublieMotPasse" Height="185" Width="390" Background="#fafafa" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
     <Border BorderThickness="5" CornerRadius="10">
         <Grid>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="27" Margin="0,-8,0,0" >
-                <Image Width="35" Height="35" Source="../Img/logo.png" Margin="4,0,0,0" HorizontalAlignment="Left"/>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="280,3,0,0">
-                    <Button x:Name="ButtonMinimize" Width="30" Height="20" Padding="0" HorizontalAlignment="Right" Background="Transparent" Click="ButtonMinimize_Click">
+            <DockPanel Background="#fafafa" MouseLeftButtonDown="DockPanel_MouseLeftButtonDown" Margin="0,0,-0.4,42.6" MaxHeight="25" VerticalAlignment="Top">
+                <Image Width="45" Height="45" Source="../Img/logosmall.png" Margin="0,0,0,0" HorizontalAlignment="Left" />
+                <Label Content="SpotLight (Récupération Mot de passe)" VerticalAlignment="Top" Height="26"></Label>
+                <DockPanel HorizontalAlignment="Right" >
+                    <Button x:Name="ButtonMinimize" Width="30" Height="20" Padding="0" Background="Transparent" HorizontalAlignment="Right" Click="ButtonMinimize_Click">
                         <materialDesign:PackIcon Kind="WindowMinimize"/>
                     </Button>
-                    <Button x:Name="ButtonClose" Width="30" Height="20" Padding="0" HorizontalAlignment="Right" Background="#C75050" Click="ButtonClose_Click">
+                    <Button x:Name="ButtonClose" Width="30" Height="20" Padding="0" Background="#C75050" HorizontalAlignment="Right" Click="ButtonClose_Click">
                         <materialDesign:PackIcon Kind="Close"/>
                     </Button>
-                </StackPanel>
-            </StackPanel>
+                </DockPanel>
+            </DockPanel>
             <StackPanel Orientation="Vertical" Height="150" Width="390" Background="#F0F0F0" VerticalAlignment="Bottom">
                 <StackPanel Orientation="Horizontal" Height="30" Width="480" HorizontalAlignment="Center" Margin="0,15,0,0">
                     <Label Content="Entrer votre Email :" HorizontalAlignment="Center" Margin="100,0,0,0" VerticalAlignment="Top" />
@@ -34,7 +35,7 @@
                     <Button x:Name="RecupererPin" Visibility="Hidden" Content="Vérifier" HorizontalAlignment="Left" Margin="-105,10,0,0" VerticalAlignment="Top" Width="106" Height="26" Click="RecupererPin_Click"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Height="25" Width="390" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0.4,0">
-                    <Label x:Name="forgetpassResult" Visibility="Hidden" Content="Merci d'entrer le code reçu par Email" FontWeight="DemiBold" HorizontalAlignment="Center" Margin="90,0,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="forgetpassResult" Visibility="Hidden" Content="Veuillez entrer le code reçu par Email" FontWeight="DemiBold" HorizontalAlignment="Center" Margin="90,0,0,0" VerticalAlignment="Top"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel  x:Name="NewPassPanel" Background="#F0F0F0" Visibility="Hidden" Orientation="Vertical" Height="150" Width="370" VerticalAlignment="Bottom">

@@ -27,5 +27,14 @@ namespace SpootLight
         public Nullable<bool> Is_Provision { get; set; }
         public Nullable<bool> Is_Doubtful { get; set; }
         public Nullable<bool> Is_Accrued_Interest { get; set; }
+        public string Sign { get; set; }
+        public string Exposition_Type { get; set; }
+        public Nullable<bool> Is_security { get; set; }
+        public Nullable<bool> Cmdr_In { get; set; }
+        public Nullable<float> Cmdr_Conversion_Factor { get; set; }
+        public string Cmdr_Sens_Code { get; set; }
+        public Nullable<float> Cmdr_Weighting { get; set; }
+        public string Version { get; set; }
+        public Nullable<bool> Is_Doubtful_Excluded { get; set; }
     }
 }

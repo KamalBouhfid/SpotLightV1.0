@@ -30,8 +30,10 @@ namespace SpootLight.Controllers
             if (logedOne != null)
             {
                 user.Add(logedOne.id.ToString());
-                user.Add(logedOne.C_login);
+                user.Add(logedOne.firstname);
+                user.Add(logedOne.lastname);
                 user.Add(logedOne.email);
+                user.Add(logedOne.GroupsUserSpot.name);
                 Globals.setUser(null);
                 Globals.setUser(user);
                 setUser(user);
@@ -39,6 +41,7 @@ namespace SpootLight.Controllers
                 openanalyse.setUser(user);
                 openanalyse.Show();
                 Console.WriteLine("check  !" + Globals.getUser()[1]);
+                //Console.WriteLine("check 04 !" + Globals.GetTableName(typeof(PR_CURRENCY)));
                 return true;
             } else
             {
@@ -72,7 +75,7 @@ namespace SpootLight.Controllers
                 SmtpServer.Credentials = new System.Net.NetworkCredential("amedom45@gmail.com","Hello1231231230!");
                 SmtpServer.EnableSsl = true;
                 SmtpServer.Send(mail);
-                MessageBox.Show("Merci de vérifier votre Boite Email !");  
+                MessageBox.Show("Vérifiez votre Boite Email");  
             }
             catch (Exception ex)
             {
@@ -89,11 +92,11 @@ namespace SpootLight.Controllers
             if (Updated != null)
             {
                 Updated.pass = EncryptDecrypt(pass, 128);
-                MessageBox.Show("Votre Mot de passe à été bien met à jour !");
+                MessageBox.Show("Votre Mot de passe à été bien met à jour");
             }
             else
             {
-                MessageBox.Show("Erreur Interne !");
+                MessageBox.Show("Erreur Interne ");
             }
 
             crudctx.SaveChanges();

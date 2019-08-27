@@ -16,9 +16,9 @@ namespace SpootLight
     {
         public string ID_PONDERATION { get; set; }
         public string ID_CAT_EXPOSITION { get; set; }
-        public string ID_EXPOSITON { get; set; }
+        public string ID_EXPOSITION { get; set; }
         public System.DateTime ID_Date { get; set; }
         public string ID_AMOUNT { get; set; }
-        public Nullable<int> AMOUNT { get; set; }
+        public Nullable<long> AMOUNT { get; set; }
     }
 }

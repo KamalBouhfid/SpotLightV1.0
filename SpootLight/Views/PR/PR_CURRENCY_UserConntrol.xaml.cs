@@ -1,5 +1,6 @@
 ﻿using SpootLight.Controllers;
 using SpootLight.Models;
+using SpootLight.Popup;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -26,12 +27,16 @@ namespace SpootLight.Views.PR
         private int numberOfRecPerPage; //Initialize our Variable, Classes and the List
         public List<string> Items = new List<string>();
         static Paging PagedTable = new Paging();
+        public Boolean selected = false;
+        public DataRowView SelectedRow=null;
 
         static PR_CURRENCY_MODEL CurrencyLists;
         public List<string> analyseSession = new List<string>();
         static string BankCode = Globals.getAnalyse()[1];
         static string dateArrete = Globals.getAnalyse()[3];
+        static string version = Globals.getAnalyse()[5];
         private static List<PR_CURRENCY> currency;
+        public static string groupe = "";
         private static List<PR_CURRENCY> myList = new List<PR_CURRENCY>();
         public PR_CURRENCY_UserConntrol()
         {
@@ -39,15 +44,17 @@ namespace SpootLight.Views.PR
             PagedTable.type = typeof(PR_CURRENCY);
             BankCode = Globals.getAnalyse()[1];
             dateArrete = Globals.getAnalyse()[3];
+            version = Globals.getAnalyse()[5];
             initial();
+            Globals.checkAdmin(groupe, ActionsPan);
         }
         public void initial()
         {
             CurrencyLists = new PR_CURRENCY_MODEL();
-            currency = CurrencyLists.CURENCICES.Where(c => c.Bank_Code.Equals(BankCode) && c.Process_Date.Equals(dateArrete)).ToList<PR_CURRENCY>();
+            currency = CurrencyLists.CURENCICES.Where(c => c.Bank_Code.Equals(BankCode) && c.Process_Date.Equals(dateArrete) && c.Version.Equals(version)).ToList<PR_CURRENCY>();
             Console.WriteLine("1 er :" + BankCode + " - 2 eme :" + dateArrete + " done !");
             myList = currency;
-
+            groupe = Globals.getUser()[4];
             pagy();
         }
         private void Backwards_Click(object sender, RoutedEventArgs e)
@@ -98,28 +105,29 @@ namespace SpootLight.Views.PR
 
         private void Modifier_Click(object sender, RoutedEventArgs e)
         {
-            try { 
-            DataRowView row = G_CURRENCY.SelectedItem as DataRowView;
+            try {
+                var row = G_CURRENCY.SelectedItem as DataRowView;
                 if (row != null)
                 {
-                    Form_PR_CURRENCY t = new Form_PR_CURRENCY();
-                    t.Show();
-                    t.BankCode.Text = row.Row.ItemArray[0].ToString();
-                    t.ProcessDate.Text = row.Row.ItemArray[1].ToString();
-                    t.CurrencyTxt.Text = row.Row.ItemArray[2].ToString();
-                    t.ExchangeRateTxt.Text = row.Row.ItemArray[3].ToString();
-            t.Closed += delegate
-            {
-               initial();
-            };
-                } else
-                {
-                    MessageBox.Show("Merci de Sélectionner une ligne !");
+                        Form_PR_CURRENCY t = new Form_PR_CURRENCY();
+                        t.Show();
+                        t.BankCode.Text = row.Row.ItemArray[0].ToString();
+                        t.ProcessDate.Text = row.Row.ItemArray[1].ToString();
+                        t.Version.Text = version;
+                        t.CurrencyTxt.Text = row.Row.ItemArray[3].ToString();
+                        t.ExchangeRateTxt.Text = row.Row.ItemArray[4].ToString();
+                        t.Closed += delegate {
+                            initial();
+                        };
                 }
+                else
+            {
+                MessageBox.Show("Veuillez Sélectionner une ligne !");
+            }
             }
             catch (NullReferenceException)
             {
-                MessageBox.Show("Merci de Sélectionner une ligne !");
+                MessageBox.Show("Veuillez Sélectionner une ligne !");
             }
         }
 
@@ -141,7 +149,7 @@ namespace SpootLight.Views.PR
                 NumberOfRecords.Items.Add(RecordGroup); //Fill the ComboBox with the Array
             }
 
-            NumberOfRecords.SelectedItem = 10; //Initialize the ComboBox
+            NumberOfRecords.SelectedItem = 100; //Initialize the ComboBox
 
             numberOfRecPerPage = Convert.ToInt32(NumberOfRecords.SelectedItem); //Convert the Combox Output to type int
 
@@ -176,6 +184,18 @@ namespace SpootLight.Views.PR
             {
                 initial();
             }
+        }
+
+        private void Importer_Click(object sender, RoutedEventArgs e)
+        {
+            ImportChoser chooser = new ImportChoser();
+            chooser.JobName = Jobs.DeviseTauxChange.Value;
+            chooser.JobNameCrush = Jobs.DeviseTauxChangeCrush.Value;
+            chooser.Show();
+            chooser.Closed += delegate
+            {
+                initial();
+            };
         }
     }
 }

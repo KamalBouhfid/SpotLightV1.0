@@ -16,10 +16,13 @@ namespace SpootLight
     {
         public string Bank_Code { get; set; }
         public string Process_Date { get; set; }
+        public string Version { get; set; }
         public string Portfolio { get; set; }
         public string Portfolio_Description { get; set; }
         public string Sub_Portfolio { get; set; }
         public string Sub_Portfolio_Description { get; set; }
         public Nullable<float> Weighting { get; set; }
+        public string WeightingCode { get; set; }
+        public string Default_Category { get; set; }
     }
 }

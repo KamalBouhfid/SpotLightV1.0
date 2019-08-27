@@ -16,6 +16,7 @@ namespace SpootLight
     {
         public string Bank_Code { get; set; }
         public string Process_Date { get; set; }
+        public string Version { get; set; }
         public string Category { get; set; }
         public string Category_Description { get; set; }
         public string Sub_Category { get; set; }

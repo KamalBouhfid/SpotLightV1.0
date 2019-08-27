@@ -5,12 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SpootLight.Views.PR"
              mc:Ignorable="d" 
-             d:DesignHeight="425" d:DesignWidth="1120">
+             d:DesignHeight="425" d:DesignWidth="1000">
     
     <Grid>
-        <StackPanel x:Name="stack" Orientation="Horizontal" Height="425" Width="1120" HorizontalAlignment="Left">
-            <StackPanel Orientation="Vertical" Width="1120">
-                <StackPanel Orientation="Vertical" Height="425" Width="1120" Margin="0,0,0,0">
+        <StackPanel x:Name="stack" Orientation="Horizontal" Height="auto" Width="auto" HorizontalAlignment="Left">
+            <StackPanel Orientation="Vertical" Width="auto">
+                <StackPanel Orientation="Vertical" Height="auto" Width="auto" Margin="0,0,0,0">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <StackPanel Orientation='Horizontal' Margin='6' HorizontalAlignment='Center'>
                             <Button x:Name='Backwards' Padding='4' Content='&lt; Précédent' Margin='6' Click='Backwards_Click'></Button>
@@ -26,39 +26,51 @@
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
-                        <TextBox x:Name="AccountSearch" Style="{StaticResource placeHolder}" Tag="Compte  . . ." MaxLength="10" HorizontalAlignment="Left" Height="27" Margin="19,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="AccountSearch_TextChanged"/>
-                        <TextBox x:Name="DescriptionSearch" Style="{StaticResource placeHolder}" Tag="Description  . . ." MaxLength="10" HorizontalAlignment="Left" Height="27" Margin="10,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="DescriptionSearch_TextChanged"/>
-                        <TextBox x:Name="BaselSegmentSearch" Style="{StaticResource placeHolder}" Tag="Basel Segment . . ." MaxLength="10" HorizontalAlignment="Left" Height="27" Margin="10,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="BaselSegmentSearch_TextChanged"/>
-                        <TextBox x:Name="CreditFactorSearch" Style="{StaticResource placeHolder}" Tag="Crédit  . . ." MaxLength="10" HorizontalAlignment="Left" Height="27" Margin="10,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="CreditFactorSearch_TextChanged"/>
-                        <TextBox x:Name="BalanceSearch" Style="{StaticResource placeHolder}" Tag="Balance  . . ." MaxLength="10" HorizontalAlignment="Left" Height="27" Margin="10,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="BalanceSearch_TextChanged"/>
-                        <TextBox x:Name="SensCodeSearch" Style="{StaticResource placeHolder}" Tag="Sens Code  . . ." MaxLength="10" HorizontalAlignment="Left" Height="27" Margin="10,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="SensCodeSearch_TextChanged"/>
+                        <TextBox x:Name="AccountSearch" Style="{StaticResource placeHolder}" Tag="Compte  " MaxLength="10" HorizontalAlignment="Left" Height="20" Margin="19,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="AccountSearch_TextChanged"/>
+                        <TextBox x:Name="DescriptionSearch" Style="{StaticResource placeHolder}" Tag="Description  " MaxLength="10" HorizontalAlignment="Left" Height="20" Margin="10,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="DescriptionSearch_TextChanged"/>
+                        <TextBox x:Name="BaselSegmentSearch" Style="{StaticResource placeHolder}" Tag="Basel Segment " MaxLength="10" HorizontalAlignment="Left" Height="20" Margin="10,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="BaselSegmentSearch_TextChanged"/>
+                        <TextBox x:Name="CreditFactorSearch" Style="{StaticResource placeHolder}" Tag="Crédit  " MaxLength="10" HorizontalAlignment="Left" Height="20" Margin="10,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="CreditFactorSearch_TextChanged"/>
+                        <TextBox x:Name="BalanceSearch" Style="{StaticResource placeHolder}" Tag="Balance  " MaxLength="10" HorizontalAlignment="Left" Height="20" Margin="10,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="BalanceSearch_TextChanged"/>
+                        <TextBox x:Name="SensCodeSearch" Style="{StaticResource placeHolder}" Tag="Sens Code  " MaxLength="10" HorizontalAlignment="Left" Height="20" Margin="10,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  TextChanged="SensCodeSearch_TextChanged"/>
                     </StackPanel>
-                    <DataGrid  AutoGenerateColumns="False" CanUserAddRows="false" x:Name="G_ACCOUNT" Height="auto" MaxHeight="300" Width="1080" ScrollViewer.CanContentScroll="True" >
+                    <DataGrid  AutoGenerateColumns="False" IsReadOnly="true" CanUserAddRows="false" x:Name="G_ACCOUNT" Height="auto" Width="auto" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Visible">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Visibility="Hidden" Header="Bank Code " Binding="{Binding Bank_Code}" Width="*"/>
-                            <DataGridTextColumn Visibility="Hidden" Header="Process Date" Binding="{Binding Process_Date}" Width="*"/>
+                            <DataGridTextColumn Visibility="Hidden" Header="Bank Code " Binding="{Binding Bank_Code}" Width="10"/>
+                            <DataGridTextColumn Visibility="Hidden" Header="Process Date" Binding="{Binding Process_Date}" Width="10"/>
+                            <DataGridTextColumn Visibility="Hidden" Header="Version" Binding="{Binding Version}" Width="10"/>
                             <DataGridTextColumn Header="Compte" Binding="{Binding Account}" Width="70" />
-                            <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*" />
+                            <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="100" />
                             <DataGridCheckBoxColumn Header="Basel In" Binding="{Binding Basel_In}" Width="60" />
-                            <DataGridTextColumn Header="Basel Segment" Binding="{Binding Basel_Segment}" Width="*" />
-                            <DataGridTextColumn Header="Crédit Conversion" Binding="{Binding Credit_Conversion_Factor}" Width="*" />
-                            <DataGridTextColumn Header="Balance Of Sheet" Binding="{Binding Balance_Off_Sheet}" Width="*" />
-                            <DataGridTextColumn Header="Sens Code" Binding="{Binding Sens_Code}" Width="*" />
+                            <DataGridTextColumn Header="Basel Segment" Binding="{Binding Basel_Segment}" Width="100" />
+                            <DataGridTextColumn Header="Crédit Conversion" Binding="{Binding Credit_Conversion_Factor}" Width="110" />
+                            <DataGridTextColumn Header="Balance Of Sheet" Binding="{Binding Balance_Off_Sheet}" Width="105" />
+                            <DataGridTextColumn Header="Sens Code" Binding="{Binding Sens_Code}" Width="80" />
                             <DataGridCheckBoxColumn Header="Is Commitment" Binding="{Binding Is_Commitment}" Width="99" />
-                            <DataGridCheckBoxColumn Header="Is Provision" Binding="{Binding Is_Provision}" Width="70" />
+                            <DataGridCheckBoxColumn Header="Is Provision" Binding="{Binding Is_Provision}" Width="75" />
                             <DataGridCheckBoxColumn Header="Is Doubtful" Binding="{Binding Is_Doubtful}" Width="75" />
-                            <DataGridCheckBoxColumn Header="Is Accrued Interest" Binding="{Binding Is_Accrued_Interest}" Width="*" />
+                            <DataGridCheckBoxColumn Header="Is Accrued Interest" Binding="{Binding Is_Accrued_Interest}" Width="110" />
+                            <DataGridTextColumn Header="Signe" Binding="{Binding Sign}" Width="105" />
+                            <DataGridTextColumn Header="Type Exposition" Binding="{Binding Exposition_Type}" Width="80" />
+                            <DataGridCheckBoxColumn Header="Is Security" Binding="{Binding Is_security}" Width="75" />
+                            <DataGridCheckBoxColumn Header="CMDR IN" Binding="{Binding Cmdr_In}" Width="75" />
+                            <DataGridTextColumn Header="CMDR Convertion Facteur" Binding="{Binding Cmdr_Conversion_Factor}" Width="130" />
+                            <DataGridTextColumn Header="CMDR Sens Code" Binding="{Binding Cmdr_Sens_Code}" Width="130" />
+                            <DataGridTextColumn Header="CMDR Weighting" Binding="{Binding Cmdr_Weighting}" Width="130" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Border CornerRadius="1" BorderBrush="Gray" BorderThickness="1" Background="Transparent" Height="25" Width="60" VerticalAlignment="Center" Margin="10,10,0,0" HorizontalAlignment='Left'>
-                        <Menu x:Name="MenuActions"  HorizontalAlignment='Left' Margin="0,0,0,0" Background="#F0F0F0">
-                            <MenuItem Header="Actions" Width="60" Height="20">
-                                <MenuItem Header="Nouveau" x:Name="Nouveau" Click="Nouveau_Click"/>
-                                <MenuItem Header="Modifier" x:Name="Modifier" Click="Modifier_Click" />
-                                <MenuItem Header="Supprimer" x:Name="Supprimer" Click="Supprimer_Click"/>
-                            </MenuItem>
-                        </Menu>
-                    </Border>
+                    <StackPanel x:Name="ActionsPan" Orientation="Horizontal">
+                        <Border CornerRadius="1" BorderBrush="Gray" BorderThickness="1" Background="Transparent" Height="25" Width="60" VerticalAlignment="Center" Margin="10,10,0,0" HorizontalAlignment='Left'>
+                            <Menu x:Name="MenuActions"  HorizontalAlignment='Left' Margin="0,0,0,0" Background="#F0F0F0">
+                                <MenuItem Header="Actions" Width="58" Height="24">
+                                    <MenuItem Header="Ajouter" x:Name="Nouveau" Click="Nouveau_Click"/>
+                                    <MenuItem Header="Modifier" x:Name="Modifier" Click="Modifier_Click" />
+                                    <MenuItem Header="Supprimer" x:Name="Supprimer" Click="Supprimer_Click"/>
+                                    <MenuItem Header="Importer" x:Name="Importer" Click="Importer_Click"/>
+                                </MenuItem>
+                            </Menu>
+                        </Border>
+                        <Label x:Name="ActionsAlerteLabel" Visibility="Hidden" Content="vous etes pas un admin !" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="Red"/>
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
         </StackPanel>

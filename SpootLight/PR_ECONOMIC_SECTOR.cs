@@ -16,8 +16,10 @@ namespace SpootLight
     {
         public string Bank_Code { get; set; }
         public string Process_Date { get; set; }
+        public string Version { get; set; }
         public string Economic_Sector { get; set; }
         public string Description { get; set; }
         public string Sub_Category { get; set; }
+        public Nullable<float> Cmdr_Weighting { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using SpootLight.Controllers;
 using SpootLight.Models;
+using SpootLight.Popup;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -27,11 +28,12 @@ namespace SpootLight.Views.PR
         List<string> contents = new List<string>();
         public List<string> Items = new List<string>();
         static Paging PagedTable = new Paging();
-
+        public static string groupe = "";
         static PR_GUARANTEE_TYPE_MODEL GuaranteeLists;
         public List<string> analyseSession = new List<string>();
         static string BankCode = Globals.getAnalyse()[1];
         static string dateArrete = Globals.getAnalyse()[3];
+        static string version = Globals.getAnalyse()[5];
         private static List<PR_GUARANTEE_TYPE> Guarantees;
         private static List<PR_GUARANTEE_TYPE> myList = new List<PR_GUARANTEE_TYPE>();
         public PR_GUARANTEE_TYPE_UserControl()
@@ -40,13 +42,16 @@ namespace SpootLight.Views.PR
             PagedTable.type = typeof(PR_GUARANTEE_TYPE);
             BankCode = Globals.getAnalyse()[1];
             dateArrete = Globals.getAnalyse()[3];
+            version = Globals.getAnalyse()[5];
             initial();
+            Globals.checkAdmin(groupe, ActionsPan);
         }
         public void initial()
         {
             GuaranteeLists = new PR_GUARANTEE_TYPE_MODEL();
-            Guarantees = GuaranteeLists.GUARANTEES.Where(c => c.Bank_Code.Equals(BankCode) && c.Process_Date.Equals(dateArrete)).ToList<PR_GUARANTEE_TYPE>();
+            Guarantees = GuaranteeLists.GUARANTEES.Where(c => c.Bank_Code.Equals(BankCode) && c.Process_Date.Equals(dateArrete) && c.Version.Equals(version)).ToList<PR_GUARANTEE_TYPE>();
             myList = Guarantees;
+            groupe = Globals.getUser()[4];
             pagy();
         }
         private void Backwards_Click(object sender, RoutedEventArgs e)
@@ -106,10 +111,22 @@ namespace SpootLight.Views.PR
                     t.Show();
                     t.BankCode.Text = row.Row.ItemArray[0].ToString();
                     t.ProcessDate.Text = row.Row.ItemArray[1].ToString();
-                    t.GuaranteeAccount.Text = row.Row.ItemArray[2].ToString();
-                    t.GuaranteeTypeDescription.Text = row.Row.ItemArray[3].ToString();
-                    t.GuaranteeClass.Text = row.Row.ItemArray[4].ToString();
-                    t.GuaranteeWeighting.Text = row.Row.ItemArray[5].ToString();
+                    t.Version.Text = row.Row.ItemArray[2].ToString();
+                    t.GuaranteeAccount.Text = row.Row.ItemArray[3].ToString();
+                    t.GuaranteeTypeDescription.Text = row.Row.ItemArray[4].ToString();
+                    t.GuaranteeClass.Text = row.Row.ItemArray[5].ToString();
+                    t.GuaranteeWeighting.Text = row.Row.ItemArray[6].ToString();
+
+                    if (row.Row.ItemArray[7] == null || row.Row.ItemArray[7].ToString() == "" || row.Row.ItemArray[7].ToString().StartsWith("F"))
+                        t.In_COREP.IsChecked = false;
+                    else t.In_COREP.IsChecked = true;
+
+                    if (row.Row.ItemArray[8] == null || row.Row.ItemArray[8].ToString() == "" || row.Row.ItemArray[8].ToString().StartsWith("F"))
+                        t.In_CMDR.IsChecked = false;
+                    else t.In_CMDR.IsChecked = true;
+
+                    t.Guarantee_Weighting_Cmdr.Text = row.Row.ItemArray[9].ToString();
+
                     t.Closed += delegate
                     {
                         initial();
@@ -117,12 +134,12 @@ namespace SpootLight.Views.PR
                 }
                 else
                 {
-                    MessageBox.Show("Merci de Sélectionner une ligne !");
+                    MessageBox.Show("Veuillez Sélectionner une ligne !");
                 }
             }
             catch (NullReferenceException)
             {
-                MessageBox.Show("Merci de Sélectionner une ligne !");
+                MessageBox.Show("Veuillez Sélectionner une ligne !");
             }
         }
 
@@ -144,7 +161,7 @@ namespace SpootLight.Views.PR
                 NumberOfRecords.Items.Add(RecordGroup); //Fill the ComboBox with the Array
             }
 
-            NumberOfRecords.SelectedItem = 10; //Initialize the ComboBox
+            NumberOfRecords.SelectedItem = 100; //Initialize the ComboBox
 
             numberOfRecPerPage = Convert.ToInt32(NumberOfRecords.SelectedItem); //Convert the Combox Output to type int
 
@@ -204,5 +221,12 @@ namespace SpootLight.Views.PR
                 initial();
             }
         }
+
+        private void Importer_Click(object sender, RoutedEventArgs e)
+        {
+            /*ImportChoser chooser = new ImportChoser();
+            chooser.JobName = Jobs.TypeGarantie.Value;
+            chooser.JobNameCrush = Jobs.TypeGarantieCrush.Value;
+            chooser.Show();/*/        }
     }
 }

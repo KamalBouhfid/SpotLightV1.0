@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="JobTalned" Height="600" Width="900" Background="#6BADF6" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
     <Border BorderThickness="5" CornerRadius="10">
-    <Grid>
+        <Grid>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="27" Margin="0,-8,0,0" >
                 <Image Width="35" Height="35" Source="../../Img/logo.png" Margin="4,0,0,0" HorizontalAlignment="Left"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="790,2,0,0">
@@ -26,22 +26,22 @@
                         <StackPanel Orientation="Horizontal" Height="530" Width="190" HorizontalAlignment="Left" Margin="10,0,0,10" Background="Transparent">
                             <Border CornerRadius="1" BorderBrush="Gray" BorderThickness="1" Background="Transparent" Height="530" Width="190">
                                 <TreeView Name="trvMenu" Background="Transparent">
-                                <TreeView.ItemTemplate>
-                                    <HierarchicalDataTemplate DataType="{x:Type MenuItem}" ItemsSource="{Binding Items}" >
-                                        <TextBlock  FontSize="14" Text="{Binding Title}" MouseDown="TextBlock_MouseDown" />
-                                    </HierarchicalDataTemplate>
-                                </TreeView.ItemTemplate>
-                            </TreeView>
+                                    <TreeView.ItemTemplate>
+                                        <HierarchicalDataTemplate DataType="{x:Type MenuItem}" ItemsSource="{Binding Items}" >
+                                            <TextBlock  FontSize="14" Text="{Binding Title}" MouseDown="TextBlock_MouseDown" />
+                                        </HierarchicalDataTemplate>
+                                    </TreeView.ItemTemplate>
+                                </TreeView>
                             </Border>
                         </StackPanel>
                         <StackPanel x:Name="stack" Visibility="Visible" Orientation="Horizontal" Height="530" Width="590" HorizontalAlignment="Left" Margin="36,0,0,10" >
                             <StackPanel Orientation="Vertical">
                                 <StackPanel Orientation="Horizontal">
-                            <Label Content="Nom de Job      :" HorizontalAlignment="Center" Margin="60,0,0,0" VerticalAlignment="Top" />
-                            <Label x:Name="NomJobResult" Content="Job xxx" HorizontalAlignment="Center" Margin="60,0,0,0" VerticalAlignment="Top" />
+                                    <Label Content="Nom de Job      :" HorizontalAlignment="Center" Margin="60,0,0,0" VerticalAlignment="Top" />
+                                    <Label x:Name="NomJobResult" Content="Job xxx" HorizontalAlignment="Center" Margin="60,0,0,0" VerticalAlignment="Top" />
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                            <Label Content="Chemin de Job :" HorizontalAlignment="Center" Margin="60,0,0,0" VerticalAlignment="Top" />
+                                    <Label Content="Chemin de Job :" HorizontalAlignment="Center" Margin="60,0,0,0" VerticalAlignment="Top" />
                                     <Label x:Name="CheminJobResult" Content="Chemin xyy" HorizontalAlignment="Center" Margin="60,0,0,0" VerticalAlignment="Top" />
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
@@ -56,11 +56,11 @@
                                     <Button x:Name="LancerJobBtn" Content="Lancer Job" HorizontalAlignment="Center" Margin="0,15,50,0" VerticalAlignment="Center" Width="106" Height="32" Click="LancerJobBtn_Click"/>
                                 </StackPanel>
                             </StackPanel>
-            </StackPanel>
+                        </StackPanel>
                     </StackPanel>
                 </GroupBox >
             </StackPanel>
-                
+
         </Grid>
-        </Border>
+    </Border>
 </Window>

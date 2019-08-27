@@ -60,7 +60,7 @@ namespace SpootLight.Popup
                 }
                 else
                 {
-                    MessageBox.Show("Adresse Email Invalide, Merci de vérifier !", "Connexion Erreur", MessageBoxButton.OK, MessageBoxImage.Stop);
+                    MessageBox.Show("Adresse Email Invalide, Veuillez le vérifier !", "Connexion Erreur", MessageBoxButton.OK, MessageBoxImage.Stop);
                 }
             }
         }
@@ -71,12 +71,12 @@ namespace SpootLight.Popup
             {
                 if (Convert.ToInt32(BackUpCodeTxt.Text) == BackUpCode)
                 {
-                    MessageBox.Show("Merci de créer Un nouveau Mot de passe !", "Pin Vérifiée !", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Veuillez de créer un nouveau Mot de passe !", "Pin Vérifiée !", MessageBoxButton.OK, MessageBoxImage.Information);
                     NewPassPanel.Visibility = Visibility.Visible;
                 }
                 else
                 {
-                    MessageBox.Show("Pin Invalide ! \n Merci de vérifier votre boite des E-mails !", "Pin Invalide !", MessageBoxButton.OK, MessageBoxImage.Stop);
+                    MessageBox.Show("Pin Invalide ! \n Veuillez de vérifier votre boite des E-mails !", "Pin Invalide !", MessageBoxButton.OK, MessageBoxImage.Stop);
                 }
             }
         }
@@ -99,6 +99,13 @@ namespace SpootLight.Popup
                     MessageBox.Show("Les mots de passe n'est pas identique !", "Mot de passe Invalide !", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
+        }
+
+        private void DockPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+
+            this.DragMove();
         }
     }
 }

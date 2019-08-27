@@ -31,7 +31,7 @@
                                 <Label Content="Chemin de Job :" HorizontalAlignment="Center" Margin="60,5,0,0" VerticalAlignment="Top" />
                                 <Label x:Name="CheminJobResult" Content="Chemin xyy" HorizontalAlignment="Center" Margin="60,5,0,0" VerticalAlignment="Top" />
                             </StackPanel>
-                          <!--  <StackPanel Orientation="Horizontal">
+                            <!--  <StackPanel Orientation="Horizontal">
                                 <Label Content="Sous Jobs           :" HorizontalAlignment="Center" Margin="60,5,0,0" VerticalAlignment="Top" />
                                 <ListBox x:Name="ResultSousJob" Margin="60,5,0,0" Width="290" Height="99"/>
                             </StackPanel> -->

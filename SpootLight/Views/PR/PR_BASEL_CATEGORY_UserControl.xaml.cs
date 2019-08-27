@@ -1,5 +1,6 @@
 ﻿using SpootLight.Controllers;
 using SpootLight.Models;
+using SpootLight.Popup;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -32,8 +33,9 @@ namespace SpootLight.Views.PR
         // IList<StudentModel.Student> myList = StudentList.GetData();
         static string BankCode = Globals.getAnalyse()[1];
         static string dateArrete = Globals.getAnalyse()[3];
+        static string version = Globals.getAnalyse()[5];
         private static List<PR_BASEL_CATEGORY> categories;
-        //private static List<PR_ACCOUNT> filtered_accounts;
+        public static string groupe = "";
         private static List<PR_BASEL_CATEGORY> myList = new List<PR_BASEL_CATEGORY>();
         public PR_BASEL_CATEGORY_UserControl()
         {
@@ -41,15 +43,17 @@ namespace SpootLight.Views.PR
             PagedTable.type = typeof(PR_BASEL_CATEGORY);
             BankCode = Globals.getAnalyse()[1];
             dateArrete = Globals.getAnalyse()[3];
+            version = Globals.getAnalyse()[5];
+
             initial();
+            Globals.checkAdmin(groupe, ActionsPan);
         }
         public void initial()
         {
             CategoryLists = new PR_BASEL_CATEGORY_MODEL();
-            categories = CategoryLists.CATEGORIES.Where(c => c.Bank_Code.Equals(BankCode) && c.Process_Date.Equals(dateArrete)).ToList<PR_BASEL_CATEGORY>();
-            Console.WriteLine("1 er :" + BankCode + " - 2 eme :" + dateArrete + " done !");
+            categories = CategoryLists.CATEGORIES.Where(c => c.Bank_Code.Equals(BankCode) && c.Process_Date.Equals(dateArrete) && c.Version.Equals(version)).ToList<PR_BASEL_CATEGORY>();
             myList = categories;
-
+            groupe = Globals.getUser()[4];
             pagy();
         }
         private void Backwards_Click(object sender, RoutedEventArgs e)
@@ -108,12 +112,13 @@ namespace SpootLight.Views.PR
             t.Show();
             t.BankCode.Text = row.Row.ItemArray[0].ToString();
             t.ProcessDate.Text = row.Row.ItemArray[1].ToString();
-            t.SubCategorieTxt.Text = row.Row.ItemArray[4].ToString();
+            t.Version.Text = version;
+            t.SubCategorieTxt.Text = row.Row.ItemArray[5].ToString();
 
-            t.CategorieTxt.Text = row.Row.ItemArray[2].ToString();
-            t.CategorieDescriptionTxt.Text = row.Row.ItemArray[3].ToString();
-            t.SubCategorieDescriptionTxt.Text = row.Row.ItemArray[5].ToString();
-            t.SubPortfolioTxt.Text = row.Row.ItemArray[6].ToString();
+            t.CategorieTxt.Text = row.Row.ItemArray[3].ToString();
+            t.CategorieDescriptionTxt.Text = row.Row.ItemArray[4].ToString();
+            t.SubCategorieDescriptionTxt.Text = row.Row.ItemArray[6].ToString();
+            t.SubPortfolioTxt.Text = row.Row.ItemArray[7].ToString();
 
             t.Closed += delegate
             {
@@ -122,12 +127,12 @@ namespace SpootLight.Views.PR
                 }
                 else
                 {
-                    MessageBox.Show("Merci de Sélectionner une ligne !");
+                    MessageBox.Show("Veuillez Sélectionner une ligne !");
                 }
             }
             catch (NullReferenceException)
             {
-                MessageBox.Show("Merci de Sélectionner une ligne !");
+                MessageBox.Show("Veuillez Sélectionner une ligne !");
             }
         }
 
@@ -157,7 +162,7 @@ namespace SpootLight.Views.PR
                 NumberOfRecords.Items.Add(RecordGroup); //Fill the ComboBox with the Array
             }
 
-            NumberOfRecords.SelectedItem = 10; //Initialize the ComboBox
+            NumberOfRecords.SelectedItem = 100; //Initialize the ComboBox
 
             numberOfRecPerPage = Convert.ToInt32(NumberOfRecords.SelectedItem); //Convert the Combox Output to type int
 
@@ -228,6 +233,14 @@ namespace SpootLight.Views.PR
             {
                 initial();
             }
+        }
+
+        private void Importer_Click(object sender, RoutedEventArgs e)
+        {
+            /*ImportChoser chooser = new ImportChoser();
+            chooser.JobName = Jobs.CategorieBaloise.Value;
+            chooser.JobNameCrush = Jobs.CategorieBaloiseCrush.Value;
+            chooser.Show();*/
         }
     }
 }

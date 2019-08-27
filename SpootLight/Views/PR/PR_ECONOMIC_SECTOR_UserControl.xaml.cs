@@ -1,5 +1,6 @@
 ﻿using SpootLight.Controllers;
 using SpootLight.Models;
+using SpootLight.Popup;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -31,7 +32,9 @@ namespace SpootLight.Views.PR
         public List<string> analyseSession = new List<string>();
         static string BankCode = Globals.getAnalyse()[1];
         static string dateArrete = Globals.getAnalyse()[3];
+        static string version = Globals.getAnalyse()[5];
         private static List<PR_ECONOMIC_SECTOR> Economics;
+        public static string groupe = "";
         private static List<PR_ECONOMIC_SECTOR> myList = new List<PR_ECONOMIC_SECTOR>();
         public PR_ECONOMIC_SECTOR_UserControl()
         {
@@ -39,15 +42,17 @@ namespace SpootLight.Views.PR
             PagedTable.type = typeof(PR_ECONOMIC_SECTOR);
             BankCode = Globals.getAnalyse()[1];
             dateArrete = Globals.getAnalyse()[3];
+            version = Globals.getAnalyse()[5];
             initial();
+            Globals.checkAdmin(groupe, ActionsPan);
         }
         public void initial()
         {
             EconomicLists = new PR_ECONOMIC_SECTOR_MODEL();
-            Economics = EconomicLists.ECONOMICS.Where(c => c.Bank_Code.Equals(BankCode) && c.Process_Date.Equals(dateArrete)).ToList<PR_ECONOMIC_SECTOR>();
+            Economics = EconomicLists.ECONOMICS.Where(c => c.Bank_Code.Equals(BankCode) && c.Process_Date.Equals(dateArrete) && c.Version.Equals(version)).ToList<PR_ECONOMIC_SECTOR>();
             Console.WriteLine("1 er :" + BankCode + " - 2 eme :" + dateArrete + " done !");
             myList = Economics;
-
+            groupe = Globals.getUser()[4];
             pagy();
         }
         private void Backwards_Click(object sender, RoutedEventArgs e)
@@ -107,24 +112,25 @@ namespace SpootLight.Views.PR
                     t.Show();
                     t.BankCode.Text = row.Row.ItemArray[0].ToString();
                     t.ProcessDate.Text = row.Row.ItemArray[1].ToString();
-                    t.EconomicSectorTxt.Text = row.Row.ItemArray[2].ToString();
+                    t.EconomicSectorTxt.Text = row.Row.ItemArray[3].ToString();
+                    t.Version.Text = row.Row.ItemArray[2].ToString();
 
-                    t.DescriptionTxt.Text = row.Row.ItemArray[3].ToString();
+                    t.DescriptionTxt.Text = row.Row.ItemArray[4].ToString();
 
-                    t.SubCategoryTxt.Text = row.Row.ItemArray[4].ToString();
-
+                    t.SubCategoryTxt.Text = row.Row.ItemArray[5].ToString(); 
+                    t.Cmdr_Weighting.Text = row.Row.ItemArray[6].ToString();
                     t.Closed += delegate
                     {
                         initial();
                     };
                 }else
                 {
-                    MessageBox.Show("Merci de Sélectionner une ligne !");
+                    MessageBox.Show("Veuillez Sélectionner une ligne !");
                 }
             }
             catch (NullReferenceException)
             {
-                MessageBox.Show("Merci de Sélectionner une ligne !");
+                MessageBox.Show("Veuillez Sélectionner une ligne !");
             }
         }
 
@@ -146,7 +152,7 @@ namespace SpootLight.Views.PR
                 NumberOfRecords.Items.Add(RecordGroup); //Fill the ComboBox with the Array
             }
 
-            NumberOfRecords.SelectedItem = 10; //Initialize the ComboBox
+            NumberOfRecords.SelectedItem = 100; //Initialize the ComboBox
 
             numberOfRecPerPage = Convert.ToInt32(NumberOfRecords.SelectedItem); //Convert the Combox Output to type int
 
@@ -193,6 +199,14 @@ namespace SpootLight.Views.PR
             {
                 initial();
             }
+        }
+
+        private void Importer_Click(object sender, RoutedEventArgs e)
+        {
+            /*ImportChoser chooser = new ImportChoser();
+            chooser.JobName = Jobs.AgentEconomique.Value;
+            chooser.JobNameCrush = Jobs.AgentEconomiqueCrush.Value;
+            chooser.Show();*/
         }
     }
 }

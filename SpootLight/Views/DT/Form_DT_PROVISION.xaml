@@ -1,0 +1,107 @@
+﻿<Window x:Class="SpootLight.Views.DT.Form_DT_PROVISION"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SpootLight.Views.DT"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Form_DT_AUX_ACCOUNT" Background="#fafafa" Height="500" Width="860" MinHeight="460" MaxHeight="540" MinWidth="850" 
+        MaxWidth="890" WindowStyle="None" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Border BorderThickness="5" CornerRadius="10">
+            <Grid Background="#F0F0F0">
+                <Grid.RowDefinitions>
+                    <RowDefinition MinHeight="35" MaxHeight="35" Height="35*" />
+                    <RowDefinition MinHeight="20" Height="20*" />
+                    <RowDefinition MinHeight="20" Height="20*" />
+                    <RowDefinition MinHeight="20" Height="20*" />
+                    <RowDefinition MinHeight="20" Height="20*" />
+                    <RowDefinition MinHeight="20" Height="20*" />
+                    <RowDefinition MinHeight="20" Height="20*" />
+                    <RowDefinition MinHeight="20" Height="20*" />
+                    <RowDefinition MinHeight="20" Height="20*" />
+                    <RowDefinition MinHeight="20" Height="20*" />
+                    <RowDefinition MinHeight="20" Height="20*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition MinWidth="220" Width="230" />
+                    <ColumnDefinition MinWidth="200" Width="200*" />
+                    <ColumnDefinition MinWidth="195" Width="200" />
+                    <ColumnDefinition MinWidth="200" Width="200*" />
+                </Grid.ColumnDefinitions>
+                <DockPanel Background="#fafafa" MouseLeftButtonDown="DockPanel_MouseLeftButtonDown" Grid.ColumnSpan="4" Margin="0,0,-0.4,42.6" Grid.RowSpan="4" MaxHeight="25" VerticalAlignment="Top">
+                    <Image Width="45" Height="45" Source="../../Img/logosmall.png" Margin="0,0,0,0" HorizontalAlignment="Left" />
+                    <Label Content="Provision"></Label>
+                    <DockPanel HorizontalAlignment="Right" >
+                        <Button x:Name="ButtonMinimize" Width="30" Height="20" Padding="0" Background="Transparent" HorizontalAlignment="Right" Click="ButtonMinimize_Click">
+                            <materialDesign:PackIcon Kind="WindowMinimize"/>
+                        </Button>
+                        <Button x:Name="ButtonClose" Width="30" Height="20" Padding="0" Background="#C75050" HorizontalAlignment="Right" Click="ButtonClose_Click">
+                            <materialDesign:PackIcon Kind="Close"/>
+                        </Button>
+                    </DockPanel>
+                </DockPanel>
+                <Label TabIndex="1" Grid.Row="1" Grid.Column="0" Margin="0,-40,5,5" Content="(*) Champ Obligatoire" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Label TabIndex="1" Grid.Row="1" Grid.Column="0" Margin="5,5" Content="Code Banque :" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBox x:Name="BankCode" IsReadOnly="True" MaxLength="10" TabIndex="2" Grid.Row="1" Grid.Column="1" Margin="5,5" Height="23" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+                <Label TabIndex="3" Grid.Row="2" Grid.Column="0" Margin="5,5" Content="Date Process :" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBox x:Name="ProcessDate" IsReadOnly="True" MaxLength="10" TabIndex="4" Grid.Row="2" Grid.Column="1" Margin="5,5" Height="23" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+                <Label TabIndex="3" Grid.Row="3" Grid.Column="0" Margin="5,5" Content="Version :" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBox x:Name="Version" IsReadOnly="True" MaxLength="10" TabIndex="4" Grid.Row="3" Grid.Column="1" Margin="5,5" Height="23" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+                <Label TabIndex="5" Grid.Row="4" Grid.Column="0" Margin="5,5" Content="N° Provision Interne *:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                <TextBox x:Name="Internal_Provision_Number" MaxLength="10" TabIndex="6" Grid.Row="4" Grid.Column="1" Margin="5,5" Height="23" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+                <Label TabIndex="7" Grid.Row="5" Grid.Column="0" Margin="5,5" Content="Code Devise *:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBox x:Name="Currency_Code" MaxLength="3" TabIndex="8" Grid.Row="5" Grid.Column="1" Margin="5,5" Height="23" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+                <Label TabIndex="9" Grid.Row="6" Grid.Column="0" Margin="5,5" Content="Code Client *:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBox x:Name="Customer_Code" MaxLength="25" TabIndex="10" Grid.Row="6" Grid.Column="1" Margin="5,5" Height="23" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+                <Label TabIndex="11" Grid.Row="7" Grid.Column="0" Margin="5,5" Content="Bilan / Hors Bilan *:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                <TextBox x:Name="Balance_off_balance" MaxLength="3" TabIndex="12" Grid.Row="7" Grid.Column="1" Margin="5,5" Height="23" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+                <Label TabIndex="11" Grid.Row="8" Grid.Column="0" Margin="5,5" Content="Date Maturité :" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                <DatePicker x:Name="Maturity_Date" TabIndex="12" Grid.Row="8" Grid.Column="1" Margin="5,5" Height="23" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+                <Label TabIndex="11" Grid.Row="1" Grid.Column="2" Margin="5,5" Content="Solde Provision en monnaie *:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                <TextBox x:Name="Provision_amount_in_currency" MaxLength="50" TabIndex="12" Style="{StaticResource placeHolder}" Tag="Ex : 12.4 " Grid.Row="1" Grid.Column="3" Margin="5,5" Height="23" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+                <Label TabIndex="11" Grid.Row="9" Grid.Column="0" Margin="5,5" Content="Solde Provision en monnaie locale *:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                <TextBox x:Name="Provision_amount_in_local_currency" MaxLength="50" TabIndex="12" Style="{StaticResource placeHolder}" Tag="Ex : 12.4 " Grid.Row="9" Grid.Column="1" Margin="5,5" Height="23" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+                <Label TabIndex="12" Grid.Row="2" Grid.Column="2" Margin="5,5" Content="N° interne GL *:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBox x:Name="GL_internal_Number" MaxLength="10" TabIndex="13" Grid.Row="2" Grid.Column="3" Margin="5,5" Height="23" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+                <Label TabIndex="14" Grid.Row="3" Grid.Column="2" Margin="5,5" Content="N° rapport GL *:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                <TextBox x:Name="GL_reporting_Number" MaxLength="10" TabIndex="15" Grid.Row="3" Grid.Column="3" Margin="5,5" Height="23" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+                <Label TabIndex="16" Grid.Row="4" Grid.Column="2" Margin="5,5" Content="Provision Stage *:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBox x:Name="Provision_Stage" MaxLength="10" TabIndex="17" Grid.Row="4" Grid.Column="3" Margin="5,5" Height="23" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+                <Label TabIndex="16" Grid.Row="5" Grid.Column="2" Margin="5,5" Content="Attribue 1 :" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBox x:Name="Attribute_1" MaxLength="3" TabIndex="17" Grid.Row="5" Grid.Column="3" Margin="5,5" Height="23" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+                <Label TabIndex="16" Grid.Row="6" Grid.Column="2" Margin="5,5" Content="Attribue 2 :" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBox x:Name="Attribute_2" MaxLength="3" TabIndex="17" Grid.Row="6" Grid.Column="3" Margin="5,5" Height="23" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+                <Label TabIndex="16" Grid.Row="7" Grid.Column="2" Margin="5,5" Content="Attribue 3 :" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBox x:Name="Attribute_3" MaxLength="3" TabIndex="17" Grid.Row="7" Grid.Column="3" Margin="5,5" Height="23" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+                <Label TabIndex="16" Grid.Row="8" Grid.Column="2" Margin="5,5" Content="Attribue 4 :" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBox x:Name="Attribute_4" MaxLength="3" TabIndex="17" Grid.Row="8" Grid.Column="3" Margin="5,5" Height="23" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+                <Label TabIndex="16" Grid.Row="9" Grid.Column="2" Margin="5,5" Content="Attribue 5 :" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBox x:Name="Attribute_5" MaxLength="3" TabIndex="17" Grid.Row="9" Grid.Column="3" Margin="5,5" Height="23" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+
+                <Button x:Name="Enregistrer" TabIndex="26" Grid.Row="13" Grid.Column="1" Margin="5,0,20,5" Content="Enregistrer" HorizontalAlignment="Right" VerticalAlignment="Center" Width="80" Click="Enregistrer_Click"/>
+                <Button x:Name="Cancel" TabIndex="27" Grid.Row="13" Grid.Column="2" Margin="20,0,15,5" Content="Annuler" HorizontalAlignment="Left" VerticalAlignment="Center" Width="80" Click="Cancel_Click"/>
+
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

@@ -5,18 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SpootLight.Views.PR"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+        xmlns:ReoGrid="clr-namespace:unvell.ReoGrid;assembly=unvell.ReoGrid"
         mc:Ignorable="d"
-        Title="SpootLight" Height="540" Width="1390" Icon="../../Img/focus3.png" Background="#6BADF6" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip">
+        Title="SpootLight" Height="740" Width="1270" 
+        Background="#fafafa" WindowStyle="None" WindowStartupLocation="CenterScreen" 
+        ResizeMode="CanResizeWithGrip"
+        MinWidth="1270" MinHeight="700" SizeChanged="Window_SizeChanged" x:Name="MainViewSpotLight">
     <Grid>
         <Border BorderThickness="5" CornerRadius="10">
 
-            <Grid >
-                <StackPanel Orientation="Vertical" Height="auto" Width="auto" Background="#F0F0F0" >
-                    <DockPanel Background="#6BADF6" MouseLeftButtonDown="DockPanel_MouseLeftButtonDown">
-                        <Image Width="25" Height="25" Source="../../Img/focus3.png" Margin="0,0,0,0" HorizontalAlignment="Left"/>
-                        <Label Content="SpotLight v1.0.0" Margin="0,0,0,0" HorizontalAlignment="Left" FontFamily="Verdana"/>
+            <Grid>
+                
+                <StackPanel Orientation="Vertical" Height="auto" Width="auto" Background="White" >
+                    <DockPanel Background="#fafafa" MouseLeftButtonDown="DockPanel_MouseLeftButtonDown" MouseDown="DockPanel_MouseDown">
+                        <Image Width="45" Height="25" Source="../../Img/logosmall.png" Margin="0,0,0,0" HorizontalAlignment="Left"/>
+                        <Label x:Name="WindowTitle" Content="SpotLight v1.0.0" Margin="0,0,0,0" HorizontalAlignment="Left" FontFamily="Verdana" />
                         <DockPanel HorizontalAlignment="Right"  >
-                            <Button x:Name="ButtonMinimize" Width="30" Height="20" Padding="0" Background="Transparent" HorizontalAlignment="Right">
+                            <Button x:Name="ButtonMinimize" Width="30" Height="20" Padding="0" Background="Transparent" HorizontalAlignment="Right" Click="ButtonMinimize_Click">
                                 <materialDesign:PackIcon Kind="WindowMinimize"/>
                             </Button>
                             <Button x:Name="ButtonMaximize" Width="30" Height="20" Padding="0" Background="Transparent" HorizontalAlignment="Right" Click="ButtonMaximize_Click">
@@ -27,52 +33,64 @@
                             </Button>
                         </DockPanel>
                     </DockPanel>
-                    <Menu IsMainMenu="True" Height="24" Width="auto" Margin="0,0,0,0" >
-                        <MenuItem Header="_Fichier">
-                            <MenuItem x:Name="OpenAnalyse" Header="Ouvrir Analyse" Click="OpenAnalyse_Click">
+                    <Menu IsMainMenu="True" Height="32" Width="auto" Margin="0,0,0,0" Background="#EDF6FB">
+                        <MenuItem Header="_Fichier" FontFamily="Microsoft Sans Serif" FontSize="13">
+                            <MenuItem x:Name="OpenAnalyse" Header="Ouvrir Analyse" Click="OpenAnalyse_Click" FontWeight="Normal">
                                 <MenuItem.Icon>
                                     <materialDesign:PackIcon Kind="Openid" />
                                 </MenuItem.Icon>
                             </MenuItem>
-                            <MenuItem x:Name="NewAnalyse" Header="Nouvelle Analyse" Click="NewAnalyse_Click">
+                            <MenuItem x:Name="EditAnalyse" Header="Modifier Analyse" Click="EditAnalyse_Click" FontWeight="Normal">
+                                <MenuItem.Icon>
+                                    <materialDesign:PackIcon Kind="Pencil" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem x:Name="NewAnalyse" Header="Nouvelle Analyse" Click="NewAnalyse_Click" FontWeight="Normal">
                                 <MenuItem.Icon>
                                     <materialDesign:PackIcon Kind="Add" />
                                 </MenuItem.Icon>
                             </MenuItem>
+                            <MenuItem x:Name="Quitter" Header="Quitter l'application" Click="ButtonClose_Click" FontWeight="Normal">
+                                <MenuItem.Icon>
+                                    <materialDesign:PackIcon Kind="Close" />
+                                </MenuItem.Icon>
+                            </MenuItem>
                         </MenuItem>
-                        <MenuItem Header="_Référentiel">
-                            <MenuItem x:Name="DataCrud" Header="Données Crud" Click="DataCrud_Click">
+                        <MenuItem Header="_Référentiel" FontSize="13">
+                            <MenuItem x:Name="DataCrud" Header="Données" Click="DataCrud_Click" FontWeight="Normal">
+                                <MenuItem.Icon>
+                                    <materialDesign:PackIcon Kind="Database" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem x:Name="ParamCrud" Header="Paramétrage" Click="ParamCrudNav_Click" FontWeight="Normal">
                                 <MenuItem.Icon>
                                     <materialDesign:PackIcon Kind="Database" />
                                 </MenuItem.Icon>
                             </MenuItem>
                         </MenuItem>
-                        <MenuItem Header="_Traitements">
-                            <MenuItem x:Name="JobTalend" Header="Lancer Jobs Talend" Click="JobTalend_Click">
-                                <MenuItem.Icon>
-                                    <materialDesign:PackIcon Kind="ContentSave" />
-                                </MenuItem.Icon>
+                        <MenuItem x:Name="JobTalend" Header="_Traitement" FontSize="13">
+                            <MenuItem x:Name="Load" Header="COREP" Click="JobTalend_Click" FontWeight="Normal">
+                            </MenuItem>
+                            <MenuItem x:Name="Counts" Header="CMDR" Click="JobTalend_Click" FontWeight="Normal">
                             </MenuItem>
                         </MenuItem>
-                        <MenuItem x:Name="Tree" Header="Excel" >
-                            <MenuItem x:Name="ExcelBrowse" Header="Lancer COREP" Click="ExcelBrowse_Click">
-                                <MenuItem.Icon>
-                                    <materialDesign:PackIcon Kind="ContentSave" />
-                                </MenuItem.Icon>
+                        <MenuItem x:Name="Tree" Header="_Reporting réglementaire" FontSize="13">
+                            <MenuItem x:Name="ExcelBrowse" Header="COREP" Click="ExcelBrowse_Click" FontWeight="Normal">
+                            </MenuItem>
+                            <MenuItem x:Name="CMDR" Header="CMDR" Click="CMDR_Click" FontWeight="Normal">
                             </MenuItem>
                         </MenuItem>
                     </Menu>
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition MinHeight="100" Height="*" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition MinWidth="160" Width="220" />
-                                <ColumnDefinition MinWidth="500" Width="800*" />
+                                <ColumnDefinition MinWidth="500" Width="760*" />
                             </Grid.ColumnDefinitions>
-                            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="0" Grid.Column="0">
-                                <Menu x:Name="MenuNav" Height="auto" Width="220" HorizontalAlignment="Left" Background="#F0F0F0">
+                            <Menu x:Name="MenuNav" Height="auto" Width="220" HorizontalAlignment="Left" Background="White" Visibility="Hidden">
                                     <Menu.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <VirtualizingStackPanel Orientation="Vertical"/>
@@ -80,102 +98,232 @@
                                     </Menu.ItemsPanel>
                                     <MenuItem x:Name="ParamCrudNav" Height="44" Click="ParamCrudNav_Click">
                                         <MenuItem.Header>
-                                            <TextBlock Text="Paramétrages" Height="18" Margin="0,0,0,0"/>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Width="40" Height="40" Source="../../Img/IC_param.png" Margin="0,0,0,5" HorizontalAlignment="Left"/>
+                                                <ContentPresenter Height="18" Content="Paramétrages" />
+                                            </StackPanel>
                                         </MenuItem.Header>
-                                        <MenuItem.Icon>
-                                            <Image Width="30" Height="30" Source="../../Img/data.png" Margin="0,0,0,5" HorizontalAlignment="Left"/>
-                                        </MenuItem.Icon>
                                     </MenuItem>
                                     <StackPanel x:Name="ParampanelNav">
-                                        <ListBox x:Name="SousParamCrudLixtBox" Width="220" Margin="-10,0,-10,0" SelectionChanged="SousParamCrudLixtBox_SelectionChanged">
+                                        <ListBox x:Name="SousParamCrudLixtBox" Width="220" Height="220" Margin="-10,0,-10,0" SelectionChanged="SousParamCrudLixtBox_SelectionChanged">
                                         </ListBox>
                                     </StackPanel>
                                     <MenuItem x:Name="DataCrudNav" Height="44" Click="DataCrud_Click">
                                         <MenuItem.Header>
-                                            <TextBlock Text="Données" Height="18" Margin="0,0,0,0"/>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Width="40" Height="40" Source="../../Img/IC_donne.png" Margin="0,0,0,5" HorizontalAlignment="Left"/>
+                                                <ContentPresenter Height="18" Content="Données" />
+                                            </StackPanel>
                                         </MenuItem.Header>
-                                        <MenuItem.Icon>
-                                            <Image Width="30" Height="30" Source="../../Img/data.png" Margin="0,0,0,5" HorizontalAlignment="Left"/>
-                                        </MenuItem.Icon>
                                     </MenuItem>
                                     <StackPanel x:Name="DatapanelNav">
-                                        <ListBox x:Name="SousDataCrudLixtBox" Width="220" Margin="-10,0,-10,0" SelectionChanged="SousDataCrudLixtBox_SelectionChanged">
+                                        <ListBox x:Name="SousDataCrudLixtBox" Height="220" Width="220" Margin="-10,0,-10,0" SelectionChanged="SousDataCrudLixtBox_SelectionChanged">
                                         </ListBox>
                                     </StackPanel>
                                     <MenuItem x:Name="JobTalendNav" Height="44" Click="JobTalend_Click">
                                         <MenuItem.Header>
-                                            <TextBlock Text="Traitements" Height="18"/>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Width="40" Height="40" Source="../../Img/IC_traitement.png" Margin="0,0,0,5" HorizontalAlignment="Left"/>
+                                                <ContentPresenter Height="18" Content="Traitements" />
+                                            </StackPanel>
                                         </MenuItem.Header>
-                                        <MenuItem.Icon>
-                                            <Image Width="30" Height="30" Source="../../Img/analyse.png" Margin="0,0,0,5" HorizontalAlignment="Left"/>
-                                        </MenuItem.Icon>
                                     </MenuItem>
                                     <StackPanel x:Name="JobpanelNav">
-                                        <TreeView Name="trvMenu" Background="White" Width="220" Margin="-10,0,-10,0">
+                                        <TreeView Name="trvMenu" Background="White" Width="220" Margin="-10,0,-10,0" Height="220">
                                             <TreeView.ItemTemplate>
                                                 <HierarchicalDataTemplate DataType="{x:Type MenuItem}" ItemsSource="{Binding Items}" >
-                                                    <TextBlock  FontSize="14" Text="{Binding Title}" MouseDown="TextBlock_MouseDown" />
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image Source="../../Img/jobico.png" Margin="0,0,0,0" Width="20" Height="20"/>
+                                                        <TextBlock  FontSize="14" Text="{Binding Title}" MouseDown="TextBlock_MouseDown" />
+                                                    </StackPanel>
                                                 </HierarchicalDataTemplate>
                                             </TreeView.ItemTemplate>
                                         </TreeView>
                                     </StackPanel>
+                                    
+                                    <MenuItem Height="44" x:Name="RepportingNav" Click="RepportingNav_Click">
+                                        <MenuItem.Header>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Width="40" Height="40" Source="../../Img/IC_reporting.png" Margin="0,0,0,5" HorizontalAlignment="Left"/>
+                                                <ContentPresenter Height="18" Content="Rapports" />
+                                            </StackPanel>
+                                        </MenuItem.Header>
+                                    </MenuItem>
+                                    <StackPanel x:Name="ReportingNav">
+                                        <ListBox x:Name="ReportingListBox" Height="220" Width="220" Margin="-10,0,-10,0" SelectionChanged="ReportingListBox_SelectionChanged">
+                                        </ListBox>
+                                    </StackPanel>
                                     <MenuItem Height="44" x:Name="CorepNav" Click="ExcelBrowse_Click" >
                                         <MenuItem.Header>
-                                            <TextBlock Text="COREP" Height="18"/>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Width="40" Height="40" Source="../../Img/IC_corep.png" Margin="0,0,0,5" HorizontalAlignment="Left"/>
+                                                <ContentPresenter Height="18" Content="Déclarations" />
+                                            </StackPanel>
                                         </MenuItem.Header>
-                                        <MenuItem.Icon>
-                                            <Image Width="30" Height="30" Source="../../Img/corepdata.png" Margin="0,0,0,5" HorizontalAlignment="Left"/>
-                                        </MenuItem.Icon>
                                     </MenuItem>
-                                    <MenuItem Height="44" x:Name="RepportingNav" Click="ExcelBrowse_Click" >
+                                    <StackPanel x:Name="CoreppanelNav">
+                                        <TreeView x:Name="foldersItem" Width="220" Background="White" Margin="-10,0,-10,0" MouseDoubleClick="FoldersItem_MouseDoubleClick" Height="220">
+                                            <TreeView.Resources>
+                                                <Style TargetType="{x:Type TreeViewItem}">
+                                                    <Setter Property="HeaderTemplate">
+                                                        <Setter.Value>
+                                                            <DataTemplate>
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <TextBlock Text="{Binding}" Margin="5,0" />
+                                                                </StackPanel>
+                                                            </DataTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </TreeView.Resources>
+                                            <TreeView.ContextMenu>
+                                                <ContextMenu>
+                                                    <MenuItem x:Name="OpenCorepInExcel" Header="Ouvrir dans Microsoft Excel" Click="OpenCorepInExcel_Click"/>
+                                                </ContextMenu>
+                                            </TreeView.ContextMenu>
+                                        </TreeView>
+                                    </StackPanel>
+                                    <MenuItem Height="44" x:Name="AdminNav" Click="AdminNav_Click">
                                         <MenuItem.Header>
-                                            <TextBlock Text="Rapports" Height="18"/>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Width="40" Height="40" Source="../../Img/IC_admin.png" Margin="0,0,0,5" HorizontalAlignment="Left"/>
+                                                <ContentPresenter Height="18" Content="Admin" />
+                                            </StackPanel>
                                         </MenuItem.Header>
-                                        <MenuItem.Icon>
-                                            <Image Width="30" Height="30" Source="../../Img/repport.png" Margin="0,0,0,5" HorizontalAlignment="Left"/>
-                                        </MenuItem.Icon>
                                     </MenuItem>
-                                </Menu>
-                            </ScrollViewer>
-                            <StackPanel Orientation="Horizontal" >
+                                    <StackPanel x:Name="AdminpanelNav">
+                                        <ListBox x:Name="AdminListBox" Width="220" Height="220" Margin="-10,0,-10,0" SelectionChanged="AdminListBox_SelectionChanged">
+                                        </ListBox>
+                                    </StackPanel>
+                                </Menu> 
+
+                                <telerik:RadDocking x:Name="radDocking" SizeChanged="RadDocking_SizeChanged"  Background="White" BorderBrush="White">
+                                    <telerik:RadSplitContainer x:Name="radSplitContainer">
+                                        <telerik:RadPaneGroup x:Name="radPaneGroup" >
+                                        <telerik:RadPane x:Name="MAJParam" FontFamily="Courrier" FontWeight="Medium" Width="35" FontSize="14" Header="Mise à jour Paramétrage" CanUserClose="False" CanDockInDocumentHost="False" IsPinned="False" CanUserPin="False">
+                                                <telerik:RadTreeView>
+                                                    <telerik:RadTreeView.Items>
+                                                    <telerik:RadTreeViewItem Header="Chapitre comptable" x:Name="PR_ACCOUNT" FontWeight="Light" Click="PR_ACCOUNT_Click" />
+                                                    <telerik:RadTreeViewItem Header="Portfeuil Baloi" x:Name="PR_BASEL_PORT" FontWeight="Light" Click="PR_BASEL_PORT_Click"/>
+                                                    <telerik:RadTreeViewItem Header="Catégorie Baloise" x:Name="PR_BASEL_CATEGO" FontWeight="Light" Click="PR_BASEL_CATEGO_Click"/>
+                                                    <telerik:RadTreeViewItem Header="Devise et taux de change" x:Name="PR_CURR" FontWeight="Light" Click="PR_CURR_Click"/>
+                                                    <telerik:RadTreeViewItem Header="Agent économique" x:Name="PR_ECO_SECT" FontWeight="Light" Click="PR_ECO_SECT_Click"/>
+                                                    <telerik:RadTreeViewItem Header="Type de Garantie " x:Name="PR_GUARR" FontWeight="Light" Click="PR_GUARR_Click"/>
+                                                    <telerik:RadTreeViewItem Header="Segment Client Interne" x:Name="PR_INTER_SEG" FontWeight="Light" Click="PR_INTER_SEG_Click"/>
+                                                    <telerik:RadTreeViewItem Header="Type de Sécurité" x:Name="PR_SECURITY" FontWeight="Light" Click="PR_SECURITY_Click"/>
+                                                    </telerik:RadTreeView.Items>
+                                                </telerik:RadTreeView>
+                                            </telerik:RadPane>
+                                        <telerik:RadPane x:Name="LoadData" FontFamily="Courrier" FontWeight="Medium" Width="35" FontSize="14" Header="Charger les données"  IsPinned="False" CanUserPin="False" CanUserClose="False"  CanDockInDocumentHost="False">
+                                                <telerik:RadTreeView>
+                                                    <telerik:RadTreeView.Items>
+                                                    <telerik:RadTreeViewItem Header="Client" x:Name="DT_Client" FontWeight="Light" Click="DT_Client_Click"/>
+                                                    <telerik:RadTreeViewItem Header="Compte" x:Name="DT_Compte" FontWeight="Light" Click="DT_Compte_Click"/>
+                                                    <telerik:RadTreeViewItem Header="Garantie" x:Name="DT_Guarantie" FontWeight="Light" Click="DT_Guarantie_Click"/>
+                                                    <telerik:RadTreeViewItem Header="Défaut" x:Name="DT_DEFAULT" FontWeight="Light" Click="DT_DEFAULT_Click"/>
+                                                    <telerik:RadTreeViewItem Header="Provision" x:Name="DT_PROVISION" FontWeight="Light" Click="DT_PROVISION_Click"/>
+                                                    </telerik:RadTreeView.Items>
+                                                </telerik:RadTreeView>
+                                            </telerik:RadPane>
+                                        <telerik:RadPane x:Name="CalcReport" FontFamily="Courrier" FontWeight="Medium" Width="35" FontSize="14" Header="Calcul Et Reporting"  IsPinned="False" CanUserPin="False" CanUserClose="False" CanDockInDocumentHost="False">
+                                                <telerik:RadTreeView>
+                                                    <telerik:RadTreeView.Items>
+                                                        <telerik:RadTreeViewItem Header="COREP" >
+                                                        <telerik:RadTreeViewItem Header="1- Calcul des actifs pondérés" x:Name="FT_ASS_ET" FontWeight="Light" Click="FT_ASSET_Click"/>
+                                                        <telerik:RadTreeViewItem Header="2- Calcul des techniques d'atténuation des risques " x:Name="FT_AR_C" FontWeight="Light" Click="FT_ARC_Click"/>
+                                                        <!--<telerik:RadTreeViewItem Header="3- Etat COREP CA " x:Name="FT_COREP_C_A" Click="FT_COREP_CA_Click"/>
+                                                            <telerik:RadTreeViewItem Header="4- Etat COREP CR SA " x:Name="FT_COREP_C_R" Click="FT_COREP_CR_Click"/>-->
+                                                        </telerik:RadTreeViewItem>
+                                                        <telerik:RadTreeViewItem Header="CMDR" >
+                                                        <telerik:RadTreeViewItem Header="1- Engagement Client" x:Name="FT_COST_COM" FontWeight="Light" Click="FT_COST_COM_Click"/>
+                                                        <telerik:RadTreeViewItem Header="2- Client éligible CMDR" x:Name="FT_COST" FontWeight="Light" Click="FT_COST_Click"/>
+                                                        </telerik:RadTreeViewItem>
+                                                    </telerik:RadTreeView.Items>
+                                                </telerik:RadTreeView>
+                                            </telerik:RadPane>
+                                        <telerik:RadPane x:Name="Declaration" Height="180" FontFamily="Courrier" FontWeight="Medium" Width="35" FontSize="14" Header="         Déclarations"  IsPinned="False" CanUserPin="False" CanUserClose="False" CanDockInDocumentHost="False">
+                                                <telerik:RadTreeView>
+                                                    <telerik:RadTreeView.Items>
+                                                        <telerik:RadTreeViewItem Header="COREP" >
+                                                        <telerik:RadTreeViewItem Header="CR" FontWeight="Light">
+                                                            <telerik:RadTreeViewItem x:Name="SA" FontWeight="Light" Header="SA" Click="SA_Click"/>
+                                                            <telerik:RadTreeViewItem x:Name="CRM" FontWeight="Light" Header="CRM" Click="CRM_Click"/>
+                                                            </telerik:RadTreeViewItem>
+                                                        <telerik:RadTreeViewItem Header="MK" FontWeight="Light"/>
+                                                        <telerik:RadTreeViewItem Header="OP" FontWeight="Light"/>
+                                                        </telerik:RadTreeViewItem>
+                                                        <telerik:RadTreeViewItem Header="CMDR" >
+                                                        <telerik:RadTreeViewItem x:Name="CMDR335" FontWeight="Light" Header="Etat 335" Click="CMDR335_Click"/>
+                                                        <telerik:RadTreeViewItem x:Name="CMDR337" FontWeight="Light" Header="Etat 337" Click="CMDR337_Click"/>
+                                                        <telerik:RadTreeViewItem x:Name="CMDR339" FontWeight="Light" Header="Etat 339" Click="CMDR339_Click"/>
+                                                        </telerik:RadTreeViewItem>
+                                                    </telerik:RadTreeView.Items>
+                                                </telerik:RadTreeView>
+                                            </telerik:RadPane>
+                                        <telerik:RadPane x:Name="Admin" FontFamily="Courrier" FontWeight="Medium"  Height="150" Width="35" FontSize="14" Header="    Administrateur"  IsPinned="False" CanUserPin="False" CanUserClose="False" CanDockInDocumentHost="False" >
+                                                <telerik:RadTreeView>
+                                                    <telerik:RadTreeView.Items>
+                                                    <telerik:RadTreeViewItem Header="Gestion des utilisateurs" FontWeight="Light" />
+                                                    </telerik:RadTreeView.Items>
+                                                </telerik:RadTreeView>
+                                            </telerik:RadPane>
+                                        </telerik:RadPaneGroup>
+
+                                    </telerik:RadSplitContainer>
+                                </telerik:RadDocking>
+                            
+                            
+                            <StackPanel Orientation="Horizontal">
                                 <Line X1="0" X2="0" Y1="0" Y2="20" Stroke="Black" StrokeThickness="1" Height="50" Margin="225,0,0,0"/>
                             </StackPanel>
-                            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="0" Grid.Column="1">
-                                <GroupBox x:Name="GroupBoxData" HorizontalAlignment="Left" Header="Données Crud" FontFamily="Microsoft Sans Serif" FontSize="12" FontWeight="Normal" Width="auto" Height="auto" BorderBrush="Black" Margin="10,4,0,0" Visibility="Hidden">
-                                    <StackPanel x:Name="stackData" Orientation="Vertical" Height="auto" Width="auto" Background="#F0F0F0" ></StackPanel>
+                            <GroupBox x:Name="GroupBoxData" HorizontalAlignment="Stretch" Header="Paramétrage" FontFamily="Microsoft Sans Serif" FontSize="12" FontWeight="Normal" Width="auto" Height="auto" BorderBrush="Black" Margin="10,4,0,0" Visibility="Hidden" Grid.Row="0" Grid.Column="1" Background="#F0F0F0">
+                                <StackPanel x:Name="stackData"  HorizontalAlignment="Stretch" Orientation="Vertical" Height="auto" Width="auto" Background="#F0F0F0" ></StackPanel>
                                 </GroupBox>
-                            </ScrollViewer>
-                            <GroupBox x:Name="GroupBoxJob" HorizontalAlignment="Left" Header="Traitements" FontFamily="Microsoft Sans Serif" FontSize="12" FontWeight="Normal" Width="1133" Height="auto" BorderBrush="Black" Margin="10,4,0,0" Visibility="Visible" Grid.Row="0" Grid.Column="1">
-                                <StackPanel x:Name="stack" Visibility="Visible" Orientation="Horizontal" Height="430" Width="1028" HorizontalAlignment="Left" Margin="36,0,0,10" >
-                                    <StackPanel Orientation="Vertical">
+                            <GroupBox x:Name="GroupBoxDataDT" HorizontalAlignment="Stretch" Header="Paramétrage" FontFamily="Microsoft Sans Serif" FontSize="12" FontWeight="Normal" Width="auto" Height="auto" BorderBrush="Black" Margin="10,4,0,0" Visibility="Hidden" Grid.Row="0" Grid.Column="1" Background="#F0F0F0">
+                                <StackPanel x:Name="stackDataDT"  HorizontalAlignment="Stretch" Orientation="Vertical" Height="auto" Width="auto" Background="#F0F0F0" ></StackPanel>
+                            </GroupBox>
+                            <GroupBox x:Name="GroupBoxJob" HorizontalAlignment="Left" Header="Traitements" FontFamily="Microsoft Sans Serif" FontSize="12" FontWeight="Normal" Width="1000" Height="auto" BorderBrush="Black" Margin="10,4,0,0" Visibility="Hidden" Grid.Row="0" Grid.Column="1" Background="#F0F0F0">
+                                <StackPanel x:Name="stack" Visibility="Visible" Orientation="Horizontal" Height="430" Width="900" HorizontalAlignment="Left" Margin="36,0,0,10" Background="#F0F0F0">
+                                    <StackPanel Orientation="Vertical" >
                                         <StackPanel Orientation="Horizontal">
                                             <Label Content="Nom de Job      :" HorizontalAlignment="Center" Margin="60,5,0,0" VerticalAlignment="Top" />
-                                            <Label x:Name="NomJobResult" Content="Job xxx" HorizontalAlignment="Center" Margin="60,5,0,0" VerticalAlignment="Top" />
+                                            <Label x:Name="NomJobResult" Content="" HorizontalAlignment="Center" Margin="60,5,0,0" VerticalAlignment="Top" />
                                         </StackPanel>
-                                        <StackPanel Orientation="Horizontal">
+                                        <StackPanel Orientation="Horizontal" Visibility="Hidden" Height="0">
                                             <Label Content="Chemin de Job :" HorizontalAlignment="Center" Margin="60,5,0,0" VerticalAlignment="Top" />
                                             <Label x:Name="CheminJobResult" Content="Chemin xyy" HorizontalAlignment="Center" Margin="60,5,0,0" VerticalAlignment="Top" />
                                         </StackPanel>
-                                        <StackPanel Orientation="Vertical" Height="370" Width="1028">
-                                            <Label Content="Résultat :" HorizontalAlignment="Left" Margin="60,5,0,0" VerticalAlignment="Top" />
-                                            <RichTextBox x:Name="ResultJob" Margin="225,0,0,0" Width="600" Height="140" HorizontalAlignment="Left" IsReadOnly="True" VerticalScrollBarVisibility="Auto" />
+                                        <StackPanel Orientation="Vertical" Height="370" Width="900">
+                                            <Label Content="Description :" HorizontalAlignment="Left" Margin="60,5,0,0" VerticalAlignment="Top" />
+                                            <RichTextBox x:Name="ResultJob" Margin="225,-10,0,0" Width="600" Height="140" VerticalAlignment="Top" HorizontalAlignment="Left" IsReadOnly="True" VerticalScrollBarVisibility="Auto" />
                                             <Label Content="Erreurs :" HorizontalAlignment="Left" Margin="60,5,0,0" VerticalAlignment="Top" />
-                                            <RichTextBox x:Name="ResultJobErrors" Margin="225,0,0,0" Width="600" Height="125" HorizontalAlignment="Left" IsReadOnly="True" Foreground="Red" VerticalScrollBarVisibility="Auto"/>
-                                            <Button x:Name="LancerJobBtn" Content="Lancer Job" HorizontalAlignment="Center" Margin="0,15,50,0" VerticalAlignment="Center" Width="106" Height="30" Click="LancerJobBtn_Click"/>
+                                            <RichTextBox x:Name="ResultJobErrors" Margin="225,-10,0,0" Width="600" Height="125" HorizontalAlignment="Left" IsReadOnly="True" Foreground="Red" VerticalScrollBarVisibility="Auto"/>
+                                            <Button x:Name="LancerJobBtn" Content="Lancer" HorizontalAlignment="Center" Margin="0,15,50,0" VerticalAlignment="Center" Width="106" Height="30" Click="LancerJobBtn_Click">
+                                            </Button>    
                                         </StackPanel>
                                     </StackPanel>
                                 </StackPanel>
                             </GroupBox>
-                            <StackPanel Orientation="Horizontal" Height="23" Width="200" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,0,0" Grid.Row="0" Grid.Column="1">
-                                <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center">
-                                    <Image Width="10" Height="10" Source="../../Img/connected.png" Margin="0,5,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                    <Label x:Name="UserConnect" Foreground="Black" FontSize="11.5" Content="Hello User" />
+                            <GroupBox x:Name="GroupBoxCorep" HorizontalAlignment="Left" Header="COREP" FontFamily="Microsoft Sans Serif" FontSize="12" FontWeight="Normal" Width="auto" Height="auto" BorderBrush="Black" Margin="10,4,0,0" Visibility="Hidden" Grid.Row="0" Grid.Column="1" Background="#F0F0F0">
+                                <StackPanel x:Name="stackCorep" Visibility="Visible" Orientation="Horizontal" Height="auto" Width="auto" HorizontalAlignment="Left" Margin="5,0,0,10" Background="#F0F0F0">
                                 </StackPanel>
-                                <Label x:Name="TimeConnect" Foreground="Black" FontSize="11.5" Content="Time" HorizontalAlignment="Center" Margin="0,0,0,0.2" Width="130">
-                                </Label>
-                            </StackPanel>
+                            </GroupBox>
+                            <GroupBox x:Name="GroupBoxReporting" HorizontalAlignment="Left" Header="Reporting " FontFamily="Microsoft Sans Serif" FontSize="12" FontWeight="Normal" Width="auto" Height="auto" BorderBrush="Black" Margin="10,4,0,0" Visibility="Hidden" Grid.Row="0" Grid.Column="1" Background="#F0F0F0">
+                                <StackPanel x:Name="stackReporting" Orientation="Vertical" Height="auto" Width="auto" Background="#F0F0F0" ></StackPanel>
+                            </GroupBox>
+                            <GroupBox x:Name="GroupBoxUser" HorizontalAlignment="Left" Header="Données Utilisateurs" FontFamily="Microsoft Sans Serif" FontSize="12" FontWeight="Normal" Width="auto" Height="auto" BorderBrush="Black" Margin="10,4,0,0" Visibility="Hidden" Grid.Row="0" Grid.Column="1" Background="#F0F0F0">
+                                <StackPanel x:Name="stackUser" Orientation="Vertical" Height="auto" Width="auto" Background="#F0F0F0" ></StackPanel>
+                            </GroupBox>
                         </Grid>
                     </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="23" Width="400" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,0.2,-0.2" Grid.Row="0" Grid.Column="1">
+                    <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center">
+                        <Image Width="10" Height="10" Source="../../Img/connected.png" Margin="0,5,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <Label x:Name="UserConnect" Foreground="Black" FontSize="11.5" Content="Hello User" />
+                    </StackPanel>
+                    <Label x:Name="TimeConnect" Foreground="Black" FontSize="11.5" Content="Time" HorizontalAlignment="Center" Margin="0,0,0,0.2" Width="130">
+                    </Label>
                 </StackPanel>
             </Grid>
         </Border>

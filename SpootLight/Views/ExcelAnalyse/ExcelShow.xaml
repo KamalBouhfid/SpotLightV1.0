@@ -1,21 +1,12 @@
-﻿<Window x:Class="SpootLight.Views.ExcelAnalyse.ExcelShow"
+﻿<UserControl x:Class="SpootLight.Views.ExcelAnalyse.ExcelShow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SpootLight.Views.ExcelAnalyse"
         xmlns:ReoGrid="clr-namespace:unvell.ReoGrid;assembly=unvell.ReoGrid"
-        mc:Ignorable="d"
-        Title="ExcelShow" Height="700" Width="1400">
+        mc:Ignorable="d" d:DesignHeight="425" d:DesignWidth="1000">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="5*"/>
-            <ColumnDefinition Width="859*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0*"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
         <Grid.RenderTransform>
             <TransformGroup>
                 <ScaleTransform/>
@@ -23,7 +14,7 @@
                 <TranslateTransform/>
             </TransformGroup>
         </Grid.RenderTransform>
-        <ReoGrid:ReoGridControl  x:Name="coco" HorizontalAlignment="Center" Height="669" Margin="-5,0,0,0" VerticalAlignment="Top" Width="1390" RenderTransformOrigin="0.5,0.5" Grid.Row="1" Grid.Column="1">
+        <ReoGrid:ReoGridControl  x:Name="Sheet" HorizontalAlignment="Stretch" Height="auto" Width="auto" VerticalAlignment="Center" Margin="-5,0,0,0" RenderTransformOrigin="0.5,0.5">
             <ReoGrid:ReoGridControl.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -33,4 +24,4 @@
             </ReoGrid:ReoGridControl.RenderTransform>
         </ReoGrid:ReoGridControl>
     </Grid>
-</Window>
+</UserControl>

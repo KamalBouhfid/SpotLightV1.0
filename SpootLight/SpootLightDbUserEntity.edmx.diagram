@@ -11,6 +11,8 @@
         <AssociationConnector Association="nachiModel.FK__analyse__entity___31EC6D26" ManuallyRouted="false" />
         <AssociationConnector Association="nachiModel.FK__analyse__user_id__32E0915F" ManuallyRouted="false" />
         <EntityTypeShape EntityType="nachiModel.type" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="nachiModel.GroupsUserSpot" Width="1.5" PointX="0.75" PointY="8.75" />
+        <AssociationConnector Association="nachiModel.FK__UserSpot__groupe__49C3F6B7" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

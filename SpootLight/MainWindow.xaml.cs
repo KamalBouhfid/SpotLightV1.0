@@ -1,9 +1,11 @@
 ﻿using SpootLight.Controllers;
+using SpootLight.Models;
 using SpootLight.Popup;
 using SpootLight.Views.Analyse;
 using SpootLight.Views.PR;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -17,6 +19,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace SpootLight
 {
@@ -25,14 +28,16 @@ namespace SpootLight
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public static List<string> user = new List<string>();
         AuthentificationController Ac = new AuthentificationController();
+
+
         public MainWindow()
         {
             InitializeComponent();
             DateSystem.Content = DateTime.Now.ToString("dd/MM/yyyy");
         }
-
         private void Forgetpass_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             OublieMotPasse o = new OublieMotPasse();
@@ -98,6 +103,7 @@ namespace SpootLight
         {
             Ac.CheckEmailFormat(SG_login_txt);
         }
+
         
     }
 }

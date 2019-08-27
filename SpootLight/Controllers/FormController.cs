@@ -15,6 +15,10 @@ namespace SpootLight.Controllers
         {
             Regex RX = new Regex("^-?\\d*(\\.\\d+)?$");
             Match match = RX.Match(text.Text.Replace(",", "."));
+            if(text.Text.Equals("") || text.Text.Equals(null))
+            {
+                text.BorderBrush = Brushes.Transparent;
+            }
             if (match.Success)
             {
                 text.BorderBrush = Brushes.Green;
@@ -29,6 +33,36 @@ namespace SpootLight.Controllers
             }
         }
         public bool CheckNotNull(TextBox text)
+        {
+            if (text.Text != null && text.Text != "")
+            {
+                text.BorderBrush = Brushes.Green;
+                text.ToolTip = "Format valide !";
+                return true;
+            }
+            else
+            {
+                text.BorderBrush = Brushes.Red;
+                text.ToolTip = "Format invalide !";
+                return false;
+            }
+        }
+        public bool CheckEntityNotNull(ComboBox text)
+        {
+            if (text.Text != null && text.Text != "")
+            {
+                text.BorderBrush = Brushes.Green;
+                text.ToolTip = "Format valide !";
+                return true;
+            }
+            else
+            {
+                text.BorderBrush = Brushes.Red;
+                text.ToolTip = "Format invalide !";
+                return false;
+            }
+        }
+        public bool CheckDateNotNull(DatePicker text)
         {
             if (text.Text != null && text.Text != "")
             {

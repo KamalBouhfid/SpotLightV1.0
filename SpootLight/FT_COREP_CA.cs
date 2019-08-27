@@ -17,6 +17,6 @@ namespace SpootLight
         public System.DateTime ID_DATE { get; set; }
         public string ID_ENTITY { get; set; }
         public string ID_AMOUNT { get; set; }
-        public Nullable<int> AMOUNT { get; set; }
+        public Nullable<long> AMOUNT { get; set; }
     }
 }

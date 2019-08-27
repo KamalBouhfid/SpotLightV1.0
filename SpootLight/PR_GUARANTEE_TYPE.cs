@@ -16,9 +16,13 @@ namespace SpootLight
     {
         public string Bank_Code { get; set; }
         public string Process_Date { get; set; }
+        public string Version { get; set; }
         public string Guarantee_Account { get; set; }
         public string Guarantee_Type_Description { get; set; }
         public string Guarantee_Class { get; set; }
         public Nullable<float> Guarantee_Weighting { get; set; }
+        public Nullable<bool> In_COREP { get; set; }
+        public Nullable<bool> In_CMDR { get; set; }
+        public Nullable<float> Guarantee_Weighting_Cmdr { get; set; }
     }
 }

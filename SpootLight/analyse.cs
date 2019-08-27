@@ -20,6 +20,7 @@ namespace SpootLight
         public Nullable<System.DateTime> date_analyse { get; set; }
         public string Description { get; set; }
         public string version { get; set; }
+        public string type { get; set; }
     
         public virtual entities entities { get; set; }
         public virtual UserSpot UserSpot { get; set; }

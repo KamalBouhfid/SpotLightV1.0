@@ -17,7 +17,7 @@ namespace SpootLight.Views.ExcelAnalyse
     /// <summary>
     /// Logique d'interaction pour ExcelShow.xaml
     /// </summary>
-    public partial class ExcelShow : Window
+    public partial class ExcelShow : UserControl
     {
         public string SelectedImagePath;
         public ExcelShow()

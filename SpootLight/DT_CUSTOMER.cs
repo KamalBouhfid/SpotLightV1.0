@@ -16,15 +16,26 @@ namespace SpootLight
     {
         public string Bank_Code { get; set; }
         public string Process_Date { get; set; }
+        public string Version { get; set; }
         public string Customer_Code { get; set; }
-        public string Customer_Name { get; set; }
+        public string Customer_First_Name { get; set; }
+        public string Customer_Last_Name { get; set; }
+        public string Company_Name { get; set; }
         public string Customer_Type { get; set; }
+        public string Customer_ID_Type { get; set; }
+        public string Customer_ID_Number { get; set; }
+        public string Company_group { get; set; }
+        public string Company_group_name { get; set; }
         public string Customer_Country_Code { get; set; }
         public string Economic_Sector { get; set; }
+        public string Activity_Area { get; set; }
         public string Internal_Segment { get; set; }
+        public string Internal_Notation { get; set; }
         public string External_Notation { get; set; }
         public string Business_Category { get; set; }
         public Nullable<float> Commitment_Amount_in_local_currency { get; set; }
+        public Nullable<float> Default_Amount_in_local_currency { get; set; }
+        public string Rating { get; set; }
         public Nullable<float> Turnover { get; set; }
         public string Attribute_1 { get; set; }
         public string Attribute_2 { get; set; }

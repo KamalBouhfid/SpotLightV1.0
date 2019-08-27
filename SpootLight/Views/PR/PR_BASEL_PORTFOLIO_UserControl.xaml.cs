@@ -1,5 +1,6 @@
 ﻿using SpootLight.Controllers;
 using SpootLight.Models;
+using SpootLight.Popup;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -31,7 +32,9 @@ namespace SpootLight.Views.PR
         public List<string> analyseSession = new List<string>();
         static string BankCode = Globals.getAnalyse()[1];
         static string dateArrete = Globals.getAnalyse()[3];
+        static string version = Globals.getAnalyse()[5];
         private static List<PR_BASEL_PORTFOLIO> portfolios;
+        public static string groupe = "";
         private static List<PR_BASEL_PORTFOLIO> myList = new List<PR_BASEL_PORTFOLIO>();
         public PR_BASEL_PORTFOLIO_UserControl()
         {
@@ -39,15 +42,16 @@ namespace SpootLight.Views.PR
             PagedTable.type = typeof(PR_BASEL_PORTFOLIO);
             BankCode = Globals.getAnalyse()[1];
             dateArrete = Globals.getAnalyse()[3];
+            version = Globals.getAnalyse()[5];
             initial();
+            Globals.checkAdmin(groupe, ActionsPan);
         }
         public void initial()
         {
             PortfolioLists = new PR_BASEL_PORTFOLIO_MODEL();
-            portfolios = PortfolioLists.PORTFOLIOS.Where(c => c.Bank_Code.Equals(BankCode) && c.Process_Date.Equals(dateArrete)).ToList<PR_BASEL_PORTFOLIO>();
-            Console.WriteLine("1 er :" + BankCode + " - 2 eme :" + dateArrete + " done !");
+            portfolios = PortfolioLists.PORTFOLIOS.Where(c => c.Bank_Code.Equals(BankCode) && c.Process_Date.Equals(dateArrete) && c.Version.Equals(version)).ToList<PR_BASEL_PORTFOLIO>();
             myList = portfolios;
-
+            groupe = Globals.getUser()[4];
             pagy();
         }
         private void Backwards_Click(object sender, RoutedEventArgs e)
@@ -105,27 +109,30 @@ namespace SpootLight.Views.PR
             t.Show();
             t.BankCode.Text = row.Row.ItemArray[0].ToString();
             t.ProcessDate.Text = row.Row.ItemArray[1].ToString();
-            t.Sub_PortfolioTxt.Text = row.Row.ItemArray[4].ToString();
+            t.Version.Text = version;
+            t.Sub_PortfolioTxt.Text = row.Row.ItemArray[5].ToString();
 
-            t.PortfolioTxt.Text = row.Row.ItemArray[2].ToString();
-            t.PortfolioDescriptionTxt.Text = row.Row.ItemArray[3].ToString();
+            t.PortfolioTxt.Text = row.Row.ItemArray[3].ToString();
+            t.PortfolioDescriptionTxt.Text = row.Row.ItemArray[4].ToString();
 
-            t.SubPortfolioDescriptionTxt.Text = row.Row.ItemArray[5].ToString();
-            t.WeightingTxt.Text = row.Row.ItemArray[6].ToString();
+            t.SubPortfolioDescriptionTxt.Text = row.Row.ItemArray[6].ToString();
+            t.WeightingTxt.Text = row.Row.ItemArray[7].ToString();
+            t.WeightingCode.Text = row.Row.ItemArray[8].ToString();
+            t.Default_Category.Text = row.Row.ItemArray[9].ToString();
 
-            t.Closed += delegate
+                    t.Closed += delegate
             {
                 initial();
             };
                 }
                 else
                 {
-                    MessageBox.Show("Merci de Sélectionner une ligne !");
+                    MessageBox.Show("Veuillez Sélectionner une ligne !");
                 }
             }
             catch (NullReferenceException)
             {
-                MessageBox.Show("Merci de Sélectionner une ligne !");
+                MessageBox.Show("Veuillez Sélectionner une ligne !");
             }
         }
 
@@ -147,7 +154,7 @@ namespace SpootLight.Views.PR
                 NumberOfRecords.Items.Add(RecordGroup); //Fill the ComboBox with the Array
             }
 
-            NumberOfRecords.SelectedItem = 10; //Initialize the ComboBox
+            NumberOfRecords.SelectedItem = 100; //Initialize the ComboBox
 
             numberOfRecPerPage = Convert.ToInt32(NumberOfRecords.SelectedItem); //Convert the Combox Output to type int
 
@@ -218,6 +225,18 @@ namespace SpootLight.Views.PR
             {
                 initial();
             }
+        }
+
+        private void Importer_Click(object sender, RoutedEventArgs e)
+        {
+            ImportChoser chooser = new ImportChoser();
+            chooser.JobName = Jobs.PortfeuilBalois.Value;
+            chooser.JobNameCrush = Jobs.PortfeuilBaloisCrush.Value;
+            chooser.Show();
+            chooser.Closed += delegate
+            {
+                initial();
+            };
         }
     }
 }

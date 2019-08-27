@@ -16,6 +16,7 @@ namespace SpootLight
     {
         public string Bank_Code { get; set; }
         public string Process_Date { get; set; }
+        public string Version { get; set; }
         public string Currency { get; set; }
         public Nullable<float> Exchange_Rate { get; set; }
     }

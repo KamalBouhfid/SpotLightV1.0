@@ -1,0 +1,1605 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SpotLightDATAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DM_AMOUNT_TYPE">
+          <Key>
+            <PropertyRef Name="ID_AMOUNT" />
+          </Key>
+          <Property Name="ID_AMOUNT" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="LIB_AMOUNT" Type="varchar" MaxLength="35" />
+          <Property Name="REF_COREP" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="DM_CAT_EXPOSITION">
+          <Key>
+            <PropertyRef Name="ID_CAT_EXPOSITION" />
+          </Key>
+          <Property Name="ID_CAT_EXPOSITION" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="CAT_EXPOSITION" Type="varchar" MaxLength="65" />
+        </EntityType>
+        <EntityType Name="DM_ENTITY">
+          <Key>
+            <PropertyRef Name="ID_ENTITY" />
+          </Key>
+          <Property Name="ID_ENTITY" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="ENTITY" Type="varchar" MaxLength="56" />
+        </EntityType>
+        <EntityType Name="DM_PONDERATION">
+          <Key>
+            <PropertyRef Name="ID_PONDERATION" />
+          </Key>
+          <Property Name="ID_PONDERATION" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ELEMENT" Type="varchar" MaxLength="85" />
+          <Property Name="PONDERATION" Type="real" />
+        </EntityType>
+        <EntityType Name="DM_TYPE_EXPOSITION">
+          <Key>
+            <PropertyRef Name="ID_EXPOSITON" />
+          </Key>
+          <Property Name="ID_EXPOSITON" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="TYPE_EXPOSITON" Type="varchar" MaxLength="84" />
+          <Property Name="TYPE" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="DT_AUX_ACCOUNT">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Version" />
+            <PropertyRef Name="Internal_Account_Number" />
+          </Key>
+          <Property Name="Bank_Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Process_Date" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Version" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Internal_Account_Number" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Currency_Code" Type="varchar" MaxLength="3" />
+          <Property Name="Customer_Code" Type="varchar" MaxLength="25" />
+          <Property Name="Acounting_Branch" Type="varchar" MaxLength="10" />
+          <Property Name="Opening_Date" Type="date" />
+          <Property Name="Product_Code" Type="varchar" MaxLength="10" />
+          <Property Name="Accounting_Balance_in_local_currency" Type="real" />
+          <Property Name="Accounting_Balance_in_currency" Type="real" />
+          <Property Name="GL_internal_Number" Type="varchar" MaxLength="10" />
+          <Property Name="GL_reporting_Number" Type="varchar" MaxLength="10" />
+          <Property Name="Doubtful_Status" Type="int" />
+          <Property Name="Provision_affected_amount" Type="real" />
+          <Property Name="Provision_amount_total_currency" Type="real" />
+          <Property Name="Attribute_1" Type="varchar" MaxLength="250" />
+          <Property Name="Attribute_2" Type="varchar" MaxLength="250" />
+          <Property Name="Attribute_3" Type="varchar" MaxLength="250" />
+          <Property Name="Attribute_4" Type="varchar" MaxLength="250" />
+          <Property Name="Attribute_5" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="DT_CONTRACT">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Internal_Contract_Number" />
+          </Key>
+          <Property Name="Bank_Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Process_Date" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Internal_Contract_Number" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Currency_Code" Type="varchar" MaxLength="3" />
+          <Property Name="Customer_Code" Type="varchar" MaxLength="25" />
+          <Property Name="Start_Date" Type="date" />
+          <Property Name="End_Date" Type="date" />
+          <Property Name="Product_Code" Type="varchar" MaxLength="10" />
+          <Property Name="Principal_amount_in_currency" Type="real" />
+          <Property Name="Principal_amount_in_local_currency" Type="real" />
+          <Property Name="Outstanding_amount_in_currency" Type="real" />
+          <Property Name="Outstanding_amount_in_local_currency" Type="real" />
+          <Property Name="GL_internal_Number" Type="varchar" MaxLength="10" />
+          <Property Name="GL_reporting_Number" Type="varchar" MaxLength="10" />
+          <Property Name="Type_Amount" Type="varchar" MaxLength="10" />
+          <Property Name="Book_amount" Type="real" />
+          <Property Name="Debit_Credit" Type="varchar" MaxLength="3" />
+          <Property Name="Doubtful" Type="varchar" MaxLength="3" />
+          <Property Name="Provision_Rate" Type="real" />
+          <Property Name="Attribute_1" Type="varchar" MaxLength="250" />
+          <Property Name="Attribute_2" Type="varchar" MaxLength="250" />
+          <Property Name="Attribute_3" Type="varchar" MaxLength="250" />
+          <Property Name="Attribute_4" Type="varchar" MaxLength="250" />
+          <Property Name="Attribute_5" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="DT_CUSTOMER">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Version" />
+            <PropertyRef Name="Customer_Code" />
+          </Key>
+          <Property Name="Bank_Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Process_Date" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Version" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Customer_Code" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Customer_First_Name" Type="varchar" MaxLength="250" />
+          <Property Name="Customer_Last_Name" Type="varchar" MaxLength="250" />
+          <Property Name="Company_Name" Type="varchar" MaxLength="20" />
+          <Property Name="Customer_Type" Type="varchar" MaxLength="3" />
+          <Property Name="Customer_ID_Type" Type="varchar" MaxLength="250" />
+          <Property Name="Customer_ID_Number" Type="varchar" MaxLength="25" />
+          <Property Name="Company_group" Type="varchar" MaxLength="15" />
+          <Property Name="Company_group_name" Type="varchar" MaxLength="250" />
+          <Property Name="Customer_Country_Code" Type="varchar" MaxLength="3" />
+          <Property Name="Economic_Sector" Type="varchar" MaxLength="5" />
+          <Property Name="Activity_Area" Type="varchar" MaxLength="5" />
+          <Property Name="Internal_Segment" Type="varchar" MaxLength="5" />
+          <Property Name="Internal_Notation" Type="varchar" MaxLength="5" />
+          <Property Name="External_Notation" Type="varchar" MaxLength="5" />
+          <Property Name="Business_Category" Type="varchar" MaxLength="10" />
+          <Property Name="Commitment_Amount_in_local_currency" Type="real" />
+          <Property Name="Default_Amount_in_local_currency" Type="real" />
+          <Property Name="Rating" Type="varchar" MaxLength="10" />
+          <Property Name="Turnover" Type="real" />
+          <Property Name="Attribute_1" Type="varchar" MaxLength="250" />
+          <Property Name="Attribute_2" Type="varchar" MaxLength="250" />
+          <Property Name="Attribute_3" Type="varchar" MaxLength="250" />
+          <Property Name="Attribute_4" Type="varchar" MaxLength="250" />
+          <Property Name="Attribute_5" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="DT_DEFAULT">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Version" />
+            <PropertyRef Name="Customer_Code" />
+          </Key>
+          <Property Name="Bank_Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Process_Date" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Version" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Customer_Code" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Rating" Type="varchar" MaxLength="10" />
+          <Property Name="Default_Amount_in_local_currency" Type="real" />
+        </EntityType>
+        <EntityType Name="DT_GUARANTEE">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Version" />
+            <PropertyRef Name="Internal_Guarantee_Number" />
+            <PropertyRef Name="Internal_Contract_Number" />
+          </Key>
+          <Property Name="Bank_Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Process_Date" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Version" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Internal_Guarantee_Number" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Internal_Contract_Number" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Guarantee_type" Type="varchar" MaxLength="10" />
+          <Property Name="Guarantee_Customer" Type="varchar" MaxLength="25" />
+          <Property Name="Guarantee_currency" Type="varchar" MaxLength="3" />
+          <Property Name="GL_internal_Number" Type="varchar" MaxLength="45" />
+          <Property Name="Guarantee_assigned_amount" Type="real" />
+          <Property Name="Guarantee_amount" Type="real" />
+          <Property Name="Value_Date" Type="datetime" />
+          <Property Name="End_Date" Type="datetime" />
+          <Property Name="Attribute_1" Type="varchar" MaxLength="250" />
+          <Property Name="Attribute_2" Type="varchar" MaxLength="250" />
+          <Property Name="Attribute_3" Type="varchar" MaxLength="250" />
+          <Property Name="Attribute_4" Type="varchar" MaxLength="250" />
+          <Property Name="Attribute_5" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="DT_PROVISION">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Version" />
+            <PropertyRef Name="Internal_Provision_Number" />
+          </Key>
+          <Property Name="Bank_Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Process_Date" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Version" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Internal_Provision_Number" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Currency_Code" Type="varchar" MaxLength="3" />
+          <Property Name="Customer_Code" Type="varchar" MaxLength="25" />
+          <Property Name="Balance_off_balance" Type="varchar" MaxLength="3" />
+          <Property Name="Maturity_Date" Type="date" />
+          <Property Name="Provision_amount_in_currency" Type="real" />
+          <Property Name="Provision_amount_in_local_currency" Type="real" />
+          <Property Name="GL_internal_Number" Type="varchar" MaxLength="10" />
+          <Property Name="GL_reporting_Number" Type="varchar" MaxLength="10" />
+          <Property Name="Provision_Stage" Type="varchar" MaxLength="10" />
+          <Property Name="Attribute_1" Type="varchar" MaxLength="250" />
+          <Property Name="Attribute_2" Type="varchar" MaxLength="250" />
+          <Property Name="Attribute_3" Type="varchar" MaxLength="250" />
+          <Property Name="Attribute_4" Type="varchar" MaxLength="250" />
+          <Property Name="Attribute_5" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="FT_ARC">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Internal_Guarantee_Number" />
+            <PropertyRef Name="Internal_Contract_Number" />
+          </Key>
+          <Property Name="Bank_Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Process_Date" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Internal_Guarantee_Number" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Internal_Contract_Number" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Guarantee_Class" Type="varchar" MaxLength="10" />
+          <Property Name="Guarantee_Weighting_amount" Type="real" />
+          <Property Name="Guarantee_Customer" Type="varchar" MaxLength="25" />
+          <Property Name="Guarantee_currency" Type="varchar" MaxLength="3" />
+          <Property Name="GL_internal_Number" Type="varchar" MaxLength="45" />
+          <Property Name="Guarantee_assigned_amount" Type="real" />
+          <Property Name="Outstanding_amount_in_local_currency" Type="real" />
+        </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'SpotLightDATA.dbo.FT_ASSET' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="FT_ASSET">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+          </Key>
+          <Property Name="Bank_Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Process_Date" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Portfolio" Type="varchar" MaxLength="10" />
+          <Property Name="Portfolio_Description" Type="varchar" MaxLength="150" />
+          <Property Name="Category" Type="varchar" MaxLength="10" />
+          <Property Name="Category_Description" Type="varchar" MaxLength="50" />
+          <Property Name="Sub_Category" Type="varchar" MaxLength="10" />
+          <Property Name="Sub_Category_Description" Type="varchar" MaxLength="50" />
+          <Property Name="Sub_Portfolio" Type="varchar" MaxLength="10" />
+          <Property Name="Sub_Portfolio_Description" Type="varchar" MaxLength="150" />
+          <Property Name="Exposition_Type" Type="varchar" MaxLength="3" />
+          <Property Name="Account" Type="varchar" MaxLength="10" />
+          <Property Name="Balance_Off_Sheet" Type="varchar" MaxLength="3" />
+          <Property Name="Currency_Code" Type="varchar" MaxLength="3" />
+          <Property Name="Customer_Code" Type="varchar" MaxLength="25" />
+          <Property Name="Internal_Contract_Number" Type="varchar" MaxLength="45" />
+          <Property Name="Outstanding_amount_in_currency" Type="real" />
+          <Property Name="Outstanding_amount_in_local_currency" Type="real" />
+          <Property Name="Provision_affected_amount" Type="real" />
+          <Property Name="WeightingCode" Type="varchar" MaxLength="10" />
+          <Property Name="Weighting" Type="real" />
+          <Property Name="Credit_Conversion_Factor" Type="real" />
+          <Property Name="CreditProtection" Type="real" />
+          <Property Name="FinancialCollateral" Type="real" />
+          <Property Name="RiskWeightedExposureAmounts" Type="real" />
+        </EntityType>
+        <EntityType Name="FT_COREP_CA">
+          <Key>
+            <PropertyRef Name="ID_DATE" />
+            <PropertyRef Name="ID_ENTITY" />
+            <PropertyRef Name="ID_AMOUNT" />
+          </Key>
+          <Property Name="ID_DATE" Type="datetime" Nullable="false" />
+          <Property Name="ID_ENTITY" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ID_AMOUNT" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="AMOUNT" Type="bigint" />
+        </EntityType>
+        <EntityType Name="FT_COREP_CR">
+          <Key>
+            <PropertyRef Name="ID_PONDERATION" />
+            <PropertyRef Name="ID_CAT_EXPOSITION" />
+            <PropertyRef Name="ID_EXPOSITION" />
+            <PropertyRef Name="ID_Date" />
+            <PropertyRef Name="ID_AMOUNT" />
+          </Key>
+          <Property Name="ID_PONDERATION" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ID_CAT_EXPOSITION" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ID_EXPOSITION" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ID_Date" Type="datetime" Nullable="false" />
+          <Property Name="ID_AMOUNT" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="AMOUNT" Type="bigint" />
+        </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'SpotLightDATA.dbo.FT_CUSOMER_CMDR' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="FT_CUSOMER_CMDR">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+          </Key>
+          <Property Name="Bank_Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Process_Date" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Customer_Code" Type="varchar" MaxLength="25" />
+          <Property Name="Company_group" Type="varchar" MaxLength="15" />
+          <Property Name="Company_group_name" Type="varchar" MaxLength="250" />
+          <Property Name="Company_group_total_Outstanding" Type="real" />
+          <Property Name="Customer_Name" Type="varchar" MaxLength="250" />
+          <Property Name="Customer_ID_Number" Type="varchar" MaxLength="25" />
+          <Property Name="Activity_Regulator_Code" Type="varchar" MaxLength="10" />
+          <Property Name="Internal_Notation" Type="varchar" MaxLength="5" />
+          <Property Name="Outstanding_amount_in_local_currency" Type="real" />
+          <Property Name="Doubtful_amount_in_local_currency" Type="real" />
+          <Property Name="Outstanding_amount_in_local_currency_1" Type="real" />
+          <Property Name="Outstanding_amount_in_local_currency_2a" Type="real" />
+          <Property Name="Outstanding_amount_in_local_currency_2b" Type="real" />
+          <Property Name="Provision_affected_amount" Type="real" />
+          <Property Name="Outstanding_amount_Weighting" Type="real" />
+          <Property Name="Guarantee_assigned_amount" Type="real" />
+        </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'SpotLightDATA.dbo.FT_CUSOMER_COMMITMENT' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="FT_CUSOMER_COMMITMENT">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+          </Key>
+          <Property Name="Bank_Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Process_Date" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Internal_Contract_Number" Type="varchar" MaxLength="45" />
+          <Property Name="Account" Type="varchar" MaxLength="10" />
+          <Property Name="Currency_Code" Type="varchar" MaxLength="3" />
+          <Property Name="Customer_Code" Type="varchar" MaxLength="25" />
+          <Property Name="Customer_Name" Type="varchar" MaxLength="250" />
+          <Property Name="Company_group" Type="varchar" MaxLength="15" />
+          <Property Name="Company_group_name" Type="varchar" MaxLength="250" />
+          <Property Name="Customer_ID_Type" Type="varchar" MaxLength="250" />
+          <Property Name="Customer_ID_Number" Type="varchar" MaxLength="25" />
+          <Property Name="Activity_Regulator_Code" Type="varchar" MaxLength="10" />
+          <Property Name="Internal_Notation" Type="varchar" MaxLength="5" />
+          <Property Name="Outstanding_amount_in_local_currency" Type="real" />
+          <Property Name="Doubtful_Status" Type="int" />
+          <Property Name="Balance_Off_Sheet" Type="varchar" MaxLength="3" />
+          <Property Name="Exposition_Type" Type="varchar" MaxLength="3" />
+          <Property Name="Provision_affected_amount" Type="real" />
+          <Property Name="Economic_Sector" Type="varchar" MaxLength="5" />
+          <Property Name="Internal_Segment" Type="varchar" MaxLength="5" />
+          <Property Name="Weighting" Type="real" />
+          <Property Name="Credit_Conversion_Factor" Type="real" />
+        </EntityType>
+        <EntityType Name="PR_ACCOUNT">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Account" />
+            <PropertyRef Name="Version" />
+          </Key>
+          <Property Name="Bank_Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Process_Date" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Account" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="Basel_In" Type="bit" />
+          <Property Name="Basel_Segment" Type="varchar" MaxLength="10" />
+          <Property Name="Credit_Conversion_Factor" Type="real" />
+          <Property Name="Balance_Off_Sheet" Type="varchar" MaxLength="3" />
+          <Property Name="Sens_Code" Type="varchar" MaxLength="3" />
+          <Property Name="Is_Commitment" Type="bit" />
+          <Property Name="Is_Provision" Type="bit" />
+          <Property Name="Is_Doubtful" Type="bit" />
+          <Property Name="Is_Accrued_Interest" Type="bit" />
+          <Property Name="Sign" Type="varchar" MaxLength="1" />
+          <Property Name="Exposition_Type" Type="varchar" MaxLength="3" />
+          <Property Name="Is_security" Type="bit" />
+          <Property Name="Cmdr_In" Type="bit" />
+          <Property Name="Cmdr_Conversion_Factor" Type="real" />
+          <Property Name="Cmdr_Sens_Code" Type="varchar" MaxLength="3" />
+          <Property Name="Cmdr_Weighting" Type="real" />
+          <Property Name="Version" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Is_Doubtful_Excluded" Type="bit" />
+        </EntityType>
+        <EntityType Name="PR_ACTIVITY_AREA">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Version" />
+            <PropertyRef Name="Activity_Area" />
+          </Key>
+          <Property Name="Bank_Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Process_Date" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Version" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Activity_Area" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Activity_Area_Description" Type="varchar" MaxLength="250" />
+          <Property Name="Regulator_Code" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="PR_BASEL_CATEGORY">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Version" />
+            <PropertyRef Name="Sub_Category" />
+          </Key>
+          <Property Name="Bank_Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Process_Date" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Version" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Category" Type="varchar" MaxLength="10" />
+          <Property Name="Category_Description" Type="varchar" MaxLength="50" />
+          <Property Name="Sub_Category" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Sub_Category_Description" Type="varchar" MaxLength="50" />
+          <Property Name="Sub_Portfolio" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="PR_BASEL_PORTFOLIO">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Version" />
+            <PropertyRef Name="Sub_Portfolio" />
+          </Key>
+          <Property Name="Bank_Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Process_Date" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Version" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Portfolio" Type="varchar" MaxLength="10" />
+          <Property Name="Portfolio_Description" Type="varchar" MaxLength="150" />
+          <Property Name="Sub_Portfolio" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Sub_Portfolio_Description" Type="varchar" MaxLength="150" />
+          <Property Name="Weighting" Type="real" />
+          <Property Name="WeightingCode" Type="varchar" MaxLength="10" />
+          <Property Name="Default_Category" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="PR_CURRENCY">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Version" />
+            <PropertyRef Name="Currency" />
+          </Key>
+          <Property Name="Bank_Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Process_Date" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Version" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Currency" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Exchange_Rate" Type="real" />
+        </EntityType>
+        <EntityType Name="PR_ECONOMIC_SECTOR">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Version" />
+            <PropertyRef Name="Economic_Sector" />
+          </Key>
+          <Property Name="Bank_Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Process_Date" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Version" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Economic_Sector" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="Sub_Category" Type="varchar" MaxLength="10" />
+          <Property Name="Cmdr_Weighting" Type="real" />
+        </EntityType>
+        <EntityType Name="PR_GUARANTEE_TYPE">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Version" />
+            <PropertyRef Name="Guarantee_Account" />
+          </Key>
+          <Property Name="Bank_Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Process_Date" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Version" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Guarantee_Account" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Guarantee_Type_Description" Type="varchar" MaxLength="150" />
+          <Property Name="Guarantee_Class" Type="varchar" MaxLength="10" />
+          <Property Name="Guarantee_Weighting" Type="real" />
+          <Property Name="In_COREP" Type="bit" />
+          <Property Name="In_CMDR" Type="bit" />
+          <Property Name="Guarantee_Weighting_Cmdr" Type="real" />
+        </EntityType>
+        <EntityType Name="PR_INTERNAL_SEGMENT">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Version" />
+            <PropertyRef Name="Internal_Segment" />
+          </Key>
+          <Property Name="Bank_Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Process_Date" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Version" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Internal_Segment" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Internal_Segment_Description" Type="varchar" MaxLength="150" />
+          <Property Name="Customer_Market" Type="varchar" MaxLength="150" />
+          <Property Name="Sub_Category" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6013: Aucune clé primaire n'est définie pour la table/vue 'SpotLightDATA.dbo.PR_MAP_CA' ; en outre, aucune clé primaire valide n'a pu être déduite. Cette table/vue a été exclue. Pour utiliser l'entité, vous devez passer en revue votre schéma, ajouter les clés appropriées et supprimer le commentaire associé.
+        <EntityType Name="PR_MAP_CA">
+          <Property Name="REF" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID_AMOUNT" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <!--Erreurs détectées durant la génération :
+avertissement 6013: Aucune clé primaire n'est définie pour la table/vue 'SpotLightDATA.dbo.PR_MAP_CR_SA' ; en outre, aucune clé primaire valide n'a pu être déduite. Cette table/vue a été exclue. Pour utiliser l'entité, vous devez passer en revue votre schéma, ajouter les clés appropriées et supprimer le commentaire associé.
+        <EntityType Name="PR_MAP_CR_SA">
+          <Property Name="REF" Type="varchar" MaxLength="20" />
+          <Property Name="ID_PONDERATION" Type="varchar" MaxLength="20" />
+          <Property Name="ID_EXPOSITON" Type="varchar" MaxLength="20" />
+          <Property Name="ID_AMOUNT" Type="varchar" MaxLength="20" />
+          <Property Name="ID_CAT_EXPOSITION" Type="varchar" MaxLength="20" />
+        </EntityType>-->
+        <EntityType Name="PR_SECURITY_TYPE">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Version" />
+            <PropertyRef Name="Security_Type" />
+          </Key>
+          <Property Name="Bank_Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Process_Date" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Version" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Security_Type" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Sub_Portfolio" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityContainer Name="SpotLightDATAModelStoreContainer">
+          <EntitySet Name="DM_AMOUNT_TYPE" EntityType="Self.DM_AMOUNT_TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DM_CAT_EXPOSITION" EntityType="Self.DM_CAT_EXPOSITION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DM_ENTITY" EntityType="Self.DM_ENTITY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DM_PONDERATION" EntityType="Self.DM_PONDERATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DM_TYPE_EXPOSITION" EntityType="Self.DM_TYPE_EXPOSITION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DT_AUX_ACCOUNT" EntityType="Self.DT_AUX_ACCOUNT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DT_CONTRACT" EntityType="Self.DT_CONTRACT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DT_CUSTOMER" EntityType="Self.DT_CUSTOMER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DT_DEFAULT" EntityType="Self.DT_DEFAULT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DT_GUARANTEE" EntityType="Self.DT_GUARANTEE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DT_PROVISION" EntityType="Self.DT_PROVISION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FT_ARC" EntityType="Self.FT_ARC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FT_COREP_CA" EntityType="Self.FT_COREP_CA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FT_COREP_CR" EntityType="Self.FT_COREP_CR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PR_ACCOUNT" EntityType="Self.PR_ACCOUNT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PR_ACTIVITY_AREA" EntityType="Self.PR_ACTIVITY_AREA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PR_BASEL_CATEGORY" EntityType="Self.PR_BASEL_CATEGORY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PR_BASEL_PORTFOLIO" EntityType="Self.PR_BASEL_PORTFOLIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PR_CURRENCY" EntityType="Self.PR_CURRENCY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PR_ECONOMIC_SECTOR" EntityType="Self.PR_ECONOMIC_SECTOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PR_GUARANTEE_TYPE" EntityType="Self.PR_GUARANTEE_TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PR_INTERNAL_SEGMENT" EntityType="Self.PR_INTERNAL_SEGMENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PR_SECURITY_TYPE" EntityType="Self.PR_SECURITY_TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FT_ASSET" EntityType="Self.FT_ASSET" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FT_ASSET].[Bank_Code] AS [Bank_Code], 
+    [FT_ASSET].[Process_Date] AS [Process_Date], 
+    [FT_ASSET].[Portfolio] AS [Portfolio], 
+    [FT_ASSET].[Portfolio_Description] AS [Portfolio_Description], 
+    [FT_ASSET].[Category] AS [Category], 
+    [FT_ASSET].[Category_Description] AS [Category_Description], 
+    [FT_ASSET].[Sub_Category] AS [Sub_Category], 
+    [FT_ASSET].[Sub_Category_Description] AS [Sub_Category_Description], 
+    [FT_ASSET].[Sub_Portfolio] AS [Sub_Portfolio], 
+    [FT_ASSET].[Sub_Portfolio_Description] AS [Sub_Portfolio_Description], 
+    [FT_ASSET].[Exposition_Type] AS [Exposition_Type], 
+    [FT_ASSET].[Account] AS [Account], 
+    [FT_ASSET].[Balance_Off_Sheet] AS [Balance_Off_Sheet], 
+    [FT_ASSET].[Currency_Code] AS [Currency_Code], 
+    [FT_ASSET].[Customer_Code] AS [Customer_Code], 
+    [FT_ASSET].[Internal_Contract_Number] AS [Internal_Contract_Number], 
+    [FT_ASSET].[Outstanding_amount_in_currency] AS [Outstanding_amount_in_currency], 
+    [FT_ASSET].[Outstanding_amount_in_local_currency] AS [Outstanding_amount_in_local_currency], 
+    [FT_ASSET].[Provision_affected_amount] AS [Provision_affected_amount], 
+    [FT_ASSET].[WeightingCode] AS [WeightingCode], 
+    [FT_ASSET].[Weighting] AS [Weighting], 
+    [FT_ASSET].[Credit_Conversion_Factor] AS [Credit_Conversion_Factor], 
+    [FT_ASSET].[CreditProtection] AS [CreditProtection], 
+    [FT_ASSET].[FinancialCollateral] AS [FinancialCollateral], 
+    [FT_ASSET].[RiskWeightedExposureAmounts] AS [RiskWeightedExposureAmounts]
+    FROM [dbo].[FT_ASSET] AS [FT_ASSET]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="FT_CUSOMER_CMDR" EntityType="Self.FT_CUSOMER_CMDR" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FT_CUSOMER_CMDR].[Bank_Code] AS [Bank_Code], 
+    [FT_CUSOMER_CMDR].[Process_Date] AS [Process_Date], 
+    [FT_CUSOMER_CMDR].[Customer_Code] AS [Customer_Code], 
+    [FT_CUSOMER_CMDR].[Company_group] AS [Company_group], 
+    [FT_CUSOMER_CMDR].[Company_group_name] AS [Company_group_name], 
+    [FT_CUSOMER_CMDR].[Company_group_total_Outstanding] AS [Company_group_total_Outstanding], 
+    [FT_CUSOMER_CMDR].[Customer_Name] AS [Customer_Name], 
+    [FT_CUSOMER_CMDR].[Customer_ID_Number] AS [Customer_ID_Number], 
+    [FT_CUSOMER_CMDR].[Activity_Regulator_Code] AS [Activity_Regulator_Code], 
+    [FT_CUSOMER_CMDR].[Internal_Notation] AS [Internal_Notation], 
+    [FT_CUSOMER_CMDR].[Outstanding_amount_in_local_currency] AS [Outstanding_amount_in_local_currency], 
+    [FT_CUSOMER_CMDR].[Doubtful_amount_in_local_currency] AS [Doubtful_amount_in_local_currency], 
+    [FT_CUSOMER_CMDR].[Outstanding_amount_in_local_currency_1] AS [Outstanding_amount_in_local_currency_1], 
+    [FT_CUSOMER_CMDR].[Outstanding_amount_in_local_currency_2a] AS [Outstanding_amount_in_local_currency_2a], 
+    [FT_CUSOMER_CMDR].[Outstanding_amount_in_local_currency_2b] AS [Outstanding_amount_in_local_currency_2b], 
+    [FT_CUSOMER_CMDR].[Provision_affected_amount] AS [Provision_affected_amount], 
+    [FT_CUSOMER_CMDR].[Outstanding_amount_Weighting] AS [Outstanding_amount_Weighting], 
+    [FT_CUSOMER_CMDR].[Guarantee_assigned_amount] AS [Guarantee_assigned_amount]
+    FROM [dbo].[FT_CUSOMER_CMDR] AS [FT_CUSOMER_CMDR]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="FT_CUSOMER_COMMITMENT" EntityType="Self.FT_CUSOMER_COMMITMENT" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FT_CUSOMER_COMMITMENT].[Bank_Code] AS [Bank_Code], 
+    [FT_CUSOMER_COMMITMENT].[Process_Date] AS [Process_Date], 
+    [FT_CUSOMER_COMMITMENT].[Internal_Contract_Number] AS [Internal_Contract_Number], 
+    [FT_CUSOMER_COMMITMENT].[Account] AS [Account], 
+    [FT_CUSOMER_COMMITMENT].[Currency_Code] AS [Currency_Code], 
+    [FT_CUSOMER_COMMITMENT].[Customer_Code] AS [Customer_Code], 
+    [FT_CUSOMER_COMMITMENT].[Customer_Name] AS [Customer_Name], 
+    [FT_CUSOMER_COMMITMENT].[Company_group] AS [Company_group], 
+    [FT_CUSOMER_COMMITMENT].[Company_group_name] AS [Company_group_name], 
+    [FT_CUSOMER_COMMITMENT].[Customer_ID_Type] AS [Customer_ID_Type], 
+    [FT_CUSOMER_COMMITMENT].[Customer_ID_Number] AS [Customer_ID_Number], 
+    [FT_CUSOMER_COMMITMENT].[Activity_Regulator_Code] AS [Activity_Regulator_Code], 
+    [FT_CUSOMER_COMMITMENT].[Internal_Notation] AS [Internal_Notation], 
+    [FT_CUSOMER_COMMITMENT].[Outstanding_amount_in_local_currency] AS [Outstanding_amount_in_local_currency], 
+    [FT_CUSOMER_COMMITMENT].[Doubtful_Status] AS [Doubtful_Status], 
+    [FT_CUSOMER_COMMITMENT].[Balance_Off_Sheet] AS [Balance_Off_Sheet], 
+    [FT_CUSOMER_COMMITMENT].[Exposition_Type] AS [Exposition_Type], 
+    [FT_CUSOMER_COMMITMENT].[Provision_affected_amount] AS [Provision_affected_amount], 
+    [FT_CUSOMER_COMMITMENT].[Economic_Sector] AS [Economic_Sector], 
+    [FT_CUSOMER_COMMITMENT].[Internal_Segment] AS [Internal_Segment], 
+    [FT_CUSOMER_COMMITMENT].[Weighting] AS [Weighting], 
+    [FT_CUSOMER_COMMITMENT].[Credit_Conversion_Factor] AS [Credit_Conversion_Factor]
+    FROM [dbo].[FT_CUSOMER_COMMITMENT] AS [FT_CUSOMER_COMMITMENT]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SpotLightDATAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DM_AMOUNT_TYPE">
+          <Key>
+            <PropertyRef Name="ID_AMOUNT" />
+          </Key>
+          <Property Name="ID_AMOUNT" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LIB_AMOUNT" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="REF_COREP" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DM_CAT_EXPOSITION">
+          <Key>
+            <PropertyRef Name="ID_CAT_EXPOSITION" />
+          </Key>
+          <Property Name="ID_CAT_EXPOSITION" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CAT_EXPOSITION" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DM_ENTITY">
+          <Key>
+            <PropertyRef Name="ID_ENTITY" />
+          </Key>
+          <Property Name="ID_ENTITY" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ENTITY" Type="String" MaxLength="56" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DM_PONDERATION">
+          <Key>
+            <PropertyRef Name="ID_PONDERATION" />
+          </Key>
+          <Property Name="ID_PONDERATION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ELEMENT" Type="String" MaxLength="85" FixedLength="false" Unicode="false" />
+          <Property Name="PONDERATION" Type="Single" />
+        </EntityType>
+        <EntityType Name="DM_TYPE_EXPOSITION">
+          <Key>
+            <PropertyRef Name="ID_EXPOSITON" />
+          </Key>
+          <Property Name="ID_EXPOSITON" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TYPE_EXPOSITON" Type="String" MaxLength="84" FixedLength="false" Unicode="false" />
+          <Property Name="TYPE" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DT_AUX_ACCOUNT">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Version" />
+            <PropertyRef Name="Internal_Account_Number" />
+          </Key>
+          <Property Name="Bank_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Process_Date" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Version" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Internal_Account_Number" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Currency_Code" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_Code" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Acounting_Branch" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Opening_Date" Type="DateTime" Precision="0" />
+          <Property Name="Product_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Accounting_Balance_in_local_currency" Type="Single" />
+          <Property Name="Accounting_Balance_in_currency" Type="Single" />
+          <Property Name="GL_internal_Number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="GL_reporting_Number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Doubtful_Status" Type="Int32" />
+          <Property Name="Provision_affected_amount" Type="Single" />
+          <Property Name="Provision_amount_total_currency" Type="Single" />
+          <Property Name="Attribute_1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Attribute_2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Attribute_3" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Attribute_4" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Attribute_5" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DT_CONTRACT">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Internal_Contract_Number" />
+          </Key>
+          <Property Name="Bank_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Process_Date" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Internal_Contract_Number" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Currency_Code" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_Code" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Start_Date" Type="DateTime" Precision="0" />
+          <Property Name="End_Date" Type="DateTime" Precision="0" />
+          <Property Name="Product_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Principal_amount_in_currency" Type="Single" />
+          <Property Name="Principal_amount_in_local_currency" Type="Single" />
+          <Property Name="Outstanding_amount_in_currency" Type="Single" />
+          <Property Name="Outstanding_amount_in_local_currency" Type="Single" />
+          <Property Name="GL_internal_Number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="GL_reporting_Number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Type_Amount" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Book_amount" Type="Single" />
+          <Property Name="Debit_Credit" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Doubtful" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Provision_Rate" Type="Single" />
+          <Property Name="Attribute_1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Attribute_2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Attribute_3" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Attribute_4" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Attribute_5" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DT_CUSTOMER">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Version" />
+            <PropertyRef Name="Customer_Code" />
+          </Key>
+          <Property Name="Bank_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Process_Date" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Version" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Customer_Code" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Customer_First_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_Last_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Company_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_Type" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_ID_Type" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_ID_Number" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Company_group" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Company_group_name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_Country_Code" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Economic_Sector" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Activity_Area" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Internal_Segment" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Internal_Notation" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="External_Notation" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Business_Category" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Commitment_Amount_in_local_currency" Type="Single" />
+          <Property Name="Default_Amount_in_local_currency" Type="Single" />
+          <Property Name="Rating" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Turnover" Type="Single" />
+          <Property Name="Attribute_1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Attribute_2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Attribute_3" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Attribute_4" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Attribute_5" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DT_DEFAULT">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Version" />
+            <PropertyRef Name="Customer_Code" />
+          </Key>
+          <Property Name="Bank_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Process_Date" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Version" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Customer_Code" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rating" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Default_Amount_in_local_currency" Type="Single" />
+        </EntityType>
+        <EntityType Name="DT_GUARANTEE">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Version" />
+            <PropertyRef Name="Internal_Guarantee_Number" />
+            <PropertyRef Name="Internal_Contract_Number" />
+          </Key>
+          <Property Name="Bank_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Process_Date" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Version" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Internal_Guarantee_Number" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Internal_Contract_Number" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Guarantee_type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Guarantee_Customer" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Guarantee_currency" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="GL_internal_Number" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Guarantee_assigned_amount" Type="Single" />
+          <Property Name="Guarantee_amount" Type="Single" />
+          <Property Name="Value_Date" Type="DateTime" Precision="3" />
+          <Property Name="End_Date" Type="DateTime" Precision="3" />
+          <Property Name="Attribute_1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Attribute_2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Attribute_3" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Attribute_4" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Attribute_5" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DT_PROVISION">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Version" />
+            <PropertyRef Name="Internal_Provision_Number" />
+          </Key>
+          <Property Name="Bank_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Process_Date" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Version" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Internal_Provision_Number" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Currency_Code" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_Code" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Balance_off_balance" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Maturity_Date" Type="DateTime" Precision="0" />
+          <Property Name="Provision_amount_in_currency" Type="Single" />
+          <Property Name="Provision_amount_in_local_currency" Type="Single" />
+          <Property Name="GL_internal_Number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="GL_reporting_Number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Provision_Stage" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Attribute_1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Attribute_2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Attribute_3" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Attribute_4" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Attribute_5" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FT_ARC">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Internal_Guarantee_Number" />
+            <PropertyRef Name="Internal_Contract_Number" />
+          </Key>
+          <Property Name="Bank_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Process_Date" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Internal_Guarantee_Number" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Internal_Contract_Number" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Guarantee_Class" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Guarantee_Weighting_amount" Type="Single" />
+          <Property Name="Guarantee_Customer" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Guarantee_currency" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="GL_internal_Number" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Guarantee_assigned_amount" Type="Single" />
+          <Property Name="Outstanding_amount_in_local_currency" Type="Single" />
+        </EntityType>
+        <EntityType Name="FT_COREP_CA">
+          <Key>
+            <PropertyRef Name="ID_DATE" />
+            <PropertyRef Name="ID_ENTITY" />
+            <PropertyRef Name="ID_AMOUNT" />
+          </Key>
+          <Property Name="ID_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ID_ENTITY" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_AMOUNT" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AMOUNT" Type="Int64" />
+        </EntityType>
+        <EntityType Name="FT_COREP_CR">
+          <Key>
+            <PropertyRef Name="ID_PONDERATION" />
+            <PropertyRef Name="ID_CAT_EXPOSITION" />
+            <PropertyRef Name="ID_EXPOSITION" />
+            <PropertyRef Name="ID_Date" />
+            <PropertyRef Name="ID_AMOUNT" />
+          </Key>
+          <Property Name="ID_PONDERATION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_CAT_EXPOSITION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_EXPOSITION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ID_AMOUNT" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AMOUNT" Type="Int64" />
+        </EntityType>
+        <EntityType Name="PR_ACCOUNT">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Account" />
+            <PropertyRef Name="Version" />
+          </Key>
+          <Property Name="Bank_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Process_Date" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Account" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Basel_In" Type="Boolean" />
+          <Property Name="Basel_Segment" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Credit_Conversion_Factor" Type="Single" />
+          <Property Name="Balance_Off_Sheet" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Sens_Code" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Is_Commitment" Type="Boolean" />
+          <Property Name="Is_Provision" Type="Boolean" />
+          <Property Name="Is_Doubtful" Type="Boolean" />
+          <Property Name="Is_Accrued_Interest" Type="Boolean" />
+          <Property Name="Sign" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Exposition_Type" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Is_security" Type="Boolean" />
+          <Property Name="Cmdr_In" Type="Boolean" />
+          <Property Name="Cmdr_Conversion_Factor" Type="Single" />
+          <Property Name="Cmdr_Sens_Code" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Cmdr_Weighting" Type="Single" />
+          <Property Name="Version" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Is_Doubtful_Excluded" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="PR_ACTIVITY_AREA">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Version" />
+            <PropertyRef Name="Activity_Area" />
+          </Key>
+          <Property Name="Bank_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Process_Date" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Version" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Activity_Area" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Activity_Area_Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Regulator_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PR_BASEL_CATEGORY">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Version" />
+            <PropertyRef Name="Sub_Category" />
+          </Key>
+          <Property Name="Bank_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Process_Date" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Version" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Category_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sub_Category" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sub_Category_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sub_Portfolio" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PR_BASEL_PORTFOLIO">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Version" />
+            <PropertyRef Name="Sub_Portfolio" />
+          </Key>
+          <Property Name="Bank_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Process_Date" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Version" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Portfolio" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Portfolio_Description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Sub_Portfolio" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sub_Portfolio_Description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Weighting" Type="Single" />
+          <Property Name="WeightingCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Default_Category" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PR_CURRENCY">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Version" />
+            <PropertyRef Name="Currency" />
+          </Key>
+          <Property Name="Bank_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Process_Date" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Version" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Currency" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Exchange_Rate" Type="Single" />
+        </EntityType>
+        <EntityType Name="PR_ECONOMIC_SECTOR">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Version" />
+            <PropertyRef Name="Economic_Sector" />
+          </Key>
+          <Property Name="Bank_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Process_Date" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Version" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Economic_Sector" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sub_Category" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Cmdr_Weighting" Type="Single" />
+        </EntityType>
+        <EntityType Name="PR_GUARANTEE_TYPE">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Version" />
+            <PropertyRef Name="Guarantee_Account" />
+          </Key>
+          <Property Name="Bank_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Process_Date" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Version" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Guarantee_Account" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Guarantee_Type_Description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Guarantee_Class" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Guarantee_Weighting" Type="Single" />
+          <Property Name="In_COREP" Type="Boolean" />
+          <Property Name="In_CMDR" Type="Boolean" />
+          <Property Name="Guarantee_Weighting_Cmdr" Type="Single" />
+        </EntityType>
+        <EntityType Name="PR_INTERNAL_SEGMENT">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Version" />
+            <PropertyRef Name="Internal_Segment" />
+          </Key>
+          <Property Name="Bank_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Process_Date" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Version" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Internal_Segment" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Internal_Segment_Description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_Market" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Sub_Category" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PR_SECURITY_TYPE">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+            <PropertyRef Name="Version" />
+            <PropertyRef Name="Security_Type" />
+          </Key>
+          <Property Name="Bank_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Process_Date" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Version" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Security_Type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sub_Portfolio" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FT_ASSET">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+          </Key>
+          <Property Name="Bank_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Process_Date" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Portfolio" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Portfolio_Description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Category_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sub_Category" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Sub_Category_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sub_Portfolio" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Sub_Portfolio_Description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Exposition_Type" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Account" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Balance_Off_Sheet" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Currency_Code" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_Code" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Internal_Contract_Number" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Outstanding_amount_in_currency" Type="Single" />
+          <Property Name="Outstanding_amount_in_local_currency" Type="Single" />
+          <Property Name="Provision_affected_amount" Type="Single" />
+          <Property Name="WeightingCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Weighting" Type="Single" />
+          <Property Name="Credit_Conversion_Factor" Type="Single" />
+          <Property Name="CreditProtection" Type="Single" />
+          <Property Name="FinancialCollateral" Type="Single" />
+          <Property Name="RiskWeightedExposureAmounts" Type="Single" />
+        </EntityType>
+        <EntityType Name="FT_CUSOMER_CMDR">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+          </Key>
+          <Property Name="Bank_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Process_Date" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Customer_Code" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Company_group" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Company_group_name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Company_group_total_Outstanding" Type="Single" />
+          <Property Name="Customer_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_ID_Number" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Activity_Regulator_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Internal_Notation" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Outstanding_amount_in_local_currency" Type="Single" />
+          <Property Name="Doubtful_amount_in_local_currency" Type="Single" />
+          <Property Name="Outstanding_amount_in_local_currency_1" Type="Single" />
+          <Property Name="Outstanding_amount_in_local_currency_2a" Type="Single" />
+          <Property Name="Outstanding_amount_in_local_currency_2b" Type="Single" />
+          <Property Name="Provision_affected_amount" Type="Single" />
+          <Property Name="Outstanding_amount_Weighting" Type="Single" />
+          <Property Name="Guarantee_assigned_amount" Type="Single" />
+        </EntityType>
+        <EntityType Name="FT_CUSOMER_COMMITMENT">
+          <Key>
+            <PropertyRef Name="Bank_Code" />
+            <PropertyRef Name="Process_Date" />
+          </Key>
+          <Property Name="Bank_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Process_Date" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Internal_Contract_Number" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Account" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Currency_Code" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_Code" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Company_group" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Company_group_name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_ID_Type" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_ID_Number" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Activity_Regulator_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Internal_Notation" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Outstanding_amount_in_local_currency" Type="Single" />
+          <Property Name="Doubtful_Status" Type="Int32" />
+          <Property Name="Balance_Off_Sheet" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Exposition_Type" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Provision_affected_amount" Type="Single" />
+          <Property Name="Economic_Sector" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Internal_Segment" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Weighting" Type="Single" />
+          <Property Name="Credit_Conversion_Factor" Type="Single" />
+        </EntityType>
+        <EntityContainer Name="SpotLightDATAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DM_AMOUNT_TYPE" EntityType="Self.DM_AMOUNT_TYPE" />
+          <EntitySet Name="DM_CAT_EXPOSITION" EntityType="Self.DM_CAT_EXPOSITION" />
+          <EntitySet Name="DM_ENTITY" EntityType="Self.DM_ENTITY" />
+          <EntitySet Name="DM_PONDERATION" EntityType="Self.DM_PONDERATION" />
+          <EntitySet Name="DM_TYPE_EXPOSITION" EntityType="Self.DM_TYPE_EXPOSITION" />
+          <EntitySet Name="DT_AUX_ACCOUNT" EntityType="Self.DT_AUX_ACCOUNT" />
+          <EntitySet Name="DT_CONTRACT" EntityType="Self.DT_CONTRACT" />
+          <EntitySet Name="DT_CUSTOMER" EntityType="Self.DT_CUSTOMER" />
+          <EntitySet Name="DT_DEFAULT" EntityType="Self.DT_DEFAULT" />
+          <EntitySet Name="DT_GUARANTEE" EntityType="Self.DT_GUARANTEE" />
+          <EntitySet Name="DT_PROVISION" EntityType="Self.DT_PROVISION" />
+          <EntitySet Name="FT_ARC" EntityType="Self.FT_ARC" />
+          <EntitySet Name="FT_COREP_CA" EntityType="Self.FT_COREP_CA" />
+          <EntitySet Name="FT_COREP_CR" EntityType="Self.FT_COREP_CR" />
+          <EntitySet Name="PR_ACCOUNT" EntityType="Self.PR_ACCOUNT" />
+          <EntitySet Name="PR_ACTIVITY_AREA" EntityType="Self.PR_ACTIVITY_AREA" />
+          <EntitySet Name="PR_BASEL_CATEGORY" EntityType="Self.PR_BASEL_CATEGORY" />
+          <EntitySet Name="PR_BASEL_PORTFOLIO" EntityType="Self.PR_BASEL_PORTFOLIO" />
+          <EntitySet Name="PR_CURRENCY" EntityType="Self.PR_CURRENCY" />
+          <EntitySet Name="PR_ECONOMIC_SECTOR" EntityType="Self.PR_ECONOMIC_SECTOR" />
+          <EntitySet Name="PR_GUARANTEE_TYPE" EntityType="Self.PR_GUARANTEE_TYPE" />
+          <EntitySet Name="PR_INTERNAL_SEGMENT" EntityType="Self.PR_INTERNAL_SEGMENT" />
+          <EntitySet Name="PR_SECURITY_TYPE" EntityType="Self.PR_SECURITY_TYPE" />
+          <EntitySet Name="FT_ASSET" EntityType="Self.FT_ASSET" />
+          <EntitySet Name="FT_CUSOMER_CMDR" EntityType="Self.FT_CUSOMER_CMDR" />
+          <EntitySet Name="FT_CUSOMER_COMMITMENT" EntityType="Self.FT_CUSOMER_COMMITMENT" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SpotLightDATAModelStoreContainer" CdmEntityContainer="SpotLightDATAEntities">
+          <EntitySetMapping Name="DM_AMOUNT_TYPE">
+            <EntityTypeMapping TypeName="SpotLightDATAModel.DM_AMOUNT_TYPE">
+              <MappingFragment StoreEntitySet="DM_AMOUNT_TYPE">
+                <ScalarProperty Name="ID_AMOUNT" ColumnName="ID_AMOUNT" />
+                <ScalarProperty Name="LIB_AMOUNT" ColumnName="LIB_AMOUNT" />
+                <ScalarProperty Name="REF_COREP" ColumnName="REF_COREP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DM_CAT_EXPOSITION">
+            <EntityTypeMapping TypeName="SpotLightDATAModel.DM_CAT_EXPOSITION">
+              <MappingFragment StoreEntitySet="DM_CAT_EXPOSITION">
+                <ScalarProperty Name="ID_CAT_EXPOSITION" ColumnName="ID_CAT_EXPOSITION" />
+                <ScalarProperty Name="CAT_EXPOSITION" ColumnName="CAT_EXPOSITION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DM_ENTITY">
+            <EntityTypeMapping TypeName="SpotLightDATAModel.DM_ENTITY">
+              <MappingFragment StoreEntitySet="DM_ENTITY">
+                <ScalarProperty Name="ID_ENTITY" ColumnName="ID_ENTITY" />
+                <ScalarProperty Name="ENTITY" ColumnName="ENTITY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DM_PONDERATION">
+            <EntityTypeMapping TypeName="SpotLightDATAModel.DM_PONDERATION">
+              <MappingFragment StoreEntitySet="DM_PONDERATION">
+                <ScalarProperty Name="ID_PONDERATION" ColumnName="ID_PONDERATION" />
+                <ScalarProperty Name="ELEMENT" ColumnName="ELEMENT" />
+                <ScalarProperty Name="PONDERATION" ColumnName="PONDERATION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DM_TYPE_EXPOSITION">
+            <EntityTypeMapping TypeName="SpotLightDATAModel.DM_TYPE_EXPOSITION">
+              <MappingFragment StoreEntitySet="DM_TYPE_EXPOSITION">
+                <ScalarProperty Name="ID_EXPOSITON" ColumnName="ID_EXPOSITON" />
+                <ScalarProperty Name="TYPE_EXPOSITON" ColumnName="TYPE_EXPOSITON" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DT_AUX_ACCOUNT">
+            <EntityTypeMapping TypeName="SpotLightDATAModel.DT_AUX_ACCOUNT">
+              <MappingFragment StoreEntitySet="DT_AUX_ACCOUNT">
+                <ScalarProperty Name="Bank_Code" ColumnName="Bank_Code" />
+                <ScalarProperty Name="Process_Date" ColumnName="Process_Date" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Internal_Account_Number" ColumnName="Internal_Account_Number" />
+                <ScalarProperty Name="Currency_Code" ColumnName="Currency_Code" />
+                <ScalarProperty Name="Customer_Code" ColumnName="Customer_Code" />
+                <ScalarProperty Name="Acounting_Branch" ColumnName="Acounting_Branch" />
+                <ScalarProperty Name="Opening_Date" ColumnName="Opening_Date" />
+                <ScalarProperty Name="Product_Code" ColumnName="Product_Code" />
+                <ScalarProperty Name="Accounting_Balance_in_local_currency" ColumnName="Accounting_Balance_in_local_currency" />
+                <ScalarProperty Name="Accounting_Balance_in_currency" ColumnName="Accounting_Balance_in_currency" />
+                <ScalarProperty Name="GL_internal_Number" ColumnName="GL_internal_Number" />
+                <ScalarProperty Name="GL_reporting_Number" ColumnName="GL_reporting_Number" />
+                <ScalarProperty Name="Doubtful_Status" ColumnName="Doubtful_Status" />
+                <ScalarProperty Name="Provision_affected_amount" ColumnName="Provision_affected_amount" />
+                <ScalarProperty Name="Provision_amount_total_currency" ColumnName="Provision_amount_total_currency" />
+                <ScalarProperty Name="Attribute_1" ColumnName="Attribute_1" />
+                <ScalarProperty Name="Attribute_2" ColumnName="Attribute_2" />
+                <ScalarProperty Name="Attribute_3" ColumnName="Attribute_3" />
+                <ScalarProperty Name="Attribute_4" ColumnName="Attribute_4" />
+                <ScalarProperty Name="Attribute_5" ColumnName="Attribute_5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DT_CONTRACT">
+            <EntityTypeMapping TypeName="SpotLightDATAModel.DT_CONTRACT">
+              <MappingFragment StoreEntitySet="DT_CONTRACT">
+                <ScalarProperty Name="Bank_Code" ColumnName="Bank_Code" />
+                <ScalarProperty Name="Process_Date" ColumnName="Process_Date" />
+                <ScalarProperty Name="Internal_Contract_Number" ColumnName="Internal_Contract_Number" />
+                <ScalarProperty Name="Currency_Code" ColumnName="Currency_Code" />
+                <ScalarProperty Name="Customer_Code" ColumnName="Customer_Code" />
+                <ScalarProperty Name="Start_Date" ColumnName="Start_Date" />
+                <ScalarProperty Name="End_Date" ColumnName="End_Date" />
+                <ScalarProperty Name="Product_Code" ColumnName="Product_Code" />
+                <ScalarProperty Name="Principal_amount_in_currency" ColumnName="Principal_amount_in_currency" />
+                <ScalarProperty Name="Principal_amount_in_local_currency" ColumnName="Principal_amount_in_local_currency" />
+                <ScalarProperty Name="Outstanding_amount_in_currency" ColumnName="Outstanding_amount_in_currency" />
+                <ScalarProperty Name="Outstanding_amount_in_local_currency" ColumnName="Outstanding_amount_in_local_currency" />
+                <ScalarProperty Name="GL_internal_Number" ColumnName="GL_internal_Number" />
+                <ScalarProperty Name="GL_reporting_Number" ColumnName="GL_reporting_Number" />
+                <ScalarProperty Name="Type_Amount" ColumnName="Type_Amount" />
+                <ScalarProperty Name="Book_amount" ColumnName="Book_amount" />
+                <ScalarProperty Name="Debit_Credit" ColumnName="Debit_Credit" />
+                <ScalarProperty Name="Doubtful" ColumnName="Doubtful" />
+                <ScalarProperty Name="Provision_Rate" ColumnName="Provision_Rate" />
+                <ScalarProperty Name="Attribute_1" ColumnName="Attribute_1" />
+                <ScalarProperty Name="Attribute_2" ColumnName="Attribute_2" />
+                <ScalarProperty Name="Attribute_3" ColumnName="Attribute_3" />
+                <ScalarProperty Name="Attribute_4" ColumnName="Attribute_4" />
+                <ScalarProperty Name="Attribute_5" ColumnName="Attribute_5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DT_CUSTOMER">
+            <EntityTypeMapping TypeName="SpotLightDATAModel.DT_CUSTOMER">
+              <MappingFragment StoreEntitySet="DT_CUSTOMER">
+                <ScalarProperty Name="Bank_Code" ColumnName="Bank_Code" />
+                <ScalarProperty Name="Process_Date" ColumnName="Process_Date" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Customer_Code" ColumnName="Customer_Code" />
+                <ScalarProperty Name="Customer_First_Name" ColumnName="Customer_First_Name" />
+                <ScalarProperty Name="Customer_Last_Name" ColumnName="Customer_Last_Name" />
+                <ScalarProperty Name="Company_Name" ColumnName="Company_Name" />
+                <ScalarProperty Name="Customer_Type" ColumnName="Customer_Type" />
+                <ScalarProperty Name="Customer_ID_Type" ColumnName="Customer_ID_Type" />
+                <ScalarProperty Name="Customer_ID_Number" ColumnName="Customer_ID_Number" />
+                <ScalarProperty Name="Company_group" ColumnName="Company_group" />
+                <ScalarProperty Name="Company_group_name" ColumnName="Company_group_name" />
+                <ScalarProperty Name="Customer_Country_Code" ColumnName="Customer_Country_Code" />
+                <ScalarProperty Name="Economic_Sector" ColumnName="Economic_Sector" />
+                <ScalarProperty Name="Activity_Area" ColumnName="Activity_Area" />
+                <ScalarProperty Name="Internal_Segment" ColumnName="Internal_Segment" />
+                <ScalarProperty Name="Internal_Notation" ColumnName="Internal_Notation" />
+                <ScalarProperty Name="External_Notation" ColumnName="External_Notation" />
+                <ScalarProperty Name="Business_Category" ColumnName="Business_Category" />
+                <ScalarProperty Name="Commitment_Amount_in_local_currency" ColumnName="Commitment_Amount_in_local_currency" />
+                <ScalarProperty Name="Default_Amount_in_local_currency" ColumnName="Default_Amount_in_local_currency" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Turnover" ColumnName="Turnover" />
+                <ScalarProperty Name="Attribute_1" ColumnName="Attribute_1" />
+                <ScalarProperty Name="Attribute_2" ColumnName="Attribute_2" />
+                <ScalarProperty Name="Attribute_3" ColumnName="Attribute_3" />
+                <ScalarProperty Name="Attribute_4" ColumnName="Attribute_4" />
+                <ScalarProperty Name="Attribute_5" ColumnName="Attribute_5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DT_DEFAULT">
+            <EntityTypeMapping TypeName="SpotLightDATAModel.DT_DEFAULT">
+              <MappingFragment StoreEntitySet="DT_DEFAULT">
+                <ScalarProperty Name="Bank_Code" ColumnName="Bank_Code" />
+                <ScalarProperty Name="Process_Date" ColumnName="Process_Date" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Customer_Code" ColumnName="Customer_Code" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Default_Amount_in_local_currency" ColumnName="Default_Amount_in_local_currency" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DT_GUARANTEE">
+            <EntityTypeMapping TypeName="SpotLightDATAModel.DT_GUARANTEE">
+              <MappingFragment StoreEntitySet="DT_GUARANTEE">
+                <ScalarProperty Name="Bank_Code" ColumnName="Bank_Code" />
+                <ScalarProperty Name="Process_Date" ColumnName="Process_Date" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Internal_Guarantee_Number" ColumnName="Internal_Guarantee_Number" />
+                <ScalarProperty Name="Internal_Contract_Number" ColumnName="Internal_Contract_Number" />
+                <ScalarProperty Name="Guarantee_type" ColumnName="Guarantee_type" />
+                <ScalarProperty Name="Guarantee_Customer" ColumnName="Guarantee_Customer" />
+                <ScalarProperty Name="Guarantee_currency" ColumnName="Guarantee_currency" />
+                <ScalarProperty Name="GL_internal_Number" ColumnName="GL_internal_Number" />
+                <ScalarProperty Name="Guarantee_assigned_amount" ColumnName="Guarantee_assigned_amount" />
+                <ScalarProperty Name="Guarantee_amount" ColumnName="Guarantee_amount" />
+                <ScalarProperty Name="Value_Date" ColumnName="Value_Date" />
+                <ScalarProperty Name="End_Date" ColumnName="End_Date" />
+                <ScalarProperty Name="Attribute_1" ColumnName="Attribute_1" />
+                <ScalarProperty Name="Attribute_2" ColumnName="Attribute_2" />
+                <ScalarProperty Name="Attribute_3" ColumnName="Attribute_3" />
+                <ScalarProperty Name="Attribute_4" ColumnName="Attribute_4" />
+                <ScalarProperty Name="Attribute_5" ColumnName="Attribute_5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DT_PROVISION">
+            <EntityTypeMapping TypeName="SpotLightDATAModel.DT_PROVISION">
+              <MappingFragment StoreEntitySet="DT_PROVISION">
+                <ScalarProperty Name="Bank_Code" ColumnName="Bank_Code" />
+                <ScalarProperty Name="Process_Date" ColumnName="Process_Date" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Internal_Provision_Number" ColumnName="Internal_Provision_Number" />
+                <ScalarProperty Name="Currency_Code" ColumnName="Currency_Code" />
+                <ScalarProperty Name="Customer_Code" ColumnName="Customer_Code" />
+                <ScalarProperty Name="Balance_off_balance" ColumnName="Balance_off_balance" />
+                <ScalarProperty Name="Maturity_Date" ColumnName="Maturity_Date" />
+                <ScalarProperty Name="Provision_amount_in_currency" ColumnName="Provision_amount_in_currency" />
+                <ScalarProperty Name="Provision_amount_in_local_currency" ColumnName="Provision_amount_in_local_currency" />
+                <ScalarProperty Name="GL_internal_Number" ColumnName="GL_internal_Number" />
+                <ScalarProperty Name="GL_reporting_Number" ColumnName="GL_reporting_Number" />
+                <ScalarProperty Name="Provision_Stage" ColumnName="Provision_Stage" />
+                <ScalarProperty Name="Attribute_1" ColumnName="Attribute_1" />
+                <ScalarProperty Name="Attribute_2" ColumnName="Attribute_2" />
+                <ScalarProperty Name="Attribute_3" ColumnName="Attribute_3" />
+                <ScalarProperty Name="Attribute_4" ColumnName="Attribute_4" />
+                <ScalarProperty Name="Attribute_5" ColumnName="Attribute_5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FT_ARC">
+            <EntityTypeMapping TypeName="SpotLightDATAModel.FT_ARC">
+              <MappingFragment StoreEntitySet="FT_ARC">
+                <ScalarProperty Name="Bank_Code" ColumnName="Bank_Code" />
+                <ScalarProperty Name="Process_Date" ColumnName="Process_Date" />
+                <ScalarProperty Name="Internal_Guarantee_Number" ColumnName="Internal_Guarantee_Number" />
+                <ScalarProperty Name="Internal_Contract_Number" ColumnName="Internal_Contract_Number" />
+                <ScalarProperty Name="Guarantee_Class" ColumnName="Guarantee_Class" />
+                <ScalarProperty Name="Guarantee_Weighting_amount" ColumnName="Guarantee_Weighting_amount" />
+                <ScalarProperty Name="Guarantee_Customer" ColumnName="Guarantee_Customer" />
+                <ScalarProperty Name="Guarantee_currency" ColumnName="Guarantee_currency" />
+                <ScalarProperty Name="GL_internal_Number" ColumnName="GL_internal_Number" />
+                <ScalarProperty Name="Guarantee_assigned_amount" ColumnName="Guarantee_assigned_amount" />
+                <ScalarProperty Name="Outstanding_amount_in_local_currency" ColumnName="Outstanding_amount_in_local_currency" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FT_COREP_CA">
+            <EntityTypeMapping TypeName="SpotLightDATAModel.FT_COREP_CA">
+              <MappingFragment StoreEntitySet="FT_COREP_CA">
+                <ScalarProperty Name="ID_DATE" ColumnName="ID_DATE" />
+                <ScalarProperty Name="ID_ENTITY" ColumnName="ID_ENTITY" />
+                <ScalarProperty Name="ID_AMOUNT" ColumnName="ID_AMOUNT" />
+                <ScalarProperty Name="AMOUNT" ColumnName="AMOUNT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FT_COREP_CR">
+            <EntityTypeMapping TypeName="SpotLightDATAModel.FT_COREP_CR">
+              <MappingFragment StoreEntitySet="FT_COREP_CR">
+                <ScalarProperty Name="ID_PONDERATION" ColumnName="ID_PONDERATION" />
+                <ScalarProperty Name="ID_CAT_EXPOSITION" ColumnName="ID_CAT_EXPOSITION" />
+                <ScalarProperty Name="ID_EXPOSITION" ColumnName="ID_EXPOSITION" />
+                <ScalarProperty Name="ID_Date" ColumnName="ID_Date" />
+                <ScalarProperty Name="ID_AMOUNT" ColumnName="ID_AMOUNT" />
+                <ScalarProperty Name="AMOUNT" ColumnName="AMOUNT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PR_ACCOUNT">
+            <EntityTypeMapping TypeName="SpotLightDATAModel.PR_ACCOUNT">
+              <MappingFragment StoreEntitySet="PR_ACCOUNT">
+                <ScalarProperty Name="Bank_Code" ColumnName="Bank_Code" />
+                <ScalarProperty Name="Process_Date" ColumnName="Process_Date" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Basel_In" ColumnName="Basel_In" />
+                <ScalarProperty Name="Basel_Segment" ColumnName="Basel_Segment" />
+                <ScalarProperty Name="Credit_Conversion_Factor" ColumnName="Credit_Conversion_Factor" />
+                <ScalarProperty Name="Balance_Off_Sheet" ColumnName="Balance_Off_Sheet" />
+                <ScalarProperty Name="Sens_Code" ColumnName="Sens_Code" />
+                <ScalarProperty Name="Is_Commitment" ColumnName="Is_Commitment" />
+                <ScalarProperty Name="Is_Provision" ColumnName="Is_Provision" />
+                <ScalarProperty Name="Is_Doubtful" ColumnName="Is_Doubtful" />
+                <ScalarProperty Name="Is_Accrued_Interest" ColumnName="Is_Accrued_Interest" />
+                <ScalarProperty Name="Sign" ColumnName="Sign" />
+                <ScalarProperty Name="Exposition_Type" ColumnName="Exposition_Type" />
+                <ScalarProperty Name="Is_security" ColumnName="Is_security" />
+                <ScalarProperty Name="Cmdr_In" ColumnName="Cmdr_In" />
+                <ScalarProperty Name="Cmdr_Conversion_Factor" ColumnName="Cmdr_Conversion_Factor" />
+                <ScalarProperty Name="Cmdr_Sens_Code" ColumnName="Cmdr_Sens_Code" />
+                <ScalarProperty Name="Cmdr_Weighting" ColumnName="Cmdr_Weighting" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Is_Doubtful_Excluded" ColumnName="Is_Doubtful_Excluded" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PR_ACTIVITY_AREA">
+            <EntityTypeMapping TypeName="SpotLightDATAModel.PR_ACTIVITY_AREA">
+              <MappingFragment StoreEntitySet="PR_ACTIVITY_AREA">
+                <ScalarProperty Name="Bank_Code" ColumnName="Bank_Code" />
+                <ScalarProperty Name="Process_Date" ColumnName="Process_Date" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Activity_Area" ColumnName="Activity_Area" />
+                <ScalarProperty Name="Activity_Area_Description" ColumnName="Activity_Area_Description" />
+                <ScalarProperty Name="Regulator_Code" ColumnName="Regulator_Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PR_BASEL_CATEGORY">
+            <EntityTypeMapping TypeName="SpotLightDATAModel.PR_BASEL_CATEGORY">
+              <MappingFragment StoreEntitySet="PR_BASEL_CATEGORY">
+                <ScalarProperty Name="Bank_Code" ColumnName="Bank_Code" />
+                <ScalarProperty Name="Process_Date" ColumnName="Process_Date" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Category_Description" ColumnName="Category_Description" />
+                <ScalarProperty Name="Sub_Category" ColumnName="Sub_Category" />
+                <ScalarProperty Name="Sub_Category_Description" ColumnName="Sub_Category_Description" />
+                <ScalarProperty Name="Sub_Portfolio" ColumnName="Sub_Portfolio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PR_BASEL_PORTFOLIO">
+            <EntityTypeMapping TypeName="SpotLightDATAModel.PR_BASEL_PORTFOLIO">
+              <MappingFragment StoreEntitySet="PR_BASEL_PORTFOLIO">
+                <ScalarProperty Name="Bank_Code" ColumnName="Bank_Code" />
+                <ScalarProperty Name="Process_Date" ColumnName="Process_Date" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Portfolio" ColumnName="Portfolio" />
+                <ScalarProperty Name="Portfolio_Description" ColumnName="Portfolio_Description" />
+                <ScalarProperty Name="Sub_Portfolio" ColumnName="Sub_Portfolio" />
+                <ScalarProperty Name="Sub_Portfolio_Description" ColumnName="Sub_Portfolio_Description" />
+                <ScalarProperty Name="Weighting" ColumnName="Weighting" />
+                <ScalarProperty Name="WeightingCode" ColumnName="WeightingCode" />
+                <ScalarProperty Name="Default_Category" ColumnName="Default_Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PR_CURRENCY">
+            <EntityTypeMapping TypeName="SpotLightDATAModel.PR_CURRENCY">
+              <MappingFragment StoreEntitySet="PR_CURRENCY">
+                <ScalarProperty Name="Bank_Code" ColumnName="Bank_Code" />
+                <ScalarProperty Name="Process_Date" ColumnName="Process_Date" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Exchange_Rate" ColumnName="Exchange_Rate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PR_ECONOMIC_SECTOR">
+            <EntityTypeMapping TypeName="SpotLightDATAModel.PR_ECONOMIC_SECTOR">
+              <MappingFragment StoreEntitySet="PR_ECONOMIC_SECTOR">
+                <ScalarProperty Name="Bank_Code" ColumnName="Bank_Code" />
+                <ScalarProperty Name="Process_Date" ColumnName="Process_Date" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Economic_Sector" ColumnName="Economic_Sector" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Sub_Category" ColumnName="Sub_Category" />
+                <ScalarProperty Name="Cmdr_Weighting" ColumnName="Cmdr_Weighting" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PR_GUARANTEE_TYPE">
+            <EntityTypeMapping TypeName="SpotLightDATAModel.PR_GUARANTEE_TYPE">
+              <MappingFragment StoreEntitySet="PR_GUARANTEE_TYPE">
+                <ScalarProperty Name="Bank_Code" ColumnName="Bank_Code" />
+                <ScalarProperty Name="Process_Date" ColumnName="Process_Date" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Guarantee_Account" ColumnName="Guarantee_Account" />
+                <ScalarProperty Name="Guarantee_Type_Description" ColumnName="Guarantee_Type_Description" />
+                <ScalarProperty Name="Guarantee_Class" ColumnName="Guarantee_Class" />
+                <ScalarProperty Name="Guarantee_Weighting" ColumnName="Guarantee_Weighting" />
+                <ScalarProperty Name="In_COREP" ColumnName="In_COREP" />
+                <ScalarProperty Name="In_CMDR" ColumnName="In_CMDR" />
+                <ScalarProperty Name="Guarantee_Weighting_Cmdr" ColumnName="Guarantee_Weighting_Cmdr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PR_INTERNAL_SEGMENT">
+            <EntityTypeMapping TypeName="SpotLightDATAModel.PR_INTERNAL_SEGMENT">
+              <MappingFragment StoreEntitySet="PR_INTERNAL_SEGMENT">
+                <ScalarProperty Name="Bank_Code" ColumnName="Bank_Code" />
+                <ScalarProperty Name="Process_Date" ColumnName="Process_Date" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Internal_Segment" ColumnName="Internal_Segment" />
+                <ScalarProperty Name="Internal_Segment_Description" ColumnName="Internal_Segment_Description" />
+                <ScalarProperty Name="Customer_Market" ColumnName="Customer_Market" />
+                <ScalarProperty Name="Sub_Category" ColumnName="Sub_Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PR_SECURITY_TYPE">
+            <EntityTypeMapping TypeName="SpotLightDATAModel.PR_SECURITY_TYPE">
+              <MappingFragment StoreEntitySet="PR_SECURITY_TYPE">
+                <ScalarProperty Name="Bank_Code" ColumnName="Bank_Code" />
+                <ScalarProperty Name="Process_Date" ColumnName="Process_Date" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Security_Type" ColumnName="Security_Type" />
+                <ScalarProperty Name="Sub_Portfolio" ColumnName="Sub_Portfolio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FT_ASSET">
+            <EntityTypeMapping TypeName="SpotLightDATAModel.FT_ASSET">
+              <MappingFragment StoreEntitySet="FT_ASSET">
+                <ScalarProperty Name="Bank_Code" ColumnName="Bank_Code" />
+                <ScalarProperty Name="Process_Date" ColumnName="Process_Date" />
+                <ScalarProperty Name="Portfolio" ColumnName="Portfolio" />
+                <ScalarProperty Name="Portfolio_Description" ColumnName="Portfolio_Description" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Category_Description" ColumnName="Category_Description" />
+                <ScalarProperty Name="Sub_Category" ColumnName="Sub_Category" />
+                <ScalarProperty Name="Sub_Category_Description" ColumnName="Sub_Category_Description" />
+                <ScalarProperty Name="Sub_Portfolio" ColumnName="Sub_Portfolio" />
+                <ScalarProperty Name="Sub_Portfolio_Description" ColumnName="Sub_Portfolio_Description" />
+                <ScalarProperty Name="Exposition_Type" ColumnName="Exposition_Type" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Balance_Off_Sheet" ColumnName="Balance_Off_Sheet" />
+                <ScalarProperty Name="Currency_Code" ColumnName="Currency_Code" />
+                <ScalarProperty Name="Customer_Code" ColumnName="Customer_Code" />
+                <ScalarProperty Name="Internal_Contract_Number" ColumnName="Internal_Contract_Number" />
+                <ScalarProperty Name="Outstanding_amount_in_currency" ColumnName="Outstanding_amount_in_currency" />
+                <ScalarProperty Name="Outstanding_amount_in_local_currency" ColumnName="Outstanding_amount_in_local_currency" />
+                <ScalarProperty Name="Provision_affected_amount" ColumnName="Provision_affected_amount" />
+                <ScalarProperty Name="WeightingCode" ColumnName="WeightingCode" />
+                <ScalarProperty Name="Weighting" ColumnName="Weighting" />
+                <ScalarProperty Name="Credit_Conversion_Factor" ColumnName="Credit_Conversion_Factor" />
+                <ScalarProperty Name="CreditProtection" ColumnName="CreditProtection" />
+                <ScalarProperty Name="FinancialCollateral" ColumnName="FinancialCollateral" />
+                <ScalarProperty Name="RiskWeightedExposureAmounts" ColumnName="RiskWeightedExposureAmounts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FT_CUSOMER_CMDR">
+            <EntityTypeMapping TypeName="SpotLightDATAModel.FT_CUSOMER_CMDR">
+              <MappingFragment StoreEntitySet="FT_CUSOMER_CMDR">
+                <ScalarProperty Name="Bank_Code" ColumnName="Bank_Code" />
+                <ScalarProperty Name="Process_Date" ColumnName="Process_Date" />
+                <ScalarProperty Name="Customer_Code" ColumnName="Customer_Code" />
+                <ScalarProperty Name="Company_group" ColumnName="Company_group" />
+                <ScalarProperty Name="Company_group_name" ColumnName="Company_group_name" />
+                <ScalarProperty Name="Company_group_total_Outstanding" ColumnName="Company_group_total_Outstanding" />
+                <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
+                <ScalarProperty Name="Customer_ID_Number" ColumnName="Customer_ID_Number" />
+                <ScalarProperty Name="Activity_Regulator_Code" ColumnName="Activity_Regulator_Code" />
+                <ScalarProperty Name="Internal_Notation" ColumnName="Internal_Notation" />
+                <ScalarProperty Name="Outstanding_amount_in_local_currency" ColumnName="Outstanding_amount_in_local_currency" />
+                <ScalarProperty Name="Doubtful_amount_in_local_currency" ColumnName="Doubtful_amount_in_local_currency" />
+                <ScalarProperty Name="Outstanding_amount_in_local_currency_1" ColumnName="Outstanding_amount_in_local_currency_1" />
+                <ScalarProperty Name="Outstanding_amount_in_local_currency_2a" ColumnName="Outstanding_amount_in_local_currency_2a" />
+                <ScalarProperty Name="Outstanding_amount_in_local_currency_2b" ColumnName="Outstanding_amount_in_local_currency_2b" />
+                <ScalarProperty Name="Provision_affected_amount" ColumnName="Provision_affected_amount" />
+                <ScalarProperty Name="Outstanding_amount_Weighting" ColumnName="Outstanding_amount_Weighting" />
+                <ScalarProperty Name="Guarantee_assigned_amount" ColumnName="Guarantee_assigned_amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FT_CUSOMER_COMMITMENT">
+            <EntityTypeMapping TypeName="SpotLightDATAModel.FT_CUSOMER_COMMITMENT">
+              <MappingFragment StoreEntitySet="FT_CUSOMER_COMMITMENT">
+                <ScalarProperty Name="Bank_Code" ColumnName="Bank_Code" />
+                <ScalarProperty Name="Process_Date" ColumnName="Process_Date" />
+                <ScalarProperty Name="Internal_Contract_Number" ColumnName="Internal_Contract_Number" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Currency_Code" ColumnName="Currency_Code" />
+                <ScalarProperty Name="Customer_Code" ColumnName="Customer_Code" />
+                <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
+                <ScalarProperty Name="Company_group" ColumnName="Company_group" />
+                <ScalarProperty Name="Company_group_name" ColumnName="Company_group_name" />
+                <ScalarProperty Name="Customer_ID_Type" ColumnName="Customer_ID_Type" />
+                <ScalarProperty Name="Customer_ID_Number" ColumnName="Customer_ID_Number" />
+                <ScalarProperty Name="Activity_Regulator_Code" ColumnName="Activity_Regulator_Code" />
+                <ScalarProperty Name="Internal_Notation" ColumnName="Internal_Notation" />
+                <ScalarProperty Name="Outstanding_amount_in_local_currency" ColumnName="Outstanding_amount_in_local_currency" />
+                <ScalarProperty Name="Doubtful_Status" ColumnName="Doubtful_Status" />
+                <ScalarProperty Name="Balance_Off_Sheet" ColumnName="Balance_Off_Sheet" />
+                <ScalarProperty Name="Exposition_Type" ColumnName="Exposition_Type" />
+                <ScalarProperty Name="Provision_affected_amount" ColumnName="Provision_affected_amount" />
+                <ScalarProperty Name="Economic_Sector" ColumnName="Economic_Sector" />
+                <ScalarProperty Name="Internal_Segment" ColumnName="Internal_Segment" />
+                <ScalarProperty Name="Weighting" ColumnName="Weighting" />
+                <ScalarProperty Name="Credit_Conversion_Factor" ColumnName="Credit_Conversion_Factor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
